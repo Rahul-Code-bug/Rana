@@ -1,0 +1,87 @@
+{% extends "cars/base.html" %}
+{% block title %}Inventory — CarHub{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <h1 class="fw-bold mb-4">Browse Inventory</h1>
+
+    <form method="get" class="filter-bar row g-3 mb-4 p-3">
+        <div class="col-md-3">
+            <input type="text" name="q" value="{{ query }}" class="form-control" placeholder="Search brand or model">
+        </div>
+        <div class="col-md-2">
+            <select name="brand" class="form-select">
+                <option value="">All Brands</option>
+                {% for b in brands %}
+                <option value="{{ b }}" {% if b == selected_brand %}selected{% endif %}>{{ b }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select name="category" class="form-select">
+                <option value="">All Categories</option>
+                {% for c in categories %}
+                <option value="{{ c.id }}" {% if selected_category == c.id|stringformat:"s" %}selected{% endif %}>{{ c.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select name="fuel_type" class="form-select">
+                <option value="">Any Fuel</option>
+                {% for value, label in fuel_choices %}
+                <option value="{{ value }}" {% if value == selected_fuel_type %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-1">
+            <input type="number" name="min_price" value="{{ min_price }}" class="form-control" placeholder="Min ₹">
+        </div>
+        <div class="col-md-1">
+            <input type="number" name="max_price" value="{{ max_price }}" class="form-control" placeholder="Max ₹">
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-primary w-100" type="submit"><i class="fa-solid fa-filter"></i></button>
+        </div>
+        <div class="col-12 d-flex justify-content-between align-items-center">
+            <a href="{% url 'cars:car_list' %}" class="small">Clear filters</a>
+            <select name="sort" class="form-select form-select-sm w-auto" onchange="this.form.submit()">
+                <option value="">Sort by</option>
+                <option value="newest" {% if sort == "newest" %}selected{% endif %}>Newest</option>
+                <option value="price_asc" {% if sort == "price_asc" %}selected{% endif %}>Price: Low to High</option>
+                <option value="price_desc" {% if sort == "price_desc" %}selected{% endif %}>Price: High to Low</option>
+                <option value="year_desc" {% if sort == "year_desc" %}selected{% endif %}>Year: Newest First</option>
+            </select>
+        </div>
+    </form>
+
+    <p class="text-secondary">{{ page_obj.paginator.count }} car{{ page_obj.paginator.count|pluralize }} found</p>
+
+    <div class="row g-4">
+        {% for car in page_obj %}
+        <div class="col-lg-4 col-md-6">
+            {% include "cars/_car_card.html" %}
+        </div>
+        {% empty %}
+        <div class="col-12 text-center py-5">
+            <i class="fa-solid fa-magnifying-glass fs-1 text-secondary mb-3"></i>
+            <p class="text-secondary">No cars match your filters. Try broadening your search.</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if page_obj.paginator.num_pages > 1 %}
+    <nav class="mt-5">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+            {% endif %}
+            {% for num in page_obj.paginator.page_range %}
+            <li class="page-item {% if num == page_obj.number %}active{% endif %}"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+            {% endfor %}
+            {% if page_obj.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+{% endblock %}

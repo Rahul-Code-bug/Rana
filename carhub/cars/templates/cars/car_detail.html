@@ -1,0 +1,64 @@
+{% extends "cars/base.html" %}
+{% block title %}{{ car }} — CarHub{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <a href="{% url 'cars:car_list' %}" class="small d-inline-block mb-3"><i class="fa-solid fa-arrow-left me-1"></i>Back to inventory</a>
+    <div class="row g-5">
+        <div class="col-lg-6">
+            <div class="detail-img">
+                {% if car.image %}
+                <img src="{{ car.image.url }}" alt="{{ car }}" class="img-fluid rounded">
+                {% else %}
+                <div class="car-card-placeholder detail-placeholder"><i class="fa-solid fa-car-side"></i></div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-6">
+            {% if car.category %}<span class="badge-link mb-2 d-inline-block">{{ car.category }}</span>{% endif %}
+            <h1 class="fw-bold">{{ car.brand }} {{ car.model_name }}</h1>
+            <p class="fs-3 text-primary fw-bold">₹{{ car.price|floatformat:0 }}</p>
+
+            <div class="row g-3 my-4 spec-grid">
+                <div class="col-6 col-md-3"><i class="fa-solid fa-calendar text-primary"></i><div class="small text-secondary">Year</div><div class="fw-semibold">{{ car.year }}</div></div>
+                <div class="col-6 col-md-3"><i class="fa-solid fa-gauge-high text-primary"></i><div class="small text-secondary">Mileage</div><div class="fw-semibold">{{ car.mileage }} km</div></div>
+                <div class="col-6 col-md-3"><i class="fa-solid fa-gas-pump text-primary"></i><div class="small text-secondary">Fuel</div><div class="fw-semibold">{{ car.get_fuel_type_display }}</div></div>
+                <div class="col-6 col-md-3"><i class="fa-solid fa-gears text-primary"></i><div class="small text-secondary">Transmission</div><div class="fw-semibold">{{ car.get_transmission_display }}</div></div>
+                {% if car.color %}
+                <div class="col-6 col-md-3"><i class="fa-solid fa-palette text-primary"></i><div class="small text-secondary">Color</div><div class="fw-semibold">{{ car.color }}</div></div>
+                {% endif %}
+                <div class="col-6 col-md-3"><i class="fa-solid fa-circle-check text-primary"></i><div class="small text-secondary">Status</div><div class="fw-semibold">{% if car.is_available %}Available{% else %}Sold{% endif %}</div></div>
+            </div>
+
+            {% if car.description %}
+            <h5 class="fw-bold">Description</h5>
+            <p class="text-secondary">{{ car.description }}</p>
+            {% endif %}
+
+            <div class="card mt-4 p-4 inquiry-card">
+                <h5 class="fw-bold mb-3">Interested in this car?</h5>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.name }}
+                    <div class="mt-2">{{ form.email }}</div>
+                    <div class="mt-2">{{ form.phone }}</div>
+                    <div class="mt-2">{{ form.message }}</div>
+                    <button type="submit" class="btn btn-primary mt-3 w-100">Send Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% if related_cars %}
+    <section class="mt-5">
+        <h3 class="fw-bold mb-4">More from {{ car.brand }}</h3>
+        <div class="row g-4">
+            {% for rc in related_cars %}
+            <div class="col-md-3 col-sm-6">
+                {% with car=rc %}{% include "cars/_car_card.html" %}{% endwith %}
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,851 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reports | CRM</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+        }
+
+        .dashboard {
+            display: flex;
+            min-height: 100vh;
+        }
+
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            width: 240px;
+            background: #0f172a;
+            color: white;
+            padding: 25px 18px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            padding-left: 10px;
+        }
+
+        .logo span {
+            color: #6366f1;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .menu a {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 12px 14px;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            background: #6366f1;
+            color: white;
+        }
+
+
+        /* ================= MAIN ================= */
+
+        .main-content {
+            flex: 1;
+            padding: 35px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .topbar h1 {
+            font-size: 30px;
+        }
+
+        .topbar p {
+            color: #64748b;
+            margin-top: 6px;
+        }
+
+        .back-btn {
+            background: white;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            background: #6366f1;
+            color: white;
+        }
+
+
+        /* ================= SUMMARY CARDS ================= */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 18px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 22px;
+            transition: 0.25s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+        }
+
+        .stat-icon {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            background: #eef2ff;
+            border-radius: 10px;
+            font-size: 19px;
+            margin-bottom: 15px;
+        }
+
+        .stat-card h3 {
+            color: #64748b;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .number {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+
+        /* ================= REPORT GRID ================= */
+
+        .report-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            margin-top: 30px;
+        }
+
+        .report-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 25px;
+        }
+
+        .report-header {
+            margin-bottom: 22px;
+        }
+
+        .report-header h2 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .report-header p {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+
+        /* ================= LEAD STATUS ================= */
+
+        .status-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .status-row:last-child {
+            border-bottom: none;
+        }
+
+        .status-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #6366f1;
+        }
+
+        .status-count {
+            font-weight: 800;
+            color: #475569;
+        }
+
+
+        /* ================= TASK SUMMARY ================= */
+
+        .task-summary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .task-box {
+            padding: 20px;
+            border-radius: 12px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+
+        .task-box span {
+            display: block;
+            color: #64748b;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .task-box strong {
+            font-size: 25px;
+        }
+
+
+        /* ================= ANALYTICS ================= */
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            margin-top: 22px;
+        }
+
+        .analytics-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 25px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+
+        /* ================= OVERVIEW ================= */
+
+        .overview {
+            margin-top: 22px;
+        }
+
+        .overview-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 25px;
+        }
+
+        .overview-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .overview-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .overview-item span {
+            display: block;
+            color: #64748b;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .overview-item strong {
+            font-size: 26px;
+        }
+
+
+        /* ================= HIDDEN DATA ================= */
+
+        #report-data {
+            display: none;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1100px) {
+
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .overview-list {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            .sidebar {
+                width: 190px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .report-grid,
+            .analytics-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .dashboard {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .menu {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .overview-list {
+                grid-template-columns: 1fr;
+            }
+
+            .task-summary {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body>
+
+    <div class="dashboard">
+
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                CRM<span>.</span>
+            </div>
+
+            <nav class="menu">
+
+                <a href="{% url 'dashboard' %}">
+                    📊 Dashboard
+                </a>
+
+                <a href="{% url 'customer_list' %}">
+                    👥 Customers
+                </a>
+
+                <a href="{% url 'lead_list' %}">
+                    🎯 Leads
+                </a>
+
+                <a href="{% url 'task_list' %}">
+                    ✅ Tasks
+                </a>
+
+                <a href="{% url 'reports' %}" class="active">
+                    📈 Reports
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <main class="main-content">
+
+
+            <!-- ================= TOPBAR ================= -->
+
+            <div class="topbar">
+
+                <div>
+
+                    <h1>
+                        Reports
+                    </h1>
+
+                    <p>
+                        Overview of your CRM performance and activity.
+                    </p>
+
+                </div>
+
+                <a href="{% url 'dashboard' %}" class="back-btn">
+                    ← Dashboard
+                </a>
+
+            </div>
+
+
+            <!-- ================= SUMMARY CARDS ================= -->
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        👥
+                    </div>
+
+                    <h3>
+                        Total Customers
+                    </h3>
+
+                    <div class="number">
+                        {{ total_customers }}
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🎯
+                    </div>
+
+                    <h3>
+                        Total Leads
+                    </h3>
+
+                    <div class="number">
+                        {{ total_leads }}
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📋
+                    </div>
+
+                    <h3>
+                        Total Tasks
+                    </h3>
+
+                    <div class="number">
+                        {{ total_tasks }}
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ⏳
+                    </div>
+
+                    <h3>
+                        Pending Tasks
+                    </h3>
+
+                    <div class="number">
+                        {{ pending_tasks }}
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ✔️
+                    </div>
+
+                    <h3>
+                        Completed Tasks
+                    </h3>
+
+                    <div class="number">
+                        {{ completed_tasks }}
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ================= STATUS REPORT ================= -->
+
+            <div class="report-grid">
+
+
+                <!-- LEAD STATUS -->
+
+                <div class="report-card">
+
+                    <div class="report-header">
+
+                        <h2>
+                            Lead Status
+                        </h2>
+
+                        <p>
+                            Current distribution of leads.
+                        </p>
+
+                    </div>
+
+
+                    <div class="status-row">
+
+                        <div class="status-name">
+                            <span class="status-dot"></span>
+                            New
+                        </div>
+
+                        <div class="status-count">
+                            {{ new_leads }}
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-row">
+
+                        <div class="status-name">
+                            <span class="status-dot"></span>
+                            Contacted
+                        </div>
+
+                        <div class="status-count">
+                            {{ contacted_leads }}
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-row">
+
+                        <div class="status-name">
+                            <span class="status-dot"></span>
+                            Qualified
+                        </div>
+
+                        <div class="status-count">
+                            {{ qualified_leads }}
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-row">
+
+                        <div class="status-name">
+                            <span class="status-dot"></span>
+                            Converted
+                        </div>
+
+                        <div class="status-count">
+                            {{ converted_leads }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TASK SUMMARY -->
+
+                <div class="report-card">
+
+                    <div class="report-header">
+
+                        <h2>
+                            Task Summary
+                        </h2>
+
+                        <p>
+                            Current task completion overview.
+                        </p>
+
+                    </div>
+
+
+                    <div class="task-summary">
+
+
+                        <div class="task-box">
+
+                            <span>
+                                Pending Tasks
+                            </span>
+
+                            <strong>
+                                {{ pending_tasks }}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="task-box">
+
+                            <span>
+                                Completed Tasks
+                            </span>
+
+                            <strong>
+                                {{ completed_tasks }}
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ================= ANALYTICS ================= -->
+
+            <div class="analytics-grid">
+
+
+                <!-- LEAD ANALYTICS -->
+
+                <div class="analytics-card">
+
+                    <div class="report-header">
+
+                        <h2>
+                            Lead Analytics
+                        </h2>
+
+                        <p>
+                            Lead distribution by status.
+                        </p>
+
+                    </div>
+
+                    <div class="chart-container">
+
+                        <canvas id="leadChart"></canvas>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TASK ANALYTICS -->
+
+                <div class="analytics-card">
+
+                    <div class="report-header">
+
+                        <h2>
+                            Task Analytics
+                        </h2>
+
+                        <p>
+                            Pending vs completed tasks.
+                        </p>
+
+                    </div>
+
+                    <div class="chart-container">
+
+                        <canvas id="taskChart"></canvas>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ================= CRM OVERVIEW ================= -->
+
+            <div class="overview">
+
+                <div class="overview-card">
+
+                    <div class="report-header">
+
+                        <h2>
+                            CRM Overview
+                        </h2>
+
+                        <p>
+                            Quick overview of your current CRM records.
+                        </p>
+
+                    </div>
+
+
+                    <div class="overview-list">
+
+
+                        <div class="overview-item">
+
+                            <span>
+                                Customers
+                            </span>
+
+                            <strong>
+                                {{ total_customers }}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="overview-item">
+
+                            <span>
+                                Leads
+                            </span>
+
+                            <strong>
+                                {{ total_leads }}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="overview-item">
+
+                            <span>
+                                Tasks
+                            </span>
+
+                            <strong>
+                                {{ total_tasks }}
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= DJANGO DATA FOR JS ================= -->
+
+            <div
+                id="report-data"
+
+                data-new-leads="{{ new_leads }}"
+                data-contacted-leads="{{ contacted_leads }}"
+                data-qualified-leads="{{ qualified_leads }}"
+                data-converted-leads="{{ converted_leads }}"
+
+                data-pending-tasks="{{ pending_tasks }}"
+                data-completed-tasks="{{ completed_tasks }}"
+            >
+            </div>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= EXTERNAL JS ================= -->
+
+    <script src="{% static 'crm/js/reports.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+Topic: Type Conversion
+
+int()   -> String ko Integer banata hai
+float() -> String ko Float banata hai
+str()   -> Number ko String banata hai
+
+Example:
+age = int(input("Age: "))
+
+
+# Day 3
+| Operator | Meaning               |
+| -------- | --------------------- |
+| `==`     | Equal                 |
+| `!=`     | Not Equal             |
+| `>`      | Greater Than          |
+| `<`      | Less Than             |
+| `>=`     | Greater Than or Equal |
+| `<=`     | Less Than or Equal    |
+
+
+=   -> Assignment
+==  -> Comparison
+!=  -> Not Equal
+>=  -> Greater than or Equal
+<=  -> Less than or Equal

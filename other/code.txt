@@ -1,0 +1,584 @@
+827013rk pass of my Gmail
+class  readmore  viewmorer
+
+<i class="fa fa-download"></i>
+
+flex-item
+
+<h3 class="center section-title">
+
+
+<div class="center"><a href="tel:" class="viewmore"><span>Call Now</span></a> <a href="" class="readmore"><span>Contact Us</span></a></div>
+
+
+<h3 class="section-title">
+
+<div class="center"></div>
+
+<div class="white-bgs"><div class="wrapper"><div class="content-padding">
+
+
+</div></div></div>
+
+<div class="blue-bgs"><div class="wrapper"><div class="content-padding">
+
+
+</div></div></div>
+<div class="brown-bgs"><div class="wrapper"><div class="content-padding">
+
+
+</div></div></div>
+
+<div class="lightgrey-bgs"><div class="wrapper"><div class="content-padding">
+
+
+</div></div></div>
+
+<div class="black-bgs"><div class="wrapper"><div class="content-padding">
+
+
+</div></div></div>
+
+
+
+
+<div class="row">
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="clear"></div>
+</div>
+
+
+
+
+
+
+<div class="row"><div class="flex-item">
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="clear"></div>
+</div></div>
+
+
+<div class="lightgrey-bgs"><div class="wrapper"><div class="content-padding">
+<div class="center">
+<h3></h3>
+</div>
+<div class="row"><div class="flex-item">
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="clear"></div>
+</div></div>
+</div></div></div>
+
+
+<div class="white-bgs"><div class="wrapper"><div class="content-padding">
+<div class="center">
+<h3></h3>
+</div>
+<div class="row"><div class="flex-item">
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="clear"></div>
+</div></div>
+</div></div></div>
+
+
+
+<div class="lightgrey-bgs"><div class="wrapper"><div class="content-padding">
+<div class="row"><div class="flex-item">
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="clear"></div>
+</div></div>
+</div></div></div>
+
+
+<div class="white-bgs"><div class="wrapper"><div class="content-padding">
+<div class="row"><div class="flex-item">
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="clear"></div>
+</div></div>
+</div></div></div>
+
+<div class="lightgrey-bgs"><div class="wrapper"><div class="content-padding">
+<div class="center">
+<h3 class="section-title"></h3>
+</div>
+<div class="row"><div class="flex-item">
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="clear"></div>
+</div></div>
+</div></div></div>
+
+
+<div class="white-bgs"><div class="wrapper"><div class="content-padding">
+<div class="center">
+<h3 class="section-title"></h3>
+</div>
+<div class="row"><div class="flex-item">
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="clear"></div>
+</div></div>
+</div></div></div>
+
+<div class="white-bgs"><div class="wrapper"><div class="content-padding">
+<div class="row">
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="clear"></div>
+</div>
+</div></div></div>
+
+
+For image in background
+
+<div class="parallex-bgs" style="background-image: url(https://yourmockdesign.com/poprockacademy/wp-content/uploads/2021/01/PopRock-Academy.jpg);"><div class="parallex-overlay"><div class="wrapper">
+<div class="center">
+<h3 class="section-title"></h3>
+<div class="wrap">
+<h4></h4>
+<p class="large"></p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="row">
+<div class="box-33"><div class="box-padding">
+</div></div>
+<div class="box-33"><div class="box-padding">
+</div></div>
+<div class="box-33"><div class="box-padding">
+</div></div>
+<div class="clear"></div>
+</div>
+
+
+
+
+
+
+<div class="row">
+<div class="box-25"><div class="box-padding">
+</div></div>
+<div class="box-25"><div class="box-padding">
+</div></div>
+<div class="box-25"><div class="box-padding">
+</div></div>
+<div class="box-25"><div class="box-padding">
+</div></div>
+<div class="clear"></div>
+</div>
+
+
+
+ class='bullet-icon'
+<ul class="num"> - for numbering 
+
+
+<div class="lightgrey-bgs"><div class="wrapper"><div class="content-padding">
+<div class="row">
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="clear"></div>
+</div>
+</div></div></div>
+
+
+
+<ul class="list">
+<li></li>
+<li></li>
+<li></li>
+</ul>
+
+<h2></h2>
+
+<h3></h3>
+
+<h4></h4>
+
+
+
+
+
+
+lightgrey-bgs
+
+
+
+white-bgs
+
+
+<div class="row">
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="clear"></div>
+</div>
+
+
+
+<div class="row"><div class="flex-item">
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="box-50"><div class="box-padding">
+</div></div>
+<div class="clear"></div>
+</div></div>
+
+
+
+
+
+
+
+
+[contact-form-7 id="11c17da" title="Contact Form"]
+
+
+<h3 class="center section-title">
+
+<div class="flex-item">
+
+<h3 class="section-title">
+________________________for box padding and for a web start ____________________
+
+<div class="white-bgs"><div class="wrapper"><div class="content-padding">
+
+<div class="clearH"></div>
+<div class="row blue-bgs"><div class="flex-item">
+<div class="box-50"><div class="blue-bgs"><div class="box-wrap">
+
+
+</div></div></div>
+<div class="box-50"><div class="brown-bgs"><div class="box-wrap">
+
+
+</div></div></div>
+<div class="clear"></div>
+</div></div>
+
+<div class="row brown-bgs"><div class="flex-item">
+<div class="box-50"><div class="brown-bgs"><div class="box-wrap">
+
+
+
+</div></div></div>
+<div class="box-50"><div class="blue-bgs"><div class="box-wrap">
+
+
+
+</div></div></div>
+<div class="clear"></div>
+</div></div>
+
+
+
+
+</div></div></div>
+
+
+
+________________________for box padding and for a web end ____________________
+
+Alt + Ctrl+ Shift + S for compress the image
+
+
+
+
+
+
+
+
+
+____________________________Contact form_______________________________________
+<div class="contact-form-wrapper"><div class="contact-form-shadow">
+<div class="row">
+<div class="box-50"><div class="box-paddingS">
+[text* fname class:inputtext placeholder "Full Name*"]
+</div></div>
+<div class="box-50"><div class="box-paddingS">
+[email* emails class:inputtext placeholder "Email Address*"]
+</div></div>	
+<div class="clear"></div>	
+<div class="box-50"><div class="box-paddingS">
+[tel* tels class:inputtext placeholder "Phone Number*"]
+</div></div>
+<div class="box-50"><div class="box-paddingS">
+[text address class:inputtext placeholder "Address"]
+</div></div>	
+<div class="clear"></div>
+</div>	
+<div class="box-100">
+[textarea msg 10x1 class:textarea placeholder] Your Message.. [/textarea]
+</div>
+<div class="box-100">[submit class:btn-submit "Submit"]</div>		 
+<div class="clear"> </div> 
+</div></div>
+
+____________________contact form border css_____________
+Use class="contact-form-shadow" after class="contact-form-wrapper" 
+.contact-form-shadow{ position: relative; margin-bottom:50px; padding: 50px; box-shadow: 5px 7px 30px rgba(72,73,121,.15);-webkit-box-shadow: 5px 7px 30px rgba(72,73,121,.15);-moz-box-shadow: 5px 7px 30px rgba(72,73,121,.15);border-radius: 5px;-webkit-border-radius: 5px;-moz-border-radius: 5px; }
+_____________________________________________________
+
+____________________________Gallery Album_______________________________________
+
+
+FooGallery for Gallery Album 
+and also need to install to run this Foogallery Popup plugin 
+
+
+
+For table or (https://yourmockdesign.com/northpointech/touch-stock/) ya samajhan ka lya
+
+
+<table class="style1" border="0"  cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<th width="25%">Code</th>
+<th width="25%">Friction Type</th>
+<th width="25%">Friction Material Features</th>
+<th width="25%">Dynamic Friction Coefficient</th>
+</tr>
+
+For CSS table
+
+table.style1 {
+ width: 100%;  border-collapse: collapse; font-size:90%;  color: #000; margin: 0 0 30px;  border:1px solid #e9e9e9;border-bottom:none;border-spacing: 0;
+}
+table.style1 th {
+background: #999999; color:#fff;
+    border-bottom: 1px solid #e9e9e9;
+    text-align: left;padding: 5px 10px;
+    vertical-align: top;font-weight:700;
+}
+table.style1 td {
+    border-bottom: 1px solid #e9e9e9;
+    border-right: 1px solid #e9e9e9;
+    text-align: left;padding: 5px 10px;
+    vertical-align: top;
+}
+table.style1 tr td:last-child {
+    border-right: medium none;
+}
+table.style1 tr {
+    background: #fff none repeat scroll 0 0;
+}
+table.style1 tr:nth-child(2n) {
+    background: #f8f8f8 none repeat scroll 0 0;
+}
+
+
+
+
+Image animation 
+
+.productbox.img-animate{margin-bottom:15px;}
+.productbox p{margin:0px;}
+.img-animate{
+    position: relative;border-radius: 20px;
+    overflow: hidden;
+}
+.img-animate img{margin:0; max-width:100%; height: auto;}
+.img-animate:after{
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 0%;
+    left: 50%;
+    top: 50%;
+    background-color: rgba(255,255,255,.3);
+    transform: translate(-50%,-50%) rotate(-45deg);
+    z-index: 1;
+}
+.img-animate:hover:after{
+    height: 250%;
+    transition: all 600ms linear;
+    background-color: transparent;
+}
+
+Code for animation
+<div class="row center">
+<div class="box-25"><div class="box-padding"><a href=""><figure class="productbox img-animate">
+img
+</figure></a>
+<h4></h4>
+</div></div>
+<div class="clear"></div>
+</div>
+
+
+
+
+
+
+
+
+For Box shadow
+
+<div class="box-33"><div class="box-padding"><div class="box-shadow">
+
+
+.box-shadow {
+position: relative; display: block; background: #fff; padding: 30px 25px 5px 25px; border-radius: 10px; box-shadow: 0 8px 20px -2px rgba(33, 47, 82, .27); min-height: 340px; overflow: hidden; 
+}
+.box-shadow p{margin:0;}
+.fixed-background img{display: block; margin:0; width:100%; height:auto;}
+.contentbox-padding{position: relative; display: block; width: 80%; padding: 50px 0px; margin: 0px auto;}
+
+
+
+
+
+servicebox
+
+
+_______________________________________________________________________________________________________________________
+For box hover yellow and icon 
+
+<div class="servicebox">
+<div class="shape"> </div>
+<div class="servicebox-icon"><img src="https://whitefoxbuilding.com.au/wp-content/uploads/2025/11/service-icon3.png" alt="Consultation" width="50" /></div>
+<div class="servicebox-text">
+<h4>Consultation</h4>
+<p>White Fox Building also provides various consultation services, including: Assistance with obtaining Occupation Certificates NSW Planning Portal Lodgement Building practitioner services for Class 2 buildings</p>
+</div>
+</div>
+
+.servicebox {  position: relative;
+    padding: 30px 20px;  text-align: center;
+    border-radius: 5px; overflow: hidden;
+    border:none; z-index: 1;
+    background: #FFFFFF;color:#333;
+    box-shadow: 12px 19px 62px 0px rgb(13 52 79 / 7%);
+}
+.servicebox .shape {
+    position:absolute;
+    right:0;
+    bottom:0
+}
+.servicebox .shape:before {
+    position:absolute;
+    content:"";
+   background-color: #ffcb01;  background: linear-gradient(to bottom,#ffcb01,#ffa903) repeat;
+    width:62px;
+    height:62px;
+    right:-18px;
+    bottom:-22px;
+    border-radius:50%;
+    opacity:.2;
+    transition:all .5s ease;
+    animation:zoom-fade 5s linear infinite
+}
+.servicebox:hover .shape:before {
+    background:#fff!important;
+    opacity:.15
+}
+.servicebox .shape:after {
+    position:absolute;
+    content:"";
+    border:solid;
+    border-width:7px;
+    border-color:#FF9900;
+    right:-37px;
+    bottom:-41px;
+    border-radius:50%;
+    width:100px;
+    height:100px;
+    opacity:.1;
+    transition:all .5s ease;
+    animation:zoom-fade 8s linear infinite
+}
+.servicebox:hover .shape:after {
+    border-color:#fff !important;
+    opacity:.15
+}
+.servicebox-text {
+   position: relative; z-index: 1;
+}
+#services .servicebox-text {
+}
+.servicebox-text h4 {
+    margin-bottom: 15px; font-weight: 700;
+}
+.servicebox-description {
+    font-weight: normal;
+    color: #A5A5A5;
+}
+.servicebox-icon {
+    float: none;
+    position: relative;
+    width: 55px;  display: inline-block;
+    text-align: center; padding: 6px 6px; margin-bottom:14px;
+    border: 1px solid #FFCB01; border-radius: 50%;
+    transition: all 100ms ease-out;
+}
+.servicebox-icon img {
+    position: relative;
+    transition: all 0.3s ease 0s;
+}
+.servicebox::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 0;
+     background-color: #ffcb01;  background: linear-gradient(to bottom,#ffcb01,#ffa903) repeat;
+     transition: all 0.3s ease 0s;
+    }
+.servicebox:hover .servicebox-icon {
+ background: rgba(255, 255, 255, 1);
+}
+.servicebox:hover::before {    height: 100%; }
+.servicebox:hover {  color:#fff; }
+_______________________________________________________________________________________________________________________
+
+For image in background
+
+<div class="parallex-bgs" style="background-image: url(https://yourmockdesign.com/poprockacademy/wp-content/uploads/2021/01/PopRock-Academy.jpg);"><div class="parallex-overlay"><div class="wrapper">
+<div class="center">
+<h3 class="section-title"></h3>
+<div class="wrap">
+<h4></h4>
+<p class="large"></p>
+</div></div>
+</div></div></div>
+
+
+css
+.parallex-bgs {
+    position: relative; display: block; clear: both; padding:0px;  background-color: #06202B;
+    background-size: cover; background-position: 50% 50%; background-repeat: no-repeat; background-attachment: fixed;  color: #ffffff !important;
+}
+.parallex-overlay{ background: rgba(0, 0, 0, 0.7); color:#fff; margin: 0; padding: 100px 0px;  }
+table.style1 {
+    color: #1c1c1c; margin: 0 0 30px; max-width: 100%; border:1px solid #e9e9e9;border-bottom:none;border-spacing: 0;
+}
+_______________________________________________________________________________________________________________________

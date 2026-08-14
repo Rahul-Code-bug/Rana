@@ -1,0 +1,30 @@
+{% extends "cars/base.html" %}
+{% block title %}Contact — CarHub{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <div class="row g-5">
+        <div class="col-lg-5">
+            <h1 class="fw-bold mb-3">Get In Touch</h1>
+            <p class="text-secondary mb-4">Questions about a vehicle, financing, or trade-ins? Send us a message and we'll respond within one business day.</p>
+            <ul class="list-unstyled contact-info">
+                <li class="mb-3"><i class="fa-solid fa-location-dot text-primary me-2"></i>123 Motor Avenue, Patna, Bihar, India</li>
+                <li class="mb-3"><i class="fa-solid fa-phone text-primary me-2"></i>+91 98765 43210</li>
+                <li class="mb-3"><i class="fa-solid fa-envelope text-primary me-2"></i>hello@carhub.example</li>
+                <li class="mb-3"><i class="fa-solid fa-clock text-primary me-2"></i>Mon–Sat, 9:00 AM – 7:00 PM</li>
+            </ul>
+        </div>
+        <div class="col-lg-7">
+            <div class="card p-4 inquiry-card">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">{{ form.name }}</div>
+                    <div class="mb-3">{{ form.email }}</div>
+                    <div class="mb-3">{{ form.phone }}</div>
+                    <div class="mb-3">{{ form.message }}</div>
+                    <button type="submit" class="btn btn-primary px-5">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Lead | CRM</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .page {
+            padding: 45px 0;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 25px;
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+        }
+
+        .header {
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 7px;
+        }
+
+        .header p {
+            color: #64748b;
+        }
+
+        .form-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, .05);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+            transition: .2s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, .10);
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            padding: 12px 22px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .primary {
+            background: #6366f1;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #4f46e5;
+        }
+
+        .secondary {
+            background: #eef2ff;
+            color: #4f46e5;
+        }
+
+        .error {
+            color: #dc2626;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 650px) {
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .form-card {
+                padding: 22px;
+            }
+
+            .header h1 {
+                font-size: 27px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <main class="container">
+
+        <div class="page">
+
+            <a href="{% url 'lead_list' %}" class="back">
+                ← Back to Leads
+            </a>
+
+            <div class="header">
+
+                <h1>Add New Lead</h1>
+
+                <p>
+                    Add a potential customer to your CRM.
+                </p>
+
+            </div>
+
+
+            <div class="form-card">
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="name">
+                                Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Lead name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Email address"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Phone
+                            </label>
+
+                            <input
+                                type="text"
+                                id="phone"
+                                name="phone"
+                                placeholder="Phone number"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="company">
+                                Company
+                            </label>
+
+                            <input
+                                type="text"
+                                id="company"
+                                name="company"
+                                placeholder="Company name"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="source">
+                                Source
+                            </label>
+
+                            <input
+                                type="text"
+                                id="source"
+                                name="source"
+                                placeholder="e.g. Website, Facebook, Referral"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="status">
+                                Status
+                            </label>
+
+                            <select id="status" name="status">
+
+                                <option value="New">
+                                    New
+                                </option>
+
+                                <option value="Contacted">
+                                    Contacted
+                                </option>
+
+                                <option value="Qualified">
+                                    Qualified
+                                </option>
+
+                                <option value="Converted">
+                                    Converted
+                                </option>
+
+                                <option value="Lost">
+                                    Lost
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label for="notes">
+                                Notes
+                            </label>
+
+                            <textarea
+                                id="notes"
+                                name="notes"
+                                placeholder="Add lead notes..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="actions">
+
+                        <button
+                            type="submit"
+                            class="btn primary"
+                        >
+                            Save Lead
+                        </button>
+
+                        <a
+                            href="{% url 'lead_list' %}"
+                            class="btn secondary"
+                        >
+                            Cancel
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+:root {
+    --bg: #0f1115;
+    --bg-alt: #161923;
+    --card: #1a1e29;
+    --primary: #ff6a3d;
+    --primary-dark: #e0552b;
+    --text: #eef0f4;
+    --text-secondary: #9aa1b1;
+    --border: #262b3a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { color: var(--primary-dark); }
+
+.text-secondary { color: var(--text-secondary) !important; }
+.text-primary { color: var(--primary) !important; }
+
+/* Navbar */
+.navbar {
+    background-color: rgba(15, 17, 21, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+}
+.navbar-brand { font-size: 1.4rem; letter-spacing: 0.5px; }
+.nav-link { color: var(--text-secondary) !important; font-weight: 500; }
+.nav-link:hover { color: var(--text) !important; }
+
+/* Hero */
+.hero {
+    background: radial-gradient(circle at top right, rgba(255,106,61,0.15), transparent 60%), var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+.hero-icon { font-size: 18rem; color: var(--primary); opacity: 0.15; }
+.search-bar {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+.search-bar input {
+    background: transparent;
+    border: none;
+    color: var(--text);
+}
+.search-bar input:focus { box-shadow: none; background: transparent; color: var(--text); }
+
+/* Badges / pills */
+.badge-link {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    transition: all 0.15s ease;
+}
+.badge-link:hover { border-color: var(--primary); color: var(--primary); }
+
+/* Cards */
+.car-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.car-card:hover { transform: translateY(-4px); border-color: var(--primary); }
+.car-card-img { position: relative; height: 180px; background: #10131b; }
+.car-card-img img { width: 100%; height: 100%; object-fit: cover; }
+.car-card-placeholder, .detail-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem; color: var(--border);
+    background: #10131b;
+}
+.detail-placeholder { min-height: 320px; border-radius: 14px; }
+.car-badge { position: absolute; top: 10px; left: 10px; }
+.card-title { color: var(--text); }
+.card { background: var(--card); border-color: var(--border); }
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+.btn-primary:hover { background-color: var(--primary-dark); border-color: var(--primary-dark); }
+.btn-outline-primary { color: var(--primary); border-color: var(--primary); }
+.btn-outline-primary:hover { background-color: var(--primary); border-color: var(--primary); }
+
+/* Filter bar */
+.filter-bar {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+.form-control, .form-select {
+    background-color: var(--bg-alt);
+    border-color: var(--border);
+    color: var(--text);
+}
+.form-control:focus, .form-select:focus {
+    background-color: var(--bg-alt);
+    color: var(--text);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.2rem rgba(255,106,61,0.2);
+}
+.form-control::placeholder { color: var(--text-secondary); }
+
+.page-link { background-color: var(--card); border-color: var(--border); color: var(--text-secondary); }
+.page-item.active .page-link { background-color: var(--primary); border-color: var(--primary); }
+
+/* Detail page */
+.spec-grid > div { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; text-align: center; }
+.inquiry-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; }
+
+/* About page */
+.feature-box { background: var(--card); border: 1px solid var(--border); border-radius: 14px; }
+
+/* CTA */
+.cta { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+/* Footer */
+.footer { background: var(--bg-alt); border-top: 1px solid var(--border); }
+.footer a { color: var(--text-secondary); }
+.footer a:hover { color: var(--primary); }
+.footer li { margin-bottom: 0.5rem; }
+
+.alert-success { background-color: rgba(40,167,69,0.15); color: #6ee7b7; border-color: rgba(40,167,69,0.3); }
+.alert-info { background-color: rgba(13,110,253,0.15); color: #93c5fd; border-color: rgba(13,110,253,0.3); }
+
+/* .hero-car-img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    object-fit: contain;
+} */

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Leads | CRM</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .page {
+            padding: 40px 0;
+        }
+
+        /* BACK BUTTON */
+
+        .back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 25px;
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .back:hover {
+            color: #4f46e5;
+        }
+
+        /* HEADER */
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 6px;
+        }
+
+        .header p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        /* ADD BUTTON */
+
+        .add-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 12px 18px;
+            background: #6366f1;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .add-btn:hover {
+            background: #4f46e5;
+            transform: translateY(-1px);
+        }
+
+        /* LEAD CARD */
+
+        .lead-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.04);
+        }
+
+        /* ROW */
+
+        .lead-row {
+            display: grid;
+
+            grid-template-columns:
+                1.2fr
+                1.4fr
+                1fr
+                120px
+                100px;
+
+            align-items: center;
+
+            gap: 18px;
+
+            padding: 18px 22px;
+
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .lead-row:last-child {
+            border-bottom: none;
+        }
+
+        /* HEADER ROW */
+
+        .lead-header {
+            background: #f1f5f9;
+            color: #475569;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        /* NAME */
+
+        .lead-name {
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        /* EMAIL */
+
+        .lead-email {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* COMPANY */
+
+        .company {
+            color: #475569;
+            font-size: 14px;
+        }
+
+        /* STATUS */
+
+        .status {
+            display: inline-block;
+            width: fit-content;
+            padding: 6px 11px;
+            border-radius: 20px;
+
+            background: #eef2ff;
+            color: #4f46e5;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* VIEW BUTTON */
+
+        .view-btn {
+            display: inline-block;
+            padding: 8px 13px;
+
+            border-radius: 7px;
+
+            background: #eef2ff;
+            color: #4f46e5;
+
+            text-decoration: none;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            transition: 0.2s;
+        }
+
+        .view-btn:hover {
+            background: #e0e7ff;
+        }
+
+        /* EMPTY */
+
+        .empty {
+            padding: 60px 20px;
+            text-align: center;
+            color: #64748b;
+        }
+
+        .empty h3 {
+            color: #0f172a;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .empty p {
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 850px) {
+
+            .lead-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .lead-header {
+                display: none;
+            }
+
+            .lead-row > div:nth-child(1),
+            .lead-row > div:nth-child(2) {
+                padding-bottom: 3px;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .container {
+                width: 94%;
+            }
+
+            .page {
+                padding: 25px 0;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .add-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .lead-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 18px;
+            }
+
+            .lead-row > div {
+                width: 100%;
+            }
+
+        }
+
+        /* ================= LAYOUT ================= */
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+    background: #0f172a;
+    padding: 28px 17px;
+    flex-shrink: 0;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: 800;
+    margin-left: 10px;
+    margin-bottom: 45px;
+}
+
+.logo span {
+    color: #6366f1;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 13px 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: .2s;
+}
+
+.sidebar nav a:hover {
+    background: #1e293b;
+    color: white;
+}
+
+.sidebar nav a.active {
+    background: #6366f1;
+    color: white;
+}
+
+
+/* ================= MAIN ================= */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+
+/* ================= TOPBAR ================= */
+
+.topbar {
+    height: 75px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 32px;
+}
+
+.topbar strong {
+    margin-right: 15px;
+}
+
+.topbar a {
+    color: #dc2626;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+
+/* ================= PAGE ================= */
+
+.page {
+    width: 92%;
+    max-width: 1150px;
+    margin: auto;
+    padding: 10px 0 40px;
+}
+
+
+/* ================= HEADER ================= */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+
+/* ================= ADD BUTTON ================= */
+
+.add-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+
+    padding: 12px 20px;
+
+    background: #6366f1;
+    color: white;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+
+    transition: .2s;
+}
+
+.add-btn:hover {
+    background: #4f46e5;
+    transform: translateY(-1px);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        width: 190px;
+    }
+
+    .page {
+        width: 94%;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .layout {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .logo {
+        margin-bottom: 20px;
+    }
+
+    .sidebar nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .sidebar nav a {
+        font-size: 13px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .add-btn {
+        width: 100%;
+    }
+
+}
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            CRM<span>.</span>
+        </div>
+
+        <nav>
+
+            <a href="{% url 'dashboard' %}">
+                📊 Dashboard
+            </a>
+
+            <a href="{% url 'customer_list' %}">
+                👥 Customers
+            </a>
+
+            <a href="{% url 'lead_list' %}" class="active">
+                🎯 Leads
+            </a>
+
+            <a href="{% url 'task_list' %}">
+                ✅ Tasks
+            </a>
+
+            <a href="{% url 'reports' %}">
+                📈 Reports
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+
+        <div class="topbar">
+
+            <div>
+                <strong>{{ request.user.username }}</strong>
+
+                <a href="{% url 'logout' %}">
+                    Logout
+                </a>
+            </div>
+
+        </div>
+
+
+        <div class="page">
+
+
+            <!-- BACK -->
+
+            <a
+                href="{% url 'dashboard' %}"
+                class="back"
+            >
+                ← Back to Dashboard
+            </a>
+
+
+            <!-- HEADER -->
+
+            <div class="header">
+
+                <div>
+
+                    <h1>
+                        Leads
+                    </h1>
+
+                    <p>
+                        Manage your potential customers and sales opportunities.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="{% url 'lead_create' %}"
+                    class="add-btn"
+                >
+                    + Add Lead
+                </a>
+
+            </div>
+
+
+            <!-- LEADS -->
+
+            <div class="lead-card">
+
+                <div class="lead-row lead-header">
+
+                    <div>Name</div>
+
+                    <div>Email</div>
+
+                    <div>Company</div>
+
+                    <div>Status</div>
+
+                    <div>Action</div>
+
+                </div>
+
+
+                {% if leads %}
+
+                    {% for lead in leads %}
+
+                        <div class="lead-row">
+
+                            <div class="lead-name">
+                                {{ lead.name }}
+                            </div>
+
+                            <div class="lead-email">
+                                {{ lead.email }}
+                            </div>
+
+                            <div class="company">
+                                {{ lead.company|default:"No company" }}
+                            </div>
+
+                            <div>
+
+                                <span class="status">
+                                    {{ lead.status }}
+                                </span>
+
+                            </div>
+
+                            <div>
+
+                                <a
+                                    href="{% url 'lead_detail' lead.id %}"
+                                    class="view-btn"
+                                >
+                                    View
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <div class="empty">
+
+                        <h3>
+                            No Leads Found
+                        </h3>
+
+                        <p>
+                            Start by adding your first lead.
+                        </p>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

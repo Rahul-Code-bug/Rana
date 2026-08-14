@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}CRM{% endblock %}
+    </title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+        }
+
+        /* ================= LAYOUT ================= */
+
+        .app {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            width: 240px;
+            background: #0f172a;
+            min-height: 100vh;
+            padding: 22px 16px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: 800;
+            margin-left: 10px;
+            margin-bottom: 40px;
+        }
+
+        .logo span {
+            color: #6366f1;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .menu a {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 13px 14px;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: .2s;
+        }
+
+        .menu a:hover {
+            background: #1e293b;
+            color: white;
+        }
+
+        .menu a.active {
+            background: #6366f1;
+            color: white;
+        }
+
+        /* ================= MAIN ================= */
+
+        .main {
+            margin-left: 240px;
+            width: calc(100% - 240px);
+            min-height: 100vh;
+            padding: 30px 35px;
+        }
+
+        /* ================= TOPBAR ================= */
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .topbar h1 {
+            font-size: 32px;
+        }
+
+        .topbar p {
+            color: #64748b;
+            margin-top: 6px;
+        }
+
+        .user-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .username {
+            font-weight: 700;
+        }
+
+        .logout {
+            color: #dc2626;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .logout:hover {
+            color: #b91c1c;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 700px) {
+
+            .sidebar {
+                width: 190px;
+            }
+
+            .main {
+                margin-left: 190px;
+                width: calc(100% - 190px);
+                padding: 20px;
+            }
+
+            .topbar {
+                align-items: flex-start;
+            }
+
+            .topbar h1 {
+                font-size: 26px;
+            }
+
+        }
+
+    </style>
+
+    {% block extra_css %}
+    {% endblock %}
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            CRM<span>.</span>
+        </div>
+
+
+        <nav class="menu">
+
+            <a href="{% url 'dashboard' %}">
+                📊 Dashboard
+            </a>
+
+            <a href="{% url 'customer_list' %}">
+                👥 Customers
+            </a>
+
+            <a href="{% url 'lead_list' %}">
+                🎯 Leads
+            </a>
+
+            <a href="{% url 'task_list' %}">
+                ✅ Tasks
+            </a>
+
+            <a href="{% url 'reports' %}">
+                📈 Reports
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main">
+
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <div>
+                {% block header %}
+                {% endblock %}
+            </div>
+
+
+            <div class="user-area">
+
+                {% if user.is_authenticated %}
+
+                    <span class="username">
+                        {{ user.username }}
+                    </span>
+
+                    <a
+                        href="{% url 'logout' %}"
+                        class="logout"
+                    >
+                        Logout
+                    </a>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+
+        <!-- PAGE CONTENT -->
+
+        {% block content %}
+        {% endblock %}
+
+
+    </main>
+
+</div>
+
+
+{% block extra_js %}
+{% endblock %}
+
+
+</body>
+
+</html>

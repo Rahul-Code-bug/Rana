@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Add Task | CRM</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+        }
+
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin: auto;
+        }
+
+
+        .page {
+            padding: 40px 0;
+        }
+
+
+        .back {
+            display: inline-block;
+            margin-bottom: 25px;
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+
+        .back:hover {
+            color: #4f46e5;
+            text-decoration: underline;
+        }
+
+
+        .form-card {
+            background: white;
+            padding: 30px;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 10px 30px rgba(15, 23, 42, .05);
+        }
+
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+
+        .subtitle {
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+
+        input,
+        textarea,
+        select {
+
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border: 1px solid #cbd5e1;
+
+            border-radius: 8px;
+
+            font-family: inherit;
+
+            font-size: 15px;
+
+            outline: none;
+
+            background: white;
+        }
+
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+
+            border-color: #6366f1;
+
+            box-shadow:
+                0 0 0 3px rgba(99, 102, 241, .1);
+        }
+
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+
+        .btn {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #6366f1;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .btn:hover {
+            background: #4f46e5;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="container">
+
+        <div class="page">
+
+
+            <!-- BACK -->
+
+            <a
+                href="{% url 'task_list' %}"
+                class="back"
+            >
+                ← Back to Tasks
+            </a>
+
+
+            <!-- FORM CARD -->
+
+            <div class="form-card">
+
+
+                <h1>
+                    Add New Task
+                </h1>
+
+
+                <p class="subtitle">
+                    Create a new task for your CRM.
+                </p>
+
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+
+                    <!-- LEAD -->
+
+                    <div class="form-group">
+
+                        <label for="lead">
+                            Related Lead
+                        </label>
+
+
+                        <select
+                            id="lead"
+                            name="lead"
+                        >
+
+                            <option value="">
+                                -- Select Lead --
+                            </option>
+
+
+                            {% for lead in leads %}
+
+                                <option value="{{ lead.id }}">
+
+                                    {{ lead.name }}
+
+                                    {% if lead.company %}
+                                        - {{ lead.company }}
+                                    {% endif %}
+
+                                </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- TITLE -->
+
+                    <div class="form-group">
+
+                        <label for="title">
+                            Task Title
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="title"
+                            name="title"
+                            placeholder="Enter task title"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="form-group">
+
+                        <label for="description">
+                            Description
+                        </label>
+
+
+                        <textarea
+                            id="description"
+                            name="description"
+                            placeholder="Enter task description"
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- DUE DATE -->
+
+                    <div class="form-group">
+
+                        <label for="due_date">
+                            Due Date
+                        </label>
+
+
+                        <input
+                            type="date"
+                            id="due_date"
+                            name="due_date"
+                        >
+
+                    </div>
+
+
+                    <!-- PRIORITY -->
+
+                    <div class="form-group">
+
+                        <label for="priority">
+                            Priority
+                        </label>
+
+
+                        <select
+                            id="priority"
+                            name="priority"
+                        >
+
+                            <option value="Low">
+                                Low
+                            </option>
+
+
+                            <option
+                                value="Medium"
+                                selected
+                            >
+                                Medium
+                            </option>
+
+
+                            <option value="High">
+                                High
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div class="form-group">
+
+                        <label for="status">
+                            Status
+                        </label>
+
+
+                        <select
+                            id="status"
+                            name="status"
+                        >
+
+                            <option
+                                value="Pending"
+                                selected
+                            >
+                                Pending
+                            </option>
+
+
+                            <option value="In Progress">
+                                In Progress
+                            </option>
+
+
+                            <option value="Completed">
+                                Completed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- SAVE -->
+
+                    <button
+                        type="submit"
+                        class="btn"
+                    >
+                        Save Task
+                    </button>
+
+
+                </form>
+
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>

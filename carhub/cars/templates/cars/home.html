@@ -1,0 +1,76 @@
+{% extends "cars/base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="hero">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 py-5">
+                <h1 class="display-4 fw-bold mb-3">Find the car that fits your life.</h1>
+                <p class="lead text-secondary mb-4">Browse {{ total_cars }}+ quality vehicles, compare specs, and book a test drive — all in one place.</p>
+                <form action="{% url 'cars:car_list' %}" method="get" class="d-flex gap-2 flex-wrap search-bar p-2">
+                    <input type="text" name="q" class="form-control" placeholder="Search by brand or model...">
+                    <button class="btn btn-primary px-4" type="submit"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+                </form>
+                <div class="d-flex gap-4 mt-4 text-secondary small">
+                    <div><i class="fa-solid fa-check text-primary me-1"></i>Verified listings</div>
+                    <div><i class="fa-solid fa-check text-primary me-1"></i>No hidden fees</div>
+                    <div><i class="fa-solid fa-check text-primary me-1"></i>Financing available</div>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center d-none d-lg-block">
+                <i class="fa-solid fa-car-side hero-icon"></i>
+                <!-- <img src="{% static 'img/car.jpg' %}" alt="Car" class="hero-car-img"> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if categories %}
+<section class="container py-4">
+    <div class="d-flex flex-wrap gap-2 justify-content-center">
+        {% for c in categories %}
+        <a href="{% url 'cars:car_list' %}?category={{ c.id }}" class="badge-link">{{ c.name }}</a>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+{% if featured_cars %}
+<section class="container py-4">
+    <div class="d-flex justify-content-between align-items-end mb-4">
+        <h2 class="fw-bold mb-0">Featured Cars</h2>
+        <a href="{% url 'cars:car_list' %}" class="link-primary">View all <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="row g-4">
+        {% for car in featured_cars %}
+        <div class="col-md-4">
+            {% include "cars/_car_card.html" %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<section class="container py-5">
+    <h2 class="fw-bold mb-4">Latest Arrivals</h2>
+    <div class="row g-4">
+        {% for car in latest_cars %}
+        <div class="col-md-3 col-sm-6">
+            {% include "cars/_car_card.html" %}
+        </div>
+        {% empty %}
+        <p class="text-secondary">No cars listed yet. Add some from the admin panel!</p>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="cta py-5 text-center">
+    <div class="container">
+        <h2 class="fw-bold mb-3">Have a question about a vehicle?</h2>
+        <p class="text-secondary mb-4">Our team responds within one business day.</p>
+        <a href="{% url 'cars:contact' %}" class="btn btn-primary btn-lg px-5">Contact Us</a>
+    </div>
+</section>
+
+{% endblock %}

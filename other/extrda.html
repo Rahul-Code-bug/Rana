@@ -1,0 +1,547 @@
+<!-- NEAT NAPLES — HOMEPAGE — ELEMENTOR HTML WIDGET -->
+<!-- No nav/footer — use Elementor theme header/footer or separate widgets -->
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   NEAT NAPLES — SHARED CSS FOR ALL PAGES
+   Elementor Full-Width, scoped under .nn-page
+   ============================================ */
+.nn-page {
+    width: 100vw; position: relative; left: 50%; right: 50%;
+    margin-left: -50vw; margin-right: -50vw; overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif; color: #2c2c2c;
+    line-height: 1.7; font-size: 16px; font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+.nn-page, .nn-page *, .nn-page *::before, .nn-page *::after { box-sizing: border-box; }
+.nn-page img { max-width: 100%; display: block; }
+.nn-page a { color: inherit; text-decoration: none; }
+.nn-page ul { list-style: none; margin: 0; padding: 0; }
+.nn-page li { margin: 0; padding: 0; }
+.nn-page h1,.nn-page h2,.nn-page h3,.nn-page h4,.nn-page h5,.nn-page p { margin:0; padding:0; }
+.nn-page {
+    --nn-charcoal:#1a1a1a; --nn-deep:#0d1b2a; --nn-navy:#1b2d4f;
+    --nn-gold:#c9a84c; --nn-gold-light:#dfc06f; --nn-gold-muted:rgba(201,168,76,0.12);
+    --nn-cream:#faf8f4; --nn-warm-white:#fefdfb; --nn-stone:#f0ece4;
+    --nn-text:#2c2c2c; --nn-text-muted:#6b6b6b; --nn-border:#e4ddd1; --nn-sage:#8a9a7b;
+    --font-display:'Cormorant Garamond',Georgia,serif; --font-body:'Montserrat',sans-serif;
+    --section-pad:clamp(60px,8vw,100px); --content-max:1200px;
+}
+.nn-page .nn-container { max-width:var(--content-max); margin:0 auto; padding:0 clamp(20px,4vw,40px); width:100%; }
+.nn-page .nn-section { padding:var(--section-pad) 0; width:100%; }
+.nn-page .nn-section--cream { background:var(--nn-cream); }
+.nn-page .nn-section--dark { background:linear-gradient(165deg,var(--nn-deep) 0%,var(--nn-navy) 100%); color:#fff; }
+.nn-page .nn-eyebrow { font-family:var(--font-body); font-size:0.7rem; font-weight:600; letter-spacing:0.25em; text-transform:uppercase; color:var(--nn-gold); margin-bottom:12px; }
+.nn-page .nn-section--dark .nn-eyebrow { color:var(--nn-gold-light); }
+.nn-page h1,.nn-page h2,.nn-page h3,.nn-page h4 { font-family:var(--font-display); font-weight:600; line-height:1.2; }
+.nn-page h1 { font-size:clamp(2.4rem,5vw,3.8rem); color:var(--nn-charcoal); }
+.nn-page h2 { font-size:clamp(1.8rem,3.5vw,2.8rem); color:var(--nn-charcoal); }
+.nn-page h3 { font-size:clamp(1.3rem,2vw,1.6rem); }
+.nn-page .nn-section--dark h1,.nn-page .nn-section--dark h2,.nn-page .nn-section--dark h3 { color:#fff; }
+.nn-page .nn-h2-accent { position:relative; display:inline-block; }
+.nn-page .nn-h2-accent::after { content:''; position:absolute; left:0; bottom:-8px; width:50px; height:2px; background:var(--nn-gold); }
+.nn-page .nn-text-center .nn-h2-accent::after { left:50%; transform:translateX(-50%); }
+.nn-page .nn-lead { font-size:clamp(1rem,1.5vw,1.15rem); color:var(--nn-text-muted); line-height:1.8; max-width:680px; }
+.nn-page .nn-text-center { text-align:center; }
+.nn-page .nn-text-center .nn-lead { margin-left:auto; margin-right:auto; }
+.nn-page .nn-btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-body); font-size:0.8rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; padding:15px 36px; border:none; border-radius:0; cursor:pointer; transition:all 0.35s ease; line-height:1; }
+.nn-page .nn-btn--gold { background:var(--nn-gold); color:#fff; }
+.nn-page .nn-btn--gold:hover { background:var(--nn-gold-light); color:#fff; }
+.nn-page .nn-btn--outline { background:transparent; color:var(--nn-charcoal); border:1.5px solid var(--nn-charcoal); }
+.nn-page .nn-btn--outline:hover { background:var(--nn-charcoal); color:#fff; }
+.nn-page .nn-btn--outline-light { background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,0.5); }
+.nn-page .nn-btn--outline-light:hover { border-color:var(--nn-gold-light); color:var(--nn-gold-light); }
+.nn-page .nn-btn-group { display:flex; flex-wrap:wrap; gap:16px; }
+
+/* HERO */
+.nn-page .nn-hero { position:relative; min-height:92vh; display:flex; align-items:center; background:linear-gradient(165deg,var(--nn-deep) 0%,var(--nn-navy) 60%,#243b5f 100%); overflow:hidden; width:100%; }
+.nn-page .nn-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 20% 50%,rgba(201,168,76,0.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 30%,rgba(255,255,255,0.03) 0%,transparent 50%); pointer-events:none; }
+.nn-page .nn-hero::after { display:none; }
+.nn-page .nn-hero__content { position:relative; z-index:2; max-width:var(--content-max); margin:0 auto; padding:60px clamp(20px,4vw,40px) 100px; width:100%; }
+.nn-page .nn-hero h1 { color:#fff; max-width:700px; margin-bottom:24px; }
+.nn-page .nn-hero h1 em { font-style:italic; color:var(--nn-gold-light); }
+.nn-page .nn-hero .nn-lead { color:rgba(255,255,255,0.75); margin-bottom:40px; max-width:560px; }
+.nn-page .nn-hero__trust { display:flex; flex-wrap:wrap; gap:24px; margin-top:48px; padding-top:32px; border-top:1px solid rgba(255,255,255,0.1); }
+.nn-page .nn-hero__trust-item { font-size:0.7rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.55); display:flex; align-items:center; gap:8px; }
+.nn-page .nn-hero__trust-item::before { content:''; width:6px; height:6px; background:var(--nn-gold); border-radius:50%; flex-shrink:0; }
+.nn-page .nn-hero__line { position:absolute; right:8%; top:20%; width:1px; height:300px; background:linear-gradient(to bottom,transparent,var(--nn-gold),transparent); opacity:0.25; pointer-events:none; }
+.nn-page .nn-hero__line--2 { right:12%; top:35%; height:180px; }
+
+/* INNER PAGE HERO (shorter) */
+.nn-page .nn-hero--inner { min-height:50vh; }
+
+/* INTRO GRID */
+.nn-page .nn-intro__grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; margin-top:48px; }
+.nn-page .nn-intro__text p { margin-bottom:20px; font-size:0.95rem; line-height:1.85; color:var(--nn-text-muted); }
+@media(max-width:768px){ .nn-page .nn-intro__grid { grid-template-columns:1fr; gap:40px; } }
+
+/* TRUST CARDS */
+.nn-page .nn-trust-cards { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.nn-page .nn-trust-card { padding:28px 24px; background:#fff; border:1px solid var(--nn-border); transition:all 0.35s ease; }
+.nn-page .nn-section--cream .nn-trust-card { background:#fff; }
+.nn-page .nn-trust-card:hover { border-color:var(--nn-gold); box-shadow:0 8px 30px rgba(201,168,76,0.08); }
+.nn-page .nn-trust-card__icon { width:36px; height:36px; display:flex; align-items:center; justify-content:center; background:var(--nn-gold-muted); margin-bottom:16px; }
+.nn-page .nn-trust-card__icon svg { width:18px; height:18px; stroke:var(--nn-gold); fill:none; stroke-width:1.5; }
+.nn-page .nn-trust-card h4 { font-family:var(--font-body); font-size:0.85rem; font-weight:600; margin-bottom:8px; color:var(--nn-charcoal); line-height:1.3; }
+.nn-page .nn-trust-card p { font-size:0.8rem; line-height:1.65; color:var(--nn-text-muted); }
+@media(max-width:500px){ .nn-page .nn-trust-cards { grid-template-columns:1fr; } }
+
+/* SERVICE CARDS */
+.nn-page .nn-services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; margin-top:48px; }
+.nn-page .nn-service-card { padding:36px 30px; background:#fff; border:1px solid var(--nn-border); transition:all 0.4s ease; display:flex; flex-direction:column; position:relative; overflow:hidden; }
+.nn-page .nn-service-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:3px; background:var(--nn-gold); transform:scaleX(0); transform-origin:left; transition:transform 0.4s ease; }
+.nn-page .nn-service-card:hover::before { transform:scaleX(1); }
+.nn-page .nn-service-card:hover { border-color:var(--nn-gold); box-shadow:0 12px 40px rgba(0,0,0,0.06); transform:translateY(-4px); }
+.nn-page .nn-service-card__num { font-family:var(--font-display); font-size:2.5rem; font-weight:300; color:var(--nn-gold); opacity:0.4; line-height:1; margin-bottom:16px; }
+.nn-page .nn-service-card h3 { font-family:var(--font-display); font-size:1.4rem; font-weight:600; color:var(--nn-charcoal); margin-bottom:12px; }
+.nn-page .nn-service-card p { font-size:0.85rem; line-height:1.75; color:var(--nn-text-muted); flex:1; margin-bottom:20px; }
+.nn-page .nn-service-card__link { font-size:0.72rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--nn-gold); display:inline-flex; align-items:center; gap:8px; transition:gap 0.3s ease; }
+.nn-page .nn-service-card__link:hover { gap:14px; }
+.nn-page .nn-service-card__link svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; }
+
+/* WHY SECTION */
+.nn-page .nn-why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-top:48px; }
+.nn-page .nn-why-item { text-align:center; padding:40px 24px; }
+.nn-page .nn-why-item__icon { width:56px; height:56px; margin:0 auto 24px; display:flex; align-items:center; justify-content:center; border:1.5px solid var(--nn-gold); border-radius:50%; }
+.nn-page .nn-why-item__icon svg { width:24px; height:24px; stroke:var(--nn-gold); fill:none; stroke-width:1.5; }
+.nn-page .nn-why-item h3 { font-family:var(--font-body); font-size:0.9rem; font-weight:600; color:var(--nn-charcoal); margin-bottom:12px; }
+.nn-page .nn-why-item p { font-size:0.85rem; line-height:1.75; color:var(--nn-text-muted); }
+@media(max-width:768px){ .nn-page .nn-why-grid { grid-template-columns:1fr; gap:12px; } .nn-page .nn-why-item { padding:24px 16px; } }
+
+/* AREA CARDS */
+.nn-page .nn-areas-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; margin-top:48px; }
+.nn-page .nn-area-card { padding:24px 20px; border:1px solid var(--nn-border); background:#fff; transition:all 0.3s ease; }
+.nn-page .nn-area-card:hover { border-color:var(--nn-gold); box-shadow:0 4px 20px rgba(201,168,76,0.08); }
+.nn-page .nn-area-card h4 { font-family:var(--font-display); font-size:1.15rem; font-weight:600; color:var(--nn-charcoal); margin-bottom:8px; }
+.nn-page .nn-area-card p { font-size:0.75rem; line-height:1.7; color:var(--nn-text-muted); }
+
+/* STEPS */
+.nn-page .nn-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; margin-top:48px; }
+.nn-page .nn-step { text-align:center; }
+.nn-page .nn-step__num { font-family:var(--font-display); font-size:3rem; font-weight:300; color:var(--nn-gold); opacity:0.35; line-height:1; margin-bottom:16px; }
+.nn-page .nn-step h3 { font-family:var(--font-body); font-size:0.85rem; font-weight:600; color:#fff; margin-bottom:10px; }
+.nn-page .nn-step p { font-size:0.8rem; line-height:1.7; color:rgba(255,255,255,0.6); }
+@media(max-width:768px){ .nn-page .nn-steps { grid-template-columns:1fr 1fr; gap:40px 24px; } }
+@media(max-width:500px){ .nn-page .nn-steps { grid-template-columns:1fr; gap:36px; } }
+
+/* CALCULATOR */
+.nn-page .nn-calc-container { max-width:860px; margin:48px auto 0; background:#fff; border:1px solid var(--nn-border); overflow:hidden; }
+.nn-page .nn-calc-header { background:linear-gradient(165deg,var(--nn-deep) 0%,var(--nn-navy) 100%); color:#fff; padding:36px 32px; text-align:center; }
+.nn-page .nn-calc-header h3 { font-family:var(--font-display); font-size:1.8rem; font-weight:600; margin-bottom:6px; color:#fff; }
+.nn-page .nn-calc-header p { font-size:0.85rem; color:rgba(255,255,255,0.65); }
+.nn-page .nn-calc-body { padding:36px 32px; }
+.nn-page .nn-calc-form-group { margin-bottom:24px; }
+.nn-page .nn-calc-label { display:block; font-size:0.72rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--nn-charcoal); margin-bottom:8px; }
+.nn-page .nn-calc-select { width:100%; padding:14px 16px; font-family:var(--font-body); font-size:0.9rem; color:var(--nn-text); background:var(--nn-cream); border:1px solid var(--nn-border); border-radius:0; cursor:pointer; -webkit-appearance:none; -moz-appearance:none; appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23c9a84c' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:44px; transition:border-color 0.3s; }
+.nn-page .nn-calc-select:focus { outline:none; border-color:var(--nn-gold); }
+.nn-page .nn-calc-addons-title { font-size:0.72rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--nn-charcoal); margin-bottom:12px; }
+.nn-page .nn-calc-addons-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; max-height:240px; overflow-y:auto; padding-right:6px; margin-bottom:24px; }
+.nn-page .nn-calc-addons-grid::-webkit-scrollbar { width:4px; }
+.nn-page .nn-calc-addons-grid::-webkit-scrollbar-thumb { background:var(--nn-gold); border-radius:4px; }
+.nn-page .nn-calc-addon { position:relative; }
+.nn-page .nn-calc-addon input[type="checkbox"] { position:absolute; opacity:0; pointer-events:none; width:0; height:0; }
+.nn-page .nn-calc-addon label { display:flex; justify-content:space-between; align-items:center; padding:12px 14px; border:1px solid var(--nn-border); background:var(--nn-cream); cursor:pointer; transition:all 0.3s; font-size:0.82rem; margin:0; }
+.nn-page .nn-calc-addon input[type="checkbox"]:checked + label { border-color:var(--nn-gold); background:var(--nn-gold-muted); }
+.nn-page .nn-calc-addon label:hover { border-color:var(--nn-gold); }
+.nn-page .nn-calc-addon__name { font-weight:500; color:var(--nn-charcoal); }
+.nn-page .nn-calc-addon__price { font-weight:600; color:var(--nn-gold); }
+.nn-page .nn-calc-summary { background:var(--nn-cream); padding:28px; border:1px solid var(--nn-border); margin-top:12px; }
+.nn-page .nn-calc-summary h4 { font-family:var(--font-display); font-size:1.2rem; text-align:center; margin-bottom:20px; color:var(--nn-charcoal); }
+.nn-page .nn-calc-summary-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--nn-border); font-size:0.85rem; }
+.nn-page .nn-calc-summary-row:last-of-type { border-bottom:none; }
+.nn-page .nn-calc-summary-row span:first-child { color:var(--nn-text-muted); }
+.nn-page .nn-calc-summary-row span:last-child { font-weight:600; color:var(--nn-charcoal); }
+.nn-page .nn-calc-discount { background:var(--nn-sage); color:#fff; padding:10px 16px; text-align:center; font-size:0.8rem; font-weight:600; margin:16px 0; }
+.nn-page .nn-calc-total { display:flex; justify-content:space-between; align-items:center; padding-top:16px; margin-top:8px; border-top:2px solid var(--nn-gold); }
+.nn-page .nn-calc-total-label { font-size:1rem; font-weight:600; color:var(--nn-charcoal); }
+.nn-page .nn-calc-total-value { font-family:var(--font-display); font-size:2.4rem; font-weight:700; color:var(--nn-gold); }
+.nn-page .nn-calc-note { text-align:center; font-size:0.75rem; color:var(--nn-text-muted); margin-top:12px; font-style:italic; }
+.nn-page .nn-calc-actions { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:20px; }
+@media(max-width:600px){ .nn-page .nn-calc-addons-grid { grid-template-columns:1fr; } .nn-page .nn-calc-actions { grid-template-columns:1fr; } .nn-page .nn-calc-body { padding:24px 20px; } }
+
+/* FAQ */
+.nn-page .nn-faq-list { margin-top:48px; max-width:800px; margin-left:auto; margin-right:auto; }
+.nn-page .nn-faq-item { border-bottom:1px solid var(--nn-border); }
+.nn-page .nn-faq-q { width:100%; text-align:left; background:none; border:none; cursor:pointer; padding:24px 0; font-family:var(--font-display); font-size:1.15rem; font-weight:600; color:var(--nn-charcoal); display:flex; justify-content:space-between; align-items:center; gap:16px; transition:color 0.3s; line-height:1.3; }
+.nn-page .nn-faq-q:hover { color:var(--nn-gold); }
+.nn-page .nn-faq-q svg { flex-shrink:0; width:18px; height:18px; stroke:var(--nn-gold); fill:none; stroke-width:1.5; transition:transform 0.3s; }
+.nn-page .nn-faq-item.open .nn-faq-q svg { transform:rotate(45deg); }
+.nn-page .nn-faq-a { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+.nn-page .nn-faq-item.open .nn-faq-a { max-height:300px; }
+.nn-page .nn-faq-a p { padding:0 0 24px 0; font-size:0.9rem; line-height:1.8; color:var(--nn-text-muted); }
+
+/* CTA */
+.nn-page .nn-cta-section { text-align:center; padding:var(--section-pad) 0; }
+.nn-page .nn-cta-section h2 { color:#fff; margin-bottom:16px; }
+.nn-page .nn-cta-section .nn-lead { color:rgba(255,255,255,0.65); margin:0 auto 36px; }
+.nn-page .nn-cta-phone { font-family:var(--font-display); font-size:clamp(1.5rem,3vw,2.2rem); font-weight:600; color:var(--nn-gold-light); display:block; margin-bottom:32px; }
+.nn-page .nn-cta-trust { margin-top:36px; padding-top:28px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.7rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.4); }
+
+/* CHECKLIST */
+.nn-page .nn-checklist { margin-top:16px; }
+.nn-page .nn-checklist li { padding:8px 0 8px 24px; position:relative; font-size:0.88rem; color:var(--nn-text-muted); line-height:1.7; border-bottom:1px solid var(--nn-border); }
+.nn-page .nn-checklist li::before { content:''; position:absolute; left:0; top:15px; width:8px; height:8px; border:1.5px solid var(--nn-gold); border-radius:50%; }
+.nn-page .nn-checklist-section { margin-top:32px; }
+.nn-page .nn-checklist-section h3 { font-family:var(--font-body); font-size:0.85rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--nn-charcoal); margin-bottom:8px; padding-bottom:8px; border-bottom:2px solid var(--nn-gold); display:inline-block; }
+
+/* CONTENT BLOCKS */
+.nn-page .nn-content-block { margin-top:32px; padding:32px 28px; border:1px solid var(--nn-border); background:#fff; }
+.nn-page .nn-content-block h3 { font-family:var(--font-display); font-size:1.3rem; font-weight:600; color:var(--nn-charcoal); margin-bottom:12px; }
+.nn-page .nn-content-block p { font-size:0.88rem; line-height:1.8; color:var(--nn-text-muted); }
+.nn-page .nn-content-blocks { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:36px; }
+@media(max-width:768px){ .nn-page .nn-content-blocks { grid-template-columns:1fr; } }
+
+/* DIFF BLOCKS (4 across) */
+.nn-page .nn-diff-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px; margin-top:48px; }
+.nn-page .nn-diff-item { text-align:center; padding:32px 20px; }
+.nn-page .nn-diff-item h3 { font-family:var(--font-body); font-size:0.85rem; font-weight:600; color:var(--nn-charcoal); margin-bottom:10px; }
+.nn-page .nn-diff-item p { font-size:0.82rem; line-height:1.7; color:var(--nn-text-muted); }
+
+/* SERVICE AREAS INLINE */
+.nn-page .nn-areas-inline { margin-top:24px; font-size:0.88rem; color:var(--nn-text-muted); line-height:2; }
+.nn-page .nn-areas-inline span { display:inline-block; padding:4px 12px; margin:4px; border:1px solid var(--nn-border); font-size:0.78rem; }
+
+/* CROSS LINKS */
+.nn-page .nn-cross-links { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:32px; }
+.nn-page .nn-cross-link { padding:28px 24px; border:1px solid var(--nn-border); background:#fff; transition:all 0.3s; }
+.nn-page .nn-cross-link:hover { border-color:var(--nn-gold); transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,0.05); }
+.nn-page .nn-cross-link h4 { font-family:var(--font-display); font-size:1.15rem; font-weight:600; color:var(--nn-charcoal); margin-bottom:8px; }
+.nn-page .nn-cross-link p { font-size:0.8rem; line-height:1.65; color:var(--nn-text-muted); margin-bottom:12px; }
+.nn-page .nn-cross-link__arrow { font-size:0.72rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--nn-gold); }
+@media(max-width:768px){ .nn-page .nn-cross-links { grid-template-columns:1fr; } }
+
+/* HOME WATCH PLAN TABLE */
+.nn-page .nn-hw-plans { margin-top:36px; }
+.nn-page .nn-hw-plan { padding:28px 24px; border:1px solid var(--nn-border); margin-bottom:16px; display:flex; align-items:flex-start; gap:24px; background:#fff; transition:border-color 0.3s; }
+.nn-page .nn-hw-plan:hover { border-color:var(--nn-gold); }
+.nn-page .nn-hw-plan__price { font-family:var(--font-display); font-size:2rem; font-weight:700; color:var(--nn-gold); white-space:nowrap; min-width:120px; }
+.nn-page .nn-hw-plan__price span { display:block; font-family:var(--font-body); font-size:0.7rem; font-weight:500; color:var(--nn-text-muted); letter-spacing:0.06em; }
+.nn-page .nn-hw-plan__info h3 { font-family:var(--font-body); font-size:0.9rem; font-weight:600; color:var(--nn-charcoal); margin-bottom:6px; }
+.nn-page .nn-hw-plan__info p { font-size:0.82rem; line-height:1.7; color:var(--nn-text-muted); }
+@media(max-width:600px){ .nn-page .nn-hw-plan { flex-direction:column; gap:12px; } }
+
+/* ===== COMPREHENSIVE MOBILE RESPONSIVE ===== */
+@media(max-width:768px){
+    .nn-page .nn-hero { min-height:auto; padding-bottom:0; }
+    .nn-page .nn-hero--inner { min-height:auto; }
+    .nn-page .nn-hero__content { padding:48px clamp(20px,4vw,40px) 60px; }
+    .nn-page .nn-hero h1 { font-size:clamp(1.8rem,6vw,2.6rem); }
+    .nn-page .nn-hero .nn-lead { font-size:0.9rem; }
+    .nn-page .nn-hero__trust { gap:12px 20px; }
+    .nn-page .nn-hero__line { display:none; }
+    .nn-page .nn-btn-group { flex-direction:column; gap:12px; }
+    .nn-page .nn-btn { width:100%; justify-content:center; padding:14px 24px; }
+    .nn-page .nn-services-grid { grid-template-columns:1fr; }
+    .nn-page .nn-content-blocks[style*="repeat(3"] { grid-template-columns:1fr !important; }
+    .nn-page .nn-content-blocks { grid-template-columns:1fr !important; }
+    .nn-page .nn-diff-grid { grid-template-columns:1fr; }
+    .nn-page .nn-areas-grid { grid-template-columns:1fr 1fr; gap:12px; }
+    .nn-page .nn-cta-phone { font-size:clamp(1.2rem,5vw,1.8rem); }
+    .nn-page .nn-section { padding:clamp(40px,6vw,60px) 0; }
+    .nn-page h2 { font-size:clamp(1.4rem,5vw,2rem); }
+}
+@media(max-width:480px){
+    .nn-page .nn-areas-grid { grid-template-columns:1fr; }
+    .nn-page .nn-hero__trust { flex-direction:column; gap:8px; }
+    .nn-page .nn-area-card { padding:16px 14px; }
+    .nn-page .nn-service-card { padding:24px 20px; }
+    .nn-page .nn-content-block { padding:24px 20px; }
+    .nn-page .nn-faq-q { font-size:1rem; padding:20px 0; }
+    .nn-page .nn-container { padding:0 16px; }
+}
+
+</style>
+<div class="nn-page">
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+{
+    "@context":"https://schema.org","@type":"LocalBusiness",
+    "@id":"https://neatnaples.com/#business",
+    "name":"Neat Naples","alternateName":"Neat Nest Cleaning",
+    "url":"https://neatnaples.com","telephone":"+1-239-285-8851",
+    "email":"info@neatnaples.com"
+}
+</script>
+
+
+<!-- HERO -->
+<section class="nn-hero">
+    <div class="nn-hero__line"></div>
+    <div class="nn-hero__line nn-hero__line--2"></div>
+    <div class="nn-hero__content">
+        <p class="nn-eyebrow">Naples, Florida &middot; Southwest Florida</p>
+        <h1>Premium Cleaning Services in <em>Naples, Florida</em></h1>
+        <p class="nn-lead">Professional residential, commercial, and vacation rental cleaning services for Southwest Florida's most distinguished homes and properties. Family-owned. Meticulous. Trusted house cleaning services in Naples, FL. </p>
+        <div class="nn-btn-group">
+            <a href="tel:+12392858851" class="nn-btn nn-btn--gold">Call (239) 285-8851</a>
+            <a href="/contact-neat-nest-clean/" class="nn-btn nn-btn--outline-light">Request a Quote</a>
+        </div>
+        <div class="nn-hero__trust">
+            <span class="nn-hero__trust-item">Licensed</span>
+            <span class="nn-hero__trust-item">Insured</span>
+            <span class="nn-hero__trust-item">Bonded</span>
+            <span class="nn-hero__trust-item">Background-Checked</span>
+        </div>
+    </div>
+</section>
+
+<!-- INTRO -->
+<section class="nn-section nn-section--cream">
+    <div class="nn-container">
+        <p class="nn-eyebrow">A Higher Standard</p>
+        <h2 class="nn-h2-accent">Naples Deserves a Higher Standard of Clean</h2>
+        <div class="nn-intro__grid">
+            <div class="nn-intro__text">
+                <p>Neat Nest Cleaning is a family-owned cleaning company built for homeowners, property managers, and business owners who expect more than surface-level service. Every job follows a detailed 40-point cleaning checklist — ensuring nothing is overlooked, every visit.</p>
+                <p>From Port Royal estates to Marco Island vacation rentals, I treat every space with meticulous care and personal attention to detail.</p>
+            </div>
+            <div class="nn-trust-cards">
+                <div class="nn-trust-card">
+                    <div class="nn-trust-card__icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+                    <h4>40-Point Checklist</h4>
+                    <p>Every room, every surface, every visit. Nothing is missed.</p>
+                </div>
+                <div class="nn-trust-card">
+                    <div class="nn-trust-card__icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <h4>Licensed, Insured & Bonded</h4>
+                    <p>Full liability coverage protecting your property on every job.</p>
+                </div>
+                <div class="nn-trust-card">
+                    <div class="nn-trust-card__icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                    <h4>Background-Checked</h4>
+                    <p>Thoroughly vetted for your security and peace of mind.</p>
+                </div>
+                <div class="nn-trust-card">
+                    <div class="nn-trust-card__icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <h4>100% Satisfaction Guarantee</h4>
+                    <p>Not happy? I come back and make it right.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="nn-section">
+    <div class="nn-container">
+        <div class="nn-text-center">
+            <p class="nn-eyebrow">What We Offer</p>
+            <h2 class="nn-h2-accent">Our Cleaning Services</h2>
+            <p class="nn-lead" style="margin-top:16px;">Tailored cleaning solutions for every property type across Naples and Southwest Florida.</p>
+        </div>
+        <div class="nn-services-grid">
+            <a href="/residential-cleaning-naples-florida/" class="nn-service-card">
+                <span class="nn-service-card__num">01</span>
+                <h3>Residential Cleaning</h3>
+                <p>Detailed cleaning for Naples homes — kitchens, bathrooms, living areas, and bedrooms. Weekly, biweekly, or monthly scheduling available.</p>
+                <span class="nn-service-card__link">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+            <a href="/commercial-cleaning-naples-florida/" class="nn-service-card">
+                <span class="nn-service-card__num">02</span>
+                <h3>Commercial Cleaning</h3>
+                <p>Professional cleaning for offices, retail spaces, and commercial properties throughout Collier County. Flexible scheduling to fit your operations.</p>
+                <span class="nn-service-card__link">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+            <a href="/deep-cleaning-naples-florida/" class="nn-service-card">
+                <span class="nn-service-card__num">03</span>
+                <h3>Deep Cleaning</h3>
+                <p>A thorough top-to-bottom clean covering every appliance, baseboard, and surface. Ideal for seasonal refreshes, first-time clients, or pre-sale preparation.</p>
+                <span class="nn-service-card__link">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+            <a href="/move-in-move-out-cleaning-naples-florida/" class="nn-service-card">
+                <span class="nn-service-card__num">04</span>
+                <h3>Move-In / Move-Out Cleaning</h3>
+                <p>Comprehensive cleaning for vacant properties. Trusted by Naples realtors and property managers for tenant transitions, closings, and new move-ins.</p>
+                <span class="nn-service-card__link">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+            <a href="/vacation-rental-cleaning-naples-florida/" class="nn-service-card">
+                <span class="nn-service-card__num">05</span>
+                <h3>Vacation Rental Cleaning</h3>
+                <p>Airbnb and VRBO turnover cleaning for Naples and Marco Island hosts. Linen resets, restocking, and property staging to protect your guest reviews.</p>
+                <span class="nn-service-card__link">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+            <a href="/recurring-cleaning-naples-florida/" class="nn-service-card">
+                <span class="nn-service-card__num">06</span>
+                <h3>Recurring Cleaning</h3>
+                <p>Consistent, scheduled cleaning that keeps your home or property maintained to the highest standard. Same checklist, same quality, every visit.</p>
+                <span class="nn-service-card__link">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+            <a href="/home-watch-services-naples-florida/" class="nn-service-card">
+                <span class="nn-service-card__num">07</span>
+                <h3>Home Watch Services</h3>
+                <p>Trusted property monitoring for snowbirds and seasonal residents. Regular inspections, storm checks, and maintenance coordination to keep your Naples home safe while you're away.</p>
+                <span class="nn-service-card__link">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- WHY -->
+<section class="nn-section nn-section--cream">
+    <div class="nn-container">
+        <div class="nn-text-center">
+            <p class="nn-eyebrow">The Difference</p>
+            <h2 class="nn-h2-accent">Why Naples Homeowners Choose Neat Nest Cleaning</h2>
+            <p class="nn-lead" style="margin-top:16px;">I built this company around a simple belief — your home deserves the same standard of care you'd give it yourself.</p>
+        </div>
+        <div class="nn-why-grid">
+            <div class="nn-why-item">
+                <div class="nn-why-item__icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <h3>Licensed, Insured &amp; Bonded</h3>
+                <p>Full liability coverage and a surety bond protecting your property on every job. Peace of mind, guaranteed.</p>
+            </div>
+            <div class="nn-why-item">
+                <div class="nn-why-item__icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+                <h3>40-Point Cleaning Checklist</h3>
+                <p>Every clean follows a detailed room-by-room checklist. Kitchen, bathrooms, bedrooms, living areas — nothing is skipped, nothing is missed.</p>
+            </div>
+            <div class="nn-why-item">
+                <div class="nn-why-item__icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                <h3>Family-Owned &amp; Locally Operated</h3>
+                <p>Neat Nest Cleaning is a Naples-based family business. When you call, you reach the person who runs the company — not a call center.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICE AREAS -->
+<section class="nn-section">
+    <div class="nn-container">
+        <div class="nn-text-center">
+            <p class="nn-eyebrow">Where We Serve</p>
+            <h2 class="nn-h2-accent">Serving Naples &amp; Southwest Florida's Premier Communities</h2>
+            <p class="nn-lead" style="margin-top:16px;">From luxury estates to waterfront condominiums — premium cleaning where you need it.</p>
+        </div>
+        <div class="nn-areas-grid">
+            <div class="nn-area-card"><h4>Naples</h4><p>Old Naples, Park Shore, Moorings, Coquina Sands</p></div>
+            <div class="nn-area-card"><h4>Port Royal</h4><p>Gordon Drive Estates, Lantern Lane, Kings Town Drive</p></div>
+            <div class="nn-area-card"><h4>Pelican Bay</h4><p>Bay Colony, Cap Ferrat, St. Raphael, Pelican Marsh</p></div>
+            <div class="nn-area-card"><h4>Grey Oaks</h4><p>Estate Homes, Golf Villas, Custom Residences</p></div>
+            <div class="nn-area-card"><h4>Marco Island</h4><p>Hideaway Beach, Cape Marco, Estates Area</p></div>
+            <div class="nn-area-card"><h4>Bonita Springs</h4><p>Bonita Bay, Spanish Wells, Pelican Landing, The Brooks</p></div>
+            <div class="nn-area-card"><h4>Estero</h4><p>Miromar Lakes, The Reserve, Grandezza, Bella Terra</p></div>
+            <div class="nn-area-card"><h4>Mediterra</h4><p>Padova, Verona, Milano, Cortile</p></div>
+            <div class="nn-area-card"><h4>Quail West</h4><p>Estate Homes, Villa Homes, Preserve Homes</p></div>
+            <div class="nn-area-card"><h4>Vanderbilt Beach</h4><p>Connors, Vanderbilt Shores, Gulf Shore Drive</p></div>
+            <div class="nn-area-card"><h4>Bay Colony</h4><p>The Shores, Trieste, Remington</p></div>
+            <div class="nn-area-card"><h4>Downtown Naples</h4><p>Fifth Avenue South, Third Street South, Bayfront</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="nn-section nn-section--dark">
+    <div class="nn-container">
+        <div class="nn-text-center">
+            <p class="nn-eyebrow">Getting Started</p>
+            <h2 class="nn-h2-accent">Book Your Cleaning in Four Simple Steps</h2>
+        </div>
+        <div class="nn-steps">
+            <div class="nn-step"><div class="nn-step__num">01</div><h3>Choose Your Service</h3><p>Select from residential, commercial, deep cleaning, move-in/out, vacation rental, recurring, or home watch.</p></div>
+            <div class="nn-step"><div class="nn-step__num">02</div><h3>Tell Us About Your Property</h3><p>Share your home size, any special requests, and your preferred schedule.</p></div>
+            <div class="nn-step"><div class="nn-step__num">03</div><h3>Confirmation</h3><p>Receive confirmation with your service date, details, and what to expect.</p></div>
+            <div class="nn-step"><div class="nn-step__num">04</div><h3>Relax &amp; Enjoy</h3><p>I arrive fully equipped and follow the 40-point checklist from start to finish.</p></div>
+        </div>
+        <div class="nn-text-center" style="margin-top:48px;">
+            <div class="nn-btn-group" style="justify-content:center;">
+                <a href="tel:+12392858851" class="nn-btn nn-btn--gold">Call (239) 285-8851</a>
+                <a href="/contact-neat-nest-clean/" class="nn-btn nn-btn--outline-light">Request a Quote</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!----New Content Start-->
+<section class="nn-section">
+    <div class="nn-container">
+        <div class="nn-services-grid">
+            <div class="nn-service-card">
+                <p>Finding reliable <strong>Naples House Cleaning Services</strong> shouldn't be complicated, and that's exactly why Neat Naples exists. We know that life in Southwest Florida is meant to be enjoyed—not spent scrubbing floors or dusting shelves when you could be relaxing by the pool or exploring downtown's vibrant shops and restaurants. Our mission is simple: to give you back your time by providing exceptional <strong>House Cleaning Services in Naples FL</strong> homeowners can count on, visit after visit. Whether you're a busy professional, a growing family, or a retiree enjoying the Florida sunshine, we tailor our services to fit seamlessly into your lifestyle.</p>    
+            </div>
+            <div class="nn-service-card">
+                <p>At the heart of what we do is a genuine commitment to quality. Our <strong>House Cleaning in Naples FL</strong> team doesn't just wipe down surfaces and call it a day—we take a thorough, detail-oriented approach to every single appointment. From kitchens and bathrooms to living areas and bedrooms, we clean with precision, ensuring every corner of your home receives the attention it deserves. We understand that a truly clean home goes beyond appearances; it contributes to a healthier, more comfortable living environment for you and your family.</p>     
+            </div>
+        </div>
+        <div class="nn-services-grid">
+            <div class="nn-service-card">
+                <p>One of the things that sets us apart is our flexibility when it comes to scheduling. <strong>House Cleaning in Naples</strong> shouldn't feel like a hassle, which is why we offer a variety of service options designed around your needs. Need a one-time refresh before hosting guests? We've got you covered. Prefer consistent weekly or bi-weekly visits to keep your home in top shape year-round? That's our specialty. Our goal is to make <strong>House Cleaning Naples</strong> as convenient and stress-free as possible, so you never have to worry about fitting cleaning into your already busy schedule.</p>    
+            </div>
+            <div class="nn-service-card">
+                <p>For homes that need a little extra attention, we also specialize in <strong>Deep House Cleaning in Naples FL</strong> residents request when preparing for special occasions, recovering from renovations, or simply wanting a fresh start. Our deep cleaning service goes beyond the basics, targeting baseboards, grout lines, ceiling fans, appliance interiors, and other often-overlooked areas that accumulate dirt and grime over time. Florida's humidity and coastal environment can make homes particularly susceptible to dust buildup and mildew, so our deep cleaning packages are specifically designed to address these regional challenges, leaving your home spotless from top to bottom.</p>    
+            </div>
+        </div>    
+    </div>
+</section>
+<section class="nn-section nn-section--dark">
+    <div class="nn-container">
+        <div class="nn-services-grid">
+            <div class="nn-service-card">
+                <p>As a trusted <strong>Naples House Cleaning Service</strong>, we prioritize professionalism and trustworthiness above all else. Every member of our team undergoes comprehensive background checks and hands-on training before entering a client's home. We understand that inviting someone into your personal space requires confidence in their integrity and skill, and we work hard every day to earn and maintain that trust. Our cleaners arrive on time, fully equipped with professional-grade supplies, and ready to deliver consistent, high-quality results with every visit.</p>    
+            </div>
+            <div class="nn-service-card">
+                <p>We also believe in transparency and fairness when it comes to pricing. Our <strong>House Cleaning Services Naples Florida</strong> clients appreciate our straightforward approach—no hidden fees, no confusing contracts, just honest pricing based on the scope of your cleaning needs. We offer free estimates so you know exactly what to expect before booking, and we're always happy to customize a plan that fits your budget and preferences.</p>    
+            </div>
+        </div>
+        <div class="nn-services-grid">
+            <div class="nn-service-card">
+                <p>Beyond regular maintenance cleaning, we offer a full range of specialized services, including move-in/move-out cleaning, post-construction cleanup, and seasonal deep cleans to prepare your home for holiday gatherings or out-of-town guests. No job is too big or too small, and our team approaches every project with the same level of dedication and care.</p>  
+            </div>
+            <div class="nn-service-card">
+                <p>At Neat Naples, we're more than just a cleaning company—we're your partner in maintaining a home that feels welcoming, comfortable, and truly yours. If you're ready to experience the difference that professional, reliable cleaning can make, we invite you to reach out today. Let us show you why so many Naples homeowners trust us to keep their homes spotless, healthy, and ready for whatever life brings. Contact us now to schedule your first appointment and discover a cleaner, more relaxing way to live.</p>  
+            </div>
+        </div>    
+    </div>
+</section>
+<!----New Content END-->
+
+<!-- FAQ -->
+<section class="nn-section">
+    <div class="nn-container">
+        <div class="nn-text-center">
+            <p class="nn-eyebrow">Common Questions</p>
+            <h2 class="nn-h2-accent">Frequently Asked Questions</h2>
+        </div>
+        <div class="nn-faq-list">
+            <div class="nn-faq-item"><button class="nn-faq-q"><span>How much does house cleaning cost in Naples, FL?</span><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><div class="nn-faq-a"><p>The cost of <strong>house cleaning services in Naples, FL</strong> depends on several factors, including the size of your home, the level of cleaning required, and whether you choose a one-time or recurring service. Standard cleaning generally costs less than deep cleaning or move-in/move-out cleaning. At Neat Nest Cleaning, we provide customized quotes with transparent pricing and no hidden fees. Contact us at <strong>239-285-8851</strong> for a free estimate.</p></div></div>
+            <div class="nn-faq-item"><button class="nn-faq-q"><span>Are you background-checked?</span><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><div class="nn-faq-a"><p>Yes. I undergo thorough background checks and am fully vetted before entering any client's home or property.</p></div></div>
+            <div class="nn-faq-item"><button class="nn-faq-q"><span>Do you bring your own cleaning supplies?</span><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><div class="nn-faq-a"><p>Yes. I arrive fully equipped with professional-grade products safe for the premium surfaces common in Naples homes.</p></div></div>
+            <div class="nn-faq-item"><button class="nn-faq-q"><span>Do you offer recurring cleaning plans?</span><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><div class="nn-faq-a"><p>Yes. I offer weekly, biweekly, and monthly recurring plans with discounts for ongoing service.</p></div></div>
+            <div class="nn-faq-item"><button class="nn-faq-q"><span>Do you clean vacation rentals and Airbnb properties?</span><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><div class="nn-faq-a"><p>Yes. Vacation rental turnover is one of my core services. I handle linen resets, restocking, property staging, and same-day turnovers for hosts throughout Naples, Marco Island, and Collier County.</p></div></div>
+            <div class="nn-faq-item"><button class="nn-faq-q"><span>What areas do you serve?</span><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><div class="nn-faq-a"><p>I serve Naples, Port Royal, Pelican Bay, Grey Oaks, Marco Island, Bonita Springs, Estero, Vanderbilt Beach, Bay Colony, Mediterra, Quail West, Downtown Naples, and surrounding Southwest Florida communities.</p></div></div>
+            <div class="nn-faq-item"><button class="nn-faq-q"><span>Are you licensed and insured?</span><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><div class="nn-faq-a"><p>Yes. Neat Nest Cleaning is fully licensed, insured, and bonded. Your property is protected on every visit.</p></div></div>
+            <div class="nn-faq-item"><button class="nn-faq-q"><span>What is your satisfaction guarantee?</span><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><div class="nn-faq-a"><p>If you're not completely satisfied with the service, contact me within 24 hours and I'll return to address any concerns at no additional charge.</p></div></div>
+            <div class="nn-faq-item"><button class="nn-faq-q"><span>How do I choose a house cleaner in Naples?</span><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><div class="nn-faq-a"><p>When choosing a <strong>house cleaner in Naples</strong>, look for a licensed and insured cleaning company with positive customer reviews, experienced professionals, flexible scheduling, and transparent pricing. It's also important to select a company that offers customized cleaning plans to meet your home's unique needs. Neat Nest Cleaning is committed to delivering dependable, high-quality cleaning services tailored to homeowners throughout Naples, Florida.</p></div></div>
+            <div class="nn-faq-item"><button class="nn-faq-q"><span>How much does it cost to clean a 3-bedroom house in Naples?</span><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><div class="nn-faq-a"><p>The cost to clean a <strong>3-bedroom house in Naples</strong> varies based on the home's size, condition, and the type of cleaning requested. Routine cleaning is generally more affordable than deep cleaning, while homes that require extra attention may cost more. Neat Nest Cleaning offers competitive rates for residential cleaning services in Naples, FL, with personalized quotes based on your specific needs. Call <strong>239-285-8851</strong> to receive your free estimate today.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="nn-section nn-section--dark nn-cta-section">
+    <div class="nn-container">
+        <p class="nn-eyebrow">Get Started Today</p>
+        <h2>Ready for a Higher Standard of Clean?</h2>
+        <p class="nn-lead">Call today for a free quote. Most properties quoted in under two minutes.</p>
+        <a href="tel:+12392858851" class="nn-cta-phone">(239) 285-8851</a>
+        <div class="nn-btn-group" style="justify-content:center;">
+            <a href="tel:+12392858851" class="nn-btn nn-btn--gold">Call Now</a>
+            <a href="mailto:info@neatnaples.com" class="nn-btn nn-btn--outline-light">Email Us</a>
+            <a href="/contact-neat-nest-clean/" class="nn-btn nn-btn--outline-light">Request a Quote</a>
+        </div>
+        <p class="nn-cta-trust">Licensed, Insured &amp; Bonded &nbsp;&middot;&nbsp; Family-Owned &nbsp;&middot;&nbsp; Serving Naples &amp; Southwest Florida</p>
+    </div>
+</section>
+
+
+</div><!-- END .nn-page -->
+
+<script>
+(function(){
+    document.querySelectorAll('.nn-page .nn-faq-q').forEach(function(btn){
+        btn.addEventListener('click',function(){ btn.parentElement.classList.toggle('open'); });
+    });
+})();
+</script>

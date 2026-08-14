@@ -1,0 +1,465 @@
+{% extends "crm/base.html" %}
+
+{% block title %}
+Customers | CRM
+{% endblock %}
+
+
+{% block extra_css %}
+
+<style>
+
+    .header {
+        margin-bottom: 30px;
+    }
+
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .header h1 {
+        font-size: 32px;
+        margin-bottom: 6px;
+    }
+
+    .header p {
+        color: #64748b;
+    }
+
+    .back-btn {
+        display: inline-block;
+        margin-bottom: 12px;
+        color: #6366f1;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .back-btn:hover {
+        color: #4f46e5;
+        text-decoration: underline;
+    }
+
+    /* BUTTON */
+
+    .btn {
+        display: inline-block;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+    }
+
+    .primary {
+        background: #6366f1;
+        color: white;
+    }
+
+    .primary:hover {
+        background: #4f46e5;
+    }
+
+    /* SEARCH */
+
+    .search-form {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 25px;
+    }
+
+    .search-form input {
+        flex: 1;
+        padding: 13px 15px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        font-size: 15px;
+        outline: none;
+    }
+
+    .search-form input:focus {
+        border-color: #6366f1;
+    }
+
+    .search-form button {
+        padding: 13px 20px;
+        border: none;
+        border-radius: 8px;
+        background: #6366f1;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .search-form button:hover {
+        background: #4f46e5;
+    }
+
+    .search-form a {
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        color: #6366f1;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    /* TABLE */
+
+    .table-card {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        overflow-x: auto;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, .05);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 700px;
+    }
+
+    th {
+        background: #f1f5f9;
+        color: #475569;
+        font-size: 13px;
+        text-align: left;
+        padding: 16px;
+    }
+
+    td {
+        padding: 17px 16px;
+        border-top: 1px solid #e2e8f0;
+        font-size: 14px;
+    }
+
+    tr:hover {
+        background: #f8fafc;
+    }
+
+    .customer-name {
+        font-weight: 700;
+    }
+
+    .email {
+        color: #64748b;
+    }
+
+    /* ACTIONS */
+
+    .actions {
+        display: flex;
+        gap: 8px;
+    }
+
+    .action-btn {
+        padding: 7px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .view {
+        background: #ecfeff;
+        color: #0891b2;
+    }
+
+    .edit {
+        background: #eef2ff;
+        color: #4f46e5;
+    }
+
+    .delete {
+        background: #fee2e2;
+        color: #dc2626;
+    }
+
+    /* EMPTY */
+
+    .empty {
+        text-align: center;
+        padding: 50px;
+        color: #64748b;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+        .header-top {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .header h1 {
+            font-size: 26px;
+        }
+
+        .btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        .search-form {
+            flex-direction: column;
+        }
+
+        .search-form button {
+            width: 100%;
+        }
+
+    }
+
+    .customer-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.customer-toolbar .search-form {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.add-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 20px;
+    min-width: 160px;
+    height: 46px;
+    background: #6366f1;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.add-btn:hover {
+    background: #4f46e5;
+}
+
+@media (max-width: 700px) {
+
+    .customer-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .customer-toolbar .search-form {
+        width: 100%;
+    }
+
+    .add-btn {
+        width: 100%;
+    }
+
+}
+
+</style>
+
+{% endblock %}
+
+
+{% block header %}
+
+<div class="header">
+
+    <a
+        href="{% url 'dashboard' %}"
+        class="back-btn"
+    >
+        ← Back to Dashboard
+    </a>
+
+    <h1>
+        Customers
+    </h1>
+
+    <p>
+        Manage your CRM customers
+    </p>
+
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- SEARCH -->
+
+<div class="customer-toolbar">
+
+    <form method="GET" class="search-form">
+
+        <input
+            type="text"
+            name="search"
+            value="{{ search }}"
+            placeholder="🔍 Search customer..."
+        >
+
+        <button type="submit">
+            Search
+        </button>
+
+        {% if search %}
+
+            <a href="{% url 'customer_list' %}">
+                Clear
+            </a>
+
+        {% endif %}
+
+    </form>
+
+
+    <a
+        href="{% url 'customer_create' %}"
+        class="add-btn"
+    >
+        + Add Customer
+    </a>
+
+</div>
+
+
+<!-- CUSTOMER TABLE -->
+
+<div class="table-card">
+
+    {% if customers %}
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Customer
+                    </th>
+
+                    <th>
+                        Email
+                    </th>
+
+                    <th>
+                        Phone
+                    </th>
+
+                    <th>
+                        Company
+                    </th>
+
+                    <th>
+                        Actions
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for customer in customers %}
+
+                    <tr>
+
+                        <td>
+
+                            <div class="customer-name">
+                                {{ customer.name }}
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="email">
+                                {{ customer.email }}
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            {{ customer.phone }}
+                        </td>
+
+
+                        <td>
+                            {{ customer.company|default:"—" }}
+                        </td>
+
+
+                        <td>
+
+                            <div class="actions">
+
+                                <a
+                                    href="{% url 'customer_detail' customer.id %}"
+                                    class="action-btn view"
+                                >
+                                    View
+                                </a>
+
+
+                                <a
+                                    href="{% url 'customer_edit' customer.id %}"
+                                    class="action-btn edit"
+                                >
+                                    Edit
+                                </a>
+
+
+                                <a
+                                    href="{% url 'customer_delete' customer.id %}"
+                                    class="action-btn delete"
+                                >
+                                    Delete
+                                </a>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    {% else %}
+
+        <div class="empty">
+
+            <h3>
+                No customers yet
+            </h3>
+
+            <p>
+                Add your first customer to get started.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

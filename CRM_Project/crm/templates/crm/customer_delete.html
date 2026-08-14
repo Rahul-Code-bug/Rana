@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Delete Customer | CRM</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+        }
+
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: auto;
+        }
+
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .delete-card {
+            width: 100%;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 35px;
+            text-align: center;
+            box-shadow:
+                0 10px 30px rgba(15, 23, 42, .06);
+        }
+
+
+        .icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 20px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+
+            background: #fee2e2;
+            color: #dc2626;
+
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+
+        .message {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+
+        .customer-name {
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+
+        .warning {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            color: #9a3412;
+
+            padding: 14px;
+            border-radius: 8px;
+
+            font-size: 14px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+
+        .btn {
+            display: inline-block;
+
+            padding: 12px 20px;
+
+            border-radius: 8px;
+
+            border: none;
+
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .delete-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+
+        .delete-btn:hover {
+            background: #b91c1c;
+        }
+
+
+        .cancel-btn {
+            background: #e2e8f0;
+            color: #334155;
+        }
+
+
+        .cancel-btn:hover {
+            background: #cbd5e1;
+        }
+
+
+        @media (max-width: 500px) {
+
+            .delete-card {
+                padding: 25px 20px;
+            }
+
+
+            .actions {
+                flex-direction: column;
+            }
+
+
+            .btn {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="container">
+
+        <div class="page">
+
+            <div class="delete-card">
+
+
+                <div class="icon">
+                    !
+                </div>
+
+
+                <h1>
+                    Delete Customer
+                </h1>
+
+
+                <p class="message">
+
+                    Are you sure you want to delete
+
+                    <span class="customer-name">
+                        {{ customer.name }}
+                    </span>
+
+                    ?
+
+                </p>
+
+
+                <div class="warning">
+
+                    This action cannot be undone.
+                    All information related to this customer
+                    will be permanently removed.
+
+                </div>
+
+
+                <div class="actions">
+
+
+                    <form
+                        method="POST"
+                        style="display: inline;"
+                    >
+
+                        {% csrf_token %}
+
+                        <button
+                            type="submit"
+                            class="btn delete-btn"
+                        >
+                            Yes, Delete
+                        </button>
+
+                    </form>
+
+
+                    <a
+                        href="{% url 'customer_detail' customer.id %}"
+                        class="btn cancel-btn"
+                    >
+                        Cancel
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

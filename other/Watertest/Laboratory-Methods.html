@@ -1,0 +1,341 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>watertest.net.au</title>
+<link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link type="text/css" rel="stylesheet" href="css/slick-theme.css" /> 
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/responsive.css" type="text/css" />
+
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-scrolltofixed-min.js"></script> 
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// grab the initial top offset of the navigation 
+		   	var stickyNavTop = $('.nav').offset().top;
+		   	
+		   	// our function that decides weather the navigation bar should have "fixed" css position or not.
+		   	var stickyNav = function(){
+			    var scrollTop = $(window).scrollTop(); // our current vertical position from the top
+			         
+			    // if we've scrolled more than the navigation, change its position to fixed to stick to top,
+			    // otherwise change it back to relative
+			    if (scrollTop > stickyNavTop) { 
+			        $('.nav').addClass('sticky');
+			    } else {
+			        $('.nav').removeClass('sticky'); 
+			    }
+			};
+
+			stickyNav();
+			// and run it again every time you scroll
+			$(window).scroll(function() {
+				stickyNav();
+			});
+		});
+	</script> 
+
+
+		
+<script type="text/javascript">
+	
+function openHtabs(evt, deliveryOption) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("fetab");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(deliveryOption).style.display = "block";
+  evt.currentTarget.className += " active";
+}	
+	
+	
+</script>
+
+<script type="text/javascript" src="js/bootstrap.js"></script>		
+<script type="text/javascript" src="js/slick.min.js"></script>	
+<script type="text/javascript">
+	
+$(document).ready(function(){
+
+$('.items-4').slick({
+dots: true,
+infinite: true,
+speed: 800,
+autoplay: false,
+autoplaySpeed: 2000,
+slidesToShow: 3,
+slidesToScroll: 1,
+responsive: [
+{
+breakpoint: 1024,
+settings: {
+slidesToShow: 3,
+slidesToScroll: 1,
+infinite: true,
+dots: true
+}
+},
+{
+breakpoint: 720,
+settings: {
+slidesToShow: 2,
+slidesToScroll: 1
+}
+},
+{
+breakpoint: 480,
+settings: {
+slidesToShow: 1,
+slidesToScroll: 1
+}
+}
+
+]
+});
+});	
+	
+
+$(document).ready(function(){
+
+$('.projects').slick({
+dots: true,
+infinite: true,
+speed: 800,
+autoplay: true,
+autoplaySpeed: 2000,
+slidesToShow: 4,
+slidesToScroll: 1,
+responsive: [
+{
+breakpoint: 1024,
+settings: {
+slidesToShow: 3,
+slidesToScroll: 1,
+infinite: true,
+dots: true
+}
+},
+{
+breakpoint: 720,
+settings: {
+slidesToShow: 2,
+slidesToScroll: 1
+}
+},
+{
+breakpoint: 480,
+settings: {
+slidesToShow: 1,
+slidesToScroll: 1
+}
+}
+
+]
+});
+});	
+</script>	
+</head>
+<body>
+<div class="user-tools alignright"><div class="wrapper">
+<ul class="toplinks">
+<li><a  target="_blank"  href="#"><i class="fa fa-map-pin"></i> 1/4 Abbott Road, Seven Hills NSW 2147</a></li>
+<li><a  target="_blank"  href="#"><i class="fa fa-map-marker"></i> PO Box 591, Seven Hills NSW 2147</a></li>
+<li><a href="tel:(02)-9838-8294"> Call <i class="fa fa-phone"></i> <strong>(02) 9838 8294</strong></a></li>
+<li><a href="mailto:watertest@bigpond.com"> Email <i class="fa fa-envelope-o"></i>  watertest@bigpond.com</a></li>
+</ul>		
+		
+</div></div>	
+<header id="header" class="nav">
+	
+<div class="wrapper"> 
+<div class="header-wrap">
+<div class="logo"><img src="images/logo.png" class="img-responsive"  alt="" /></div>
+<div class="head-col">
+ <div id="topmenu">
+<nav id="topnav"> <ul class="menu">
+<li><a href="home .html">Home</a></li>
+<li class="current-menu-item"><a href="Laboratory-Methods.html">Laboratory Methods</a></li>
+<li><a href="">Major Equipment </a></li>
+<li><a href="">Major Projects </a></li>
+<li><a href="">Customer Feedback</a></li>
+<li class="apply-online"><a href="">Contact</a></li>
+</ul> </nav><div class="clear"></div></div>
+	
+</div>
+<div class="clear"></div>
+	</div></div>
+</header>	
+	
+<section id="headerImage" >
+	<div class="box-100">
+   <div id="mainslider" class="carousel slide" data-ride="carousel">
+			
+<div class="carousel-inner">
+<div class="item active">
+<img src="images/slide-1.jpg" alt="" width="100%" />
+<div class="bancaption-overlay"><div class="ban_caption">
+<h1 class="subtitle">Watertest</h1>
+<h2>Reliable Soil & Water Chemical Analysis</h2>
+</div></div></div>                    
+<div class="item">
+<img src="images/slide-2.jpg" alt="" width="100%" />
+<div class="bancaption-overlay"><div class="ban_caption">
+<h5 class="subtitle">Watertest</h5>
+<h2>Professional Soil and Water Analysis</h2>
+</div></div></div>
+<div class="item">
+<img src="images/slide-3.jpg" alt="" width="100%" />
+<div class="bancaption-overlay"><div class="ban_caption">
+<h5 class="subtitle">Watertest</h5>
+<h2>Complete Soil & Water Analysis Solutions</h2>
+</div></div></div>
+
+</div>
+   
+<a class="carousel-control-prev" href="#mainslider" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#mainslider" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a></div> </div>
+</section>
+<!-- ___________________________END_____________________________ -->
+
+<div class="white-bgs"><div class="wrapper"><div class="content-padding">
+<div class="center">
+<h3 class="section-title"></h3>
+</div>
+<div class="row"><div class="flex-item">
+<div class="box-50"><div class="box-padding">
+
+	ygjk
+</div></div>
+<div class="box-50"><div class="box-padding">
+	gyj uk
+</div></div>
+<div class="clear"></div>
+</div></div>
+</div></div></div>
+
+<div class="lightgrey-bgs"><div class="wrapper"><div class="content-padding">
+<div class="center">
+<h3 class="section-title"></h3>
+</div>
+<div class="row"><div class="flex-item">
+<div class="box-50"><div class="box-padding">
+	tghj
+</div></div>
+<div class="box-50"><div class="box-padding">
+	fgj dfg
+</div></div>
+<div class="clear"></div>
+</div></div>
+</div></div></div>
+	
+<!-- __________________________START_____________________________	 -->
+<footer id="footer">
+  <div class="footer-overlay">
+  <div class="wrapper">
+ 
+<div class="row">
+<div class="box-25">
+<div class="box-paddingS">
+<div class="footer-logo"><img src="images/footer-logo.png" alt="logo" width="200" class="img-responsive"></div>
+<p>Professional water/soil quality testing services across New South Wales. NABL accredited laboratories for comprehensive drinking water/soil analysis. Home sample pickup available in select cities.</p>
+<div class="clear"></div>
+
+</div></div>
+
+	
+<div class="box-20">
+<div class="box-padding"><div class="box-paddingS">
+<h4>Quick Links</h4>
+<ul class="menu">
+<li><a href="">About Us</a></li>
+<li><a href="">Laboratory Methods</a></li>
+<li><a href="">Major Equipment </a></li>
+<li><a href="">Major Projects </a></li>
+<li><a href="">Customer Feedback</a></li>
+<li><a href="">Blog</a></li>
+<li><a href="">Contact Us</a></li>
+</ul>	
+	
+<div class="clear"></div>	
+
+</div></div></div>
+
+<div class="box-25">
+<div class="box-padding"><div class="box-paddingS">
+<h4>Contact Info</h4>
+<p><strong>Laboratory:</strong> 1/4 Abbott Road, Seven Hills NSW 2147</p>
+<p><strong>Postal Address:</strong> PO Box 591, Seven Hills NSW 2147</p>
+<h5>Phone: (02) 9838 8294</h5>
+<p>Fax: (02) 9838 8919<br>
+Email: watertest@bigpond.com</p>
+	
+<div class="clear"></div>	
+
+</div></div></div>
+
+
+
+<div class="box-30">
+<div class="box-padding">
+
+
+<h4>Stay Updated</h4>
+<p>Subscribe for various updates and news from watertest.net.au  </p>
+<form action="" id="newsletter-box">
+<input class="input-text" type="text" onblur="if (this.value == '') {this.value = 'Enter your email address';}" onfocus="if(this.value == 'Enter your email address') {this.value = '';}" value="Enter your email address" name="email"> <input class="input-submit" type="button" value="Sign Up" name="">
+<div class="clear"></div>
+ </form>
+ <div class="clear"></div>	
+	<div class="clearH"></div>	
+<div class="socialmedia">
+<ul class="icons">
+<li><a target="_blank" class="fa fa-facebook" href="#" title="Facebook"><span></span></a></li>
+<li><a  target="_blank"  class="fa fa-instagram" href="/" title="Instagram"><span></span></a></li>
+<li><a  target="_blank"  class="fa fa-linkedin" href="/" title="Linkedin"><span></span></a></li>
+</ul>	
+	</div>	
+
+
+</div>
+</div>
+
+
+
+    <div class="clear"></div>
+</div>
+	  </div>
+
+ <div id="bar">
+  <div class="wrapper">
+	  <div class="flex-item">
+<div class="box-60">Copyright © 2026 Rahul Rana  All Rights Reserved.</div>
+		  <div class="box-40 alignright"> <a class="white" href="">Terms and Conditions</a> &nbsp;| &nbsp; <a class="white" href="">Privacy Policy</a> </div>
+<div class="clear"></div>
+
+</div></div>
+</div></div>
+ </footer>
+
+</body>
+</html>

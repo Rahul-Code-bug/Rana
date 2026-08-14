@@ -1,0 +1,758 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Daniels McLaurin, PLLC</title>
+	<link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+		rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="css/responsive.css" type="text/css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/jquery-scrolltofixed-min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			// grab the initial top offset of the navigation 
+			var stickyNavTop = $('.nav').offset().top;
+
+			// our function that decides weather the navigation bar should have "fixed" css position or not.
+			var stickyNav = function () {
+				var scrollTop = $(window).scrollTop(); // our current vertical position from the top
+
+				// if we've scrolled more than the navigation, change its position to fixed to stick to top,
+				// otherwise change it back to relative
+				if (scrollTop > stickyNavTop) {
+					$('.nav').addClass('sticky');
+				} else {
+					$('.nav').removeClass('sticky');
+				}
+			};
+
+			stickyNav();
+			// and run it again every time you scroll
+			$(window).scroll(function () {
+				stickyNav();
+			});
+		});
+	</script>
+
+
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+
+</head>
+
+<body>
+
+	<div id="hamburgMenu">
+		<input type="checkbox" id="check" />
+		<label for="check">
+			<i id="btn"><img src="images/burger-menu.svg" alt="Menu" width="20" height="20"> </i>
+			<i id="cancel"><img src="images/burger-close.svg" alt="Close" width="20" height="20"></i>
+		</label>
+		<div class="menuBar">
+			<div class="menuHeader">
+				<div class="mobile-logo"><a href=""><img src="images/logo.png" width="240" alt="Daniels McLaurin, PLLC"
+							class="img-responsive" /></a>
+				</div>
+
+			</div>
+			<div class="menuList">
+				<div class="menu-header">
+					<ul id="menu-main-menu" class="menu">
+						<li>
+							<a href="#" aria-current="page">Home</a>
+						</li>
+						<li>
+							<a href="#">About</a></li>
+						<li>
+							<a href="#">Practice Areas</a>
+							<ul class="sub-menu">
+								<li><a
+									href="#">Family Law</a>
+								</li>
+								<li><a
+									href="#">Business &#038; Contracts Law</a></li>
+								<li><a
+									href="#">Real Estate Law</a></li>
+								<li><a
+									href="#">Landlord-Tenant Law</a></li>
+								<li><a
+									href="#">Personal Injury Law</a></li>
+								<li><a
+									href="#">Criminal Defense</a></li>
+								<li><a
+									href="#">Traffic Defense</a>
+								</li>
+							</ul>
+						</li>
+						<li><a
+							href="#">Press</a>
+						</li>
+						<li><a
+							href="#">Contact</a>
+						</li>
+						<li>
+							<a href="#">Schedule a Consultation</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<header class="nav">
+		<div class="user-tools alignright">
+			<div class="wrapper">
+
+				<ul class="toplinks">
+					<li><a href="tel:+1 313-721-0112">Emergency? Call Now <i class="fa fa-phone"></i> <span
+								style="font-size: 15px;font-weight: 700">313-721-0112</span></a></li>
+					<li><a href="mailto:admin@dmlawdc.com"><i class="fa fa-envelope"></i> admin@dmlawdc.com</a></li>
+					<li><a href=""><i class="fa fa-facebook"></i><span title="Facebook"></span></a></li>
+					<li><a href=""><i class="fa fa-instagram"></i><span title="Instagram"></span></a></li>
+					<li><a href=""><i class="fa fa-linkedin"></i><span title="Linkedin"></span></a></li>
+					<li><a href=""><i class="fa fa-youtube"></i><span title="Youtube"></span></a></li>
+				</ul>
+
+			</div>
+		</div>
+
+		<div id="header">
+			<div class="wrapper">
+				<div class="header-wrap">
+					<div class="logo"><a href=""><img src="images/logo.png" class="img-responsive" alt="" /></a></div>
+					<div class="head-col">
+
+						<div id="topmenu">
+							<nav id="topnav" class="moduletable_dropdown">
+								<ul class="menu">
+									<li class="current-menu-item"><a href="">Home</a></li>
+									<li><a href="">About</a></li>
+									<li class="parent"><a href="">Practice Areas</a>
+										<ul class="sub-menu">
+											<li><a href="">Family Law</a></li>
+											<li><a href="">Business & Contracts Law</a></li>
+											<li><a href="">Real Estate Law</a></li>
+											<li><a href="">Landlord-Tenant Law</a></li>
+											<li><a href="">Personal Injury Law</a></li>
+											<li><a href="">Criminal Defense</a></li>
+											<li><a href="">Traffic Defense</a></li>
+										</ul>
+									</li>
+									<li><a href="">Press</a></li>
+									<li><a href="">Contact</a></li>
+									<li class="apply-online"><a href="">Schedule a Consultation</a></li>
+								</ul>
+							</nav>
+							<div class="clear"></div>
+						</div>
+
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<section id="headerImage">
+		<div id="mainslider" class="carousel slide" data-ride="carousel">
+
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="images/slide-1.jpg" alt="" width="100%" />
+					<div class="bancaption-overlay">
+						<div class="ban_caption">
+							<h3>The Legal Advice Need Phone Call Away</h3>
+							<p>Our experienced attorneys are just a call away, ready to provide guidance on personal,
+								business. </p>
+							<a href="" class="slider-more">Schedule a Consultation</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="item">
+					<img src="images/slide-2.jpg" alt="" width="100%" />
+					<div class="bancaption-overlay">
+						<div class="ban_caption">
+							<h3>The Legal Advice Need Phone Call Away</h3>
+							<p>Our experienced attorneys are just a call away, ready to provide guidance on personal,
+								business. </p>
+							<a href="" class="slider-more">Schedule a Consultation</a>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<img src="images/slide-3.jpg" alt="" width="100%" />
+					<div class="bancaption-overlay">
+						<div class="ban_caption">
+							<h3>The Legal Advice Need Phone Call Away</h3>
+							<p>Our experienced attorneys are just a call away, ready to provide guidance on personal,
+								business. </p>
+							<a href="" class="slider-more">Schedule a Consultation</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<a class="carousel-control-prev" href="#mainslider" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#mainslider" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+
+	</section>
+
+	<section id="welcome">
+		<div class="wrapper">
+
+			<div class="row">
+				<div class="flex-item">
+
+					<div class="box-50">
+						<div class="box-padding">
+							<h5 class="subtitle">Daniels McLaurin, PLLC</h5>
+							<h3 class="section-title blue">Strategic Advocacy. Personalized Representation. Results That
+								Matter.</h3>
+							<p>At Daniels McLaurin, PLLC, we understand that legal issues are rarely just legal issues;
+								they affect families, businesses, livelihoods, reputations, and futures. As a boutique
+								law firm based in Washington, D.C., we provide sophisticated legal representation with
+								the individualized attention clients deserve.</p>
+							<p>Our firm is built on the belief that effective advocacy requires more than legal
+								knowledge alone. It requires strategy, responsiveness, attention to detail, and a
+								genuine commitment to understanding each client’s unique goals and challenges. Whether
+								we are negotiating a settlement, protecting your rights in court, or helping you
+								navigate a complex dispute, we approach every matter with diligence, precision, and
+								determination.</p>
+							<p>At Daniels McLaurin, PLLC, clients are never treated like case numbers. We pride
+								ourselves on being accessible, communicative, and fully invested in achieving the best
+								possible outcome for every client we represent.</p>
+							<h4>Emergency? Call Now <a href="tel:+1 313-721-0112"><i class="fa fa-phone"></i>
+									313-721-0112</a></h4>
+						</div>
+					</div>
+					<div class="box-50">
+						<div class="box-padding">
+							<div class="box-paddingL">
+								<div class="image-shadow"><img src="images/team-2.jpg" alt="" class="img-responsive" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section id="services">
+		<div class="service-overlay">
+			<div class="wrapper">
+				<div class="wrap center">
+					<h3 class="section-title no-margin">Our Practice Areas</h3>
+					<p>Don’t take chances with your future. It is critical to work with a proven criminal attorney who
+						will protect you.</p>
+				</div>
+				<div class="clearH"></div>
+				<div class="row">
+					<div class="box-33">
+						<div class="box-padding">
+							<div class="banner-holder visible-on-hover">
+								<a class="banner-hero-link" href="#">
+									<div class="banner-image">
+										<img src="images/service-img1.jpg" class="img-responsive" alt="">
+									</div>
+									<div class="banner-text-holder">
+										<div class="banner-text-outer">
+											<div class="banner-text-inner">
+												<h4 class="banner-title">Family Law</h4>
+												<p class="banner-subtitle">We provide compassionate and strategic family
+													law representation tailored to each client’s needs. Our services
+													include divorce, child custody and support, parental rights,
+													adoption, agreements, and domestic violence matters, helping
+													families achieve practical solutions, stability, and long-term peace
+													of mind during challenging legal situations.</p>
+												<span class="banner-link-text">
+													<span class="banner-link">
+														<span class="banner-link-icon fa fa-long-arrow-right"></span>
+														<span class="banner-link-label"><span
+																class="banner-link-label-inner">Book Now</span></span>
+													</span></span>
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="box-33">
+						<div class="box-padding">
+							<div class="banner-holder visible-on-hover">
+								<a class="banner-hero-link" href="#">
+									<div class="banner-image">
+										<img src="images/service-img2.jpg" class="img-responsive" alt="">
+									</div>
+									<div class="banner-text-holder">
+										<div class="banner-text-outer">
+											<div class="banner-text-inner">
+												<h4 class="banner-title">Business & Contracts Law</h4>
+												<p class="banner-subtitle">We provide strategic legal counsel for
+													businesses, entrepreneurs, and professionals facing contractual
+													disputes and commercial conflicts. Our services include contract
+													litigation, breach of contract claims, fraudulent misrepresentation
+													matters, and arbitration or alternative dispute resolution, helping
+													clients protect their interests and minimize financial risk.</p>
+												<span class="banner-link-text">
+													<span class="banner-link">
+														<span class="banner-link-icon fa fa-long-arrow-right"></span>
+														<span class="banner-link-label"><span
+																class="banner-link-label-inner">Book Now</span></span>
+													</span></span>
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="box-33">
+						<div class="box-padding">
+							<div class="banner-holder visible-on-hover">
+								<a class="banner-hero-link" href="#">
+									<div class="banner-image">
+										<img src="images/service-img3.jpg" class="img-responsive" alt="">
+									</div>
+									<div class="banner-text-holder">
+										<div class="banner-text-outer">
+											<div class="banner-text-inner">
+												<h4 class="banner-title">Real Estate Law</h4>
+												<p class="banner-subtitle">We represent property owners, investors,
+													buyers, and developers in residential and commercial real estate
+													matters. Our services include real estate litigation, construction
+													disputes, land sales and leases, purchase options, and zoning or
+													land use matters, protecting clients’ investments and legal
+													interests.</p>
+												<span class="banner-link-text">
+													<span class="banner-link">
+														<span class="banner-link-icon fa fa-long-arrow-right"></span>
+														<span class="banner-link-label"><span
+																class="banner-link-label-inner">Book Now</span></span>
+													</span></span>
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="box-33">
+						<div class="box-padding">
+							<div class="banner-holder visible-on-hover">
+								<a class="banner-hero-link" href="#">
+									<div class="banner-image">
+										<img src="images/service-img4.jpg" class="img-responsive" alt="">
+									</div>
+									<div class="banner-text-holder">
+										<div class="banner-text-outer">
+											<div class="banner-text-inner">
+												<h4 class="banner-title">Landlord-Tenant Law</h4>
+												<p class="banner-subtitle">We assist landlords and tenants with
+													residential and commercial leasing disputes and legal matters. Our
+													services include lease drafting and review, evictions, notices to
+													cure, lease enforcement, and HOA or property management disputes,
+													providing practical solutions and effective representation
+													throughout the process.</p>
+												<span class="banner-link-text">
+													<span class="banner-link">
+														<span class="banner-link-icon fa fa-long-arrow-right"></span>
+														<span class="banner-link-label"><span
+																class="banner-link-label-inner">Book Now</span></span>
+													</span></span>
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="box-33">
+						<div class="box-padding">
+							<div class="banner-holder visible-on-hover">
+								<a class="banner-hero-link" href="#">
+									<div class="banner-image">
+										<img src="images/service-img5.jpg" class="img-responsive" alt="">
+									</div>
+									<div class="banner-text-holder">
+										<div class="banner-text-outer">
+											<div class="banner-text-inner">
+												<h4 class="banner-title">Personal Injury Law</h4>
+												<p class="banner-subtitle">We help injury victims pursue fair
+													compensation after accidents and negligence-related incidents. Our
+													personal injury services include automobile, bicycle, and pedestrian
+													accidents, dog bites, animal attacks, and negligent security claims,
+													providing compassionate legal support and strong representation
+													throughout the recovery process.</p>
+												<span class="banner-link-text">
+													<span class="banner-link">
+														<span class="banner-link-icon fa fa-long-arrow-right"></span>
+														<span class="banner-link-label"><span
+																class="banner-link-label-inner">Book Now</span></span>
+													</span></span>
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="box-33">
+						<div class="box-padding">
+							<div class="banner-holder visible-on-hover">
+								<a class="banner-hero-link" href="#">
+									<div class="banner-image">
+										<img src="images/service-img6.jpg" class="img-responsive" alt="">
+									</div>
+									<div class="banner-text-holder">
+										<div class="banner-text-outer">
+											<div class="banner-text-inner">
+												<h4 class="banner-title">Criminal Defense</h4>
+												<p class="banner-subtitle">We provide skilled and aggressive criminal
+													defense representation for clients facing serious charges in
+													Washington, D.C. and Maryland. Our services include misdemeanor and
+													felony defense, drug offenses, domestic violence charges, weapons
+													violations, violent crimes, and protection or anti-stalking matters.
+												</p>
+												<span class="banner-link-text">
+													<span class="banner-link">
+														<span class="banner-link-icon fa fa-long-arrow-right"></span>
+														<span class="banner-link-label"><span
+																class="banner-link-label-inner">Book Now</span></span>
+													</span></span>
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+
+	<section id="our-team">
+		<div class="wrapper">
+			<div class="wrap center">
+				<h3 class="section-title no-margin blue">Meet Our Attorneys</h3>
+				<p>Our Legal Team Delivering Trusted Client Protection</p>
+			</div>
+			<div class="clear"></div>
+			<div class="row">
+				<div class="box-50">
+					<div class="box-padding">
+						<div class="team-block">
+							<div class="team-inner-box wow fadeInLeft animated">
+								<div class="team-img"><img src="images/team-1.jpg" alt="" /></div>
+								<div class="team-text">
+									<h5><a href="">Santia McLaurin</a></h5>
+									<div class="designation">Founder and Ceo</div>
+									<a class="arrow flaticon-right-arrow-3" href="#"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box-50">
+					<div class="box-padding">
+						<div class="team-block">
+							<div class="team-inner-box wow fadeInLeft animated">
+								<div class="team-img"><img src="images/team-2.jpg" alt="" /></div>
+								<div class="team-text">
+									<h5><a href="">Darryl L. Daniels II, Esq.</a></h5>
+									<div class="designation">Senior Attorney</div>
+									<a class="arrow flaticon-right-arrow-3" href="#"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="clear"></div>
+
+			</div>
+		</div>
+	</section>
+
+
+	<section id="testimonial">
+		<div class="testimonial-overlay">
+
+			<div class="wrapper">
+
+				<div class="row">
+					<div class="box-60">
+						<div class="box-80">
+
+							<div class="clearHH"></div>
+							<h6 class="golden uppercase">Testimonials</h6>
+							<h3 class="section-title blue">Words From Clients</h3>
+							<div id="customer-reviews" class="carousel slide" data-ride="carousel">
+
+								<div class="carousel-inner">
+
+									<div class="item active">
+										<blockquote>The legal team was always available to answer my questions,
+											responding promptly and thoroughly. They handled my case with skill and
+											professionalism, ensuring the best..</blockquote>
+
+										<div class="customer-details">
+											<img src="images/testimonials-icon.png" alt="" class="client-img" />
+											<div class="client-name"><strong> Casey &amp; Christina</strong>
+												<div class="ratings"><i class="fa fa-star"></i><i
+														class="fa fa-star"></i><i class="fa fa-star"></i><i
+														class="fa fa-star"></i><i class="fa fa-star"></i></div>
+											</div>
+										</div>
+									</div>
+
+									<div class="item">
+										<blockquote>I had an excellent experience with this law firm, and I highly
+											recommend their services. From the first consultation, the attorneys were
+											professional, knowledgeable, and..</blockquote>
+
+										<div class="customer-details">
+											<img src="images/testimonials-icon.png" alt="" class="client-img" />
+											<div class="client-name"><strong>Leona &amp; Alvin</strong>
+												<div class="ratings"><i class="fa fa-star"></i><i
+														class="fa fa-star"></i><i class="fa fa-star"></i><i
+														class="fa fa-star"></i><i class="fa fa-star"></i></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="box-40">
+						<div class="schedule_appointment">
+							<div class="appointment_inner">
+								<div class="topic">
+									<h4>Schedule a Consultation</h4>
+								</div>
+								<div class="form_inner">
+									<form id="contact-form" action=" " method="post">
+
+										<div class="schedule-consultation">
+
+											<div class="box-100"><input type="text" name="name"
+													value="Enter Your Full Name*"
+													onblur="if(this.value=='') this.value='Enter Your Full Name*'"
+													onfocus="if(this.value =='Enter Your Full Name*' ) this.value=''"
+													class="inputbox"></div>
+											<div class="row">
+												<div class="box-50">
+													<div class="box-paddingS">
+														<input type="text" name="email" value="Email Address*"
+															onblur="if(this.value=='') this.value='Email Address*'"
+															onfocus="if(this.value =='Email Address*' ) this.value=''"
+															class="inputbox">
+													</div>
+												</div>
+												<div class="box-50">
+													<div class="box-paddingS">
+														<input type="text" name="Phone" value="Phone Number*"
+															onblur="if(this.value=='') this.value='Phone Number*'"
+															onfocus="if(this.value =='Phone Number*' ) this.value=''"
+															class="inputbox">
+													</div>
+												</div>
+												<div class="clear"></div>
+												<div class="box-50">
+													<div class="box-paddingS">
+														<select class="selectbox">
+															<option>Select Service</option>
+															<option>Criminal Defense</option>
+															<option>Traffic</option>
+															<option>Landlord/Tenant</option>
+															<option>Contract Drafting & Disputes</option>
+															<option>Business Entity Formation</option>
+															<option>Copyright & Trademark Registration</option>
+														</select>
+													</div>
+												</div>
+												<div class="box-50">
+													<div class="box-paddingS">
+														<select class="selectbox">
+															<option>Are You a New Customer</option>
+															<option>No Old Customer</option>
+															<option>Yes, New Customer</option>
+														</select>
+													</div>
+												</div>
+												<div class="clear"></div>
+											</div>
+
+
+											<div class="box-100"><input type="text" name="Message"
+													value="Case Description.."
+													onblur="if(this.value=='') this.value='Case Description..'"
+													onfocus="if(this.value =='Case Description..' ) this.value=''"
+													class="textarea"></div>
+
+											<div class="box-100"> <input name="Submit" type="submit" class="btn-submit"
+													value="Submit Consultation Request"></div>
+											<div class="clear"> </div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="clear"></div>
+				</div>
+
+				<div class="clear"></div>
+			</div>
+		</div>
+	</section>
+	<section id="blog">
+		<div class="wrapper">
+			<div class="wrap center">
+				<h3 class="section-title blue">Why Choose Daniels McLaurin, PLLC ?</h3>
+				<div class="holder"></div>
+			</div>
+
+			<div class="clearH"></div>
+			<div class="center">
+				<p>Clients choose Daniels McLaurin, PLLC because we combine the sophistication and advocacy of a larger
+					firm with the accessibility and personalized attention of a boutique practice. We believe strong
+					representation starts with understanding our clients’ needs, goals, and concerns. Our firm is
+					committed to:</p>
+			</div>
+			<div class="column-2">
+				<ul class="checklist">
+					<li>Responsive communication</li>
+					<li>Strategic and practical legal solutions</li>
+					<li>Thorough preparation and attention to detail</li>
+					<li>Aggressive advocacy when litigation becomes necessary</li>
+					<li>Building long-term relationships based on trust and results</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<footer id="footer">
+
+		<div class="wrapper">
+
+			<div class="row">
+				<div class="box-30">
+					<div class="box-padding">
+						<div class="footer-logo"><a href="index.html"><img src="images/footer-logo.png"
+									class="img-responsive" alt="" width="250"></a></div>
+						<p>Email: admin@dmlawdc.com</p>
+						<h3>313-721-0112</h3>
+					</div>
+				</div>
+
+				<div class="box-20">
+					<div class="box-padding">
+						<h4>Practice Areas</h4>
+						<ul class="menu">
+							<li><a href="">Family Law</a></li>
+							<li><a href="">Business &amp; Contracts Law</a></li>
+							<li><a href="">Real Estate Law</a></li>
+							<li><a href="">Landlord-Tenant Law</a></li>
+							<li><a href="">Personal Injury Law</a></li>
+							<li><a href="">Criminal Defense</a></li>
+							<li><a href="">Traffic Defense</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="box-20">
+					<div class="box-padding">
+						<h4>Quick Links</h4>
+						<ul class="menu">
+							<li><a href="">About Us</a></li>
+							<li><a href="">Sucess Stories</a></li>
+							<li><a href="">Client Reviews</a></li>
+							<li><a href="">Press and Blog</a></li>
+							<li><a href="">Contact Us</a></li>
+						</ul>
+					</div>
+				</div>
+
+
+				<div class="box-30">
+					<div class="box-padding">
+
+
+						<h4>Subscribe to The Law Office of Daniels McLaurin, PLLC</h4>
+						<p>Sign up for our mailing list to get latest updates and offers</p>
+						<form action="" id="newsletter-box">
+							<input class="input-text" type="text"
+								onblur="if (this.value == '') {this.value = 'Enter your email address';}"
+								onfocus="if(this.value == 'Enter your email address') {this.value = '';}"
+								value="Enter your email address" name="email"> <input class="input-submit" type="button"
+								value="Sign Up" name="">
+							<div class="clear"></div>
+						</form>
+						<div class="clear"></div>
+						<div class="clearH"></div>
+						<div class="socialmedia">
+							<ul class="icons">
+								<li class="firstItem"><a class="fa fa-facebook" href=""
+										title="Facebook"><span></span></a></li>
+								<li><a class="fa fa-instagram" href="" title="Instagram"><span></span></a></li>
+								<li><a class="fa fa-linkedin" href="" title="Linkedin"><span></span></a></li>
+								<li><a class="fa fa-youtube" href="" title="Youtube"><span></span></a></li>
+
+							</ul>
+						</div>
+
+
+					</div>
+				</div>
+
+
+
+				<div class="clear"></div>
+			</div>
+		</div>
+
+		<div id="bar">
+			<div class="wrapper">
+				<div class="flex-item">
+					<div class="box-70">Copyright © 2026 Daniels McLaurin, PLLC. All Rights Reserved.</div>
+					<div class="box-30 alignright"> <a href="" class="white">Terms &amp; Conditions</a> &nbsp;|&nbsp; <a
+							href="" class="white">Privacy Policy</a> </div>
+					<div class="clear"></div>
+
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</body>
+
+</html>

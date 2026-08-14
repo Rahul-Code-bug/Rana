@@ -1,0 +1,540 @@
+{% extends "crm/base.html" %}
+
+
+{% block title %}
+Tasks | CRM
+{% endblock %}
+
+
+{% block extra_css %}
+
+<style>
+
+    /* ================= HEADER ================= */
+
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .back {
+        display: inline-block;
+        margin-bottom: 12px;
+        color: #6366f1;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    .back:hover {
+        color: #4f46e5;
+        text-decoration: underline;
+    }
+
+    .page-header h1 {
+        font-size: 32px;
+        margin-bottom: 6px;
+    }
+
+    .page-header p {
+        color: #64748b;
+        font-size: 15px;
+    }
+
+
+    /* ================= ADD BUTTON ================= */
+
+    .add-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 13px 20px;
+
+        background: #6366f1;
+        color: white;
+
+        border-radius: 8px;
+
+        text-decoration: none;
+        font-weight: 700;
+
+        white-space: nowrap;
+    }
+
+    .add-btn:hover {
+        background: #4f46e5;
+    }
+
+
+    /* ================= TASK CARD ================= */
+
+    .task-card {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        overflow: hidden;
+
+        box-shadow:
+            0 10px 30px rgba(15, 23, 42, 0.05);
+    }
+
+
+    /* ================= TASK ROW ================= */
+
+    .task-row {
+        display: grid;
+
+        grid-template-columns:
+            1.4fr
+            1.3fr
+            1fr
+            110px
+            120px
+            150px;
+
+        align-items: center;
+
+        gap: 18px;
+
+        padding: 18px 20px;
+
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .task-row:last-child {
+        border-bottom: none;
+    }
+
+
+    /* ================= TABLE HEADER ================= */
+
+    .task-header {
+        background: #f1f5f9;
+        color: #475569;
+
+        font-size: 13px;
+        font-weight: 800;
+
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+    }
+
+
+    /* ================= TASK ================= */
+
+    .task-title {
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+
+    /* ================= LEAD ================= */
+
+    .lead-name {
+        color: #475569;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .no-lead {
+        color: #94a3b8;
+        font-size: 14px;
+    }
+
+
+    /* ================= DATE ================= */
+
+    .task-date {
+        color: #64748b;
+        font-size: 14px;
+    }
+
+
+    /* ================= BADGES ================= */
+
+    .priority,
+    .status {
+
+        display: inline-block;
+
+        width: fit-content;
+
+        padding: 6px 10px;
+
+        border-radius: 20px;
+
+        font-size: 12px;
+        font-weight: 700;
+
+    }
+
+
+    .priority {
+        background: #fef3c7;
+        color: #92400e;
+    }
+
+
+    .status {
+        background: #eef2ff;
+        color: #4f46e5;
+    }
+
+
+    /* ================= ACTIONS ================= */
+
+    .actions {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+    }
+
+
+    .edit-btn,
+    .delete-btn {
+
+        display: inline-block;
+
+        padding: 7px 12px;
+
+        border-radius: 6px;
+
+        text-decoration: none;
+
+        font-size: 13px;
+        font-weight: 700;
+
+    }
+
+
+    .edit-btn {
+        background: #eef2ff;
+        color: #4f46e5;
+    }
+
+    .edit-btn:hover {
+        background: #e0e7ff;
+    }
+
+
+    .delete-btn {
+        background: #fee2e2;
+        color: #dc2626;
+    }
+
+    .delete-btn:hover {
+        background: #fecaca;
+    }
+
+
+    /* ================= EMPTY ================= */
+
+    .empty {
+        padding: 55px 20px;
+
+        text-align: center;
+
+        color: #64748b;
+    }
+
+    .empty h3 {
+        color: #0f172a;
+        margin-bottom: 8px;
+    }
+
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 1000px) {
+
+        .task-row {
+
+            grid-template-columns:
+                1.3fr
+                1.2fr
+                1fr
+                100px
+                110px
+                130px;
+
+            gap: 12px;
+
+        }
+
+    }
+
+
+    @media (max-width: 800px) {
+
+        .task-header {
+            display: none;
+        }
+
+        .task-row {
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+
+        }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+        .page-header {
+
+            flex-direction: column;
+
+            align-items: flex-start;
+
+        }
+
+        .add-btn {
+            width: 100%;
+        }
+
+        .task-row {
+
+            grid-template-columns: 1fr;
+
+            gap: 10px;
+
+            padding: 18px;
+
+        }
+
+        .actions {
+            margin-top: 5px;
+        }
+
+    }
+
+</style>
+
+{% endblock %}
+
+
+{% block header %}
+
+<div>
+
+    <a
+        href="{% url 'dashboard' %}"
+        class="back"
+    >
+        ← Back to Dashboard
+    </a>
+
+
+    <div class="page-header">
+
+        <div>
+
+            <h1>
+                Tasks
+            </h1>
+
+            <p>
+                Manage your CRM tasks and activities.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'task_create' %}"
+            class="add-btn"
+        >
+            + Add Task
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- ================= TASK CARD ================= -->
+
+<div class="task-card">
+
+
+    <!-- TABLE HEADER -->
+
+    <div class="task-row task-header">
+
+        <div>
+            Task
+        </div>
+
+        <div>
+            Related Lead
+        </div>
+
+        <div>
+            Due Date
+        </div>
+
+        <div>
+            Priority
+        </div>
+
+        <div>
+            Status
+        </div>
+
+        <div>
+            Actions
+        </div>
+
+    </div>
+
+
+    <!-- TASK LIST -->
+
+    {% if tasks %}
+
+        {% for task in tasks %}
+
+            <div class="task-row">
+
+
+                <!-- TITLE -->
+
+                <div class="task-title">
+
+                    {{ task.title }}
+
+                </div>
+
+
+                <!-- RELATED LEAD -->
+
+                <div>
+
+                    {% if task.lead %}
+
+                        <span class="lead-name">
+
+                            {{ task.lead.name }}
+
+                        </span>
+
+                    {% else %}
+
+                        <span class="no-lead">
+
+                            No Lead
+
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- DATE -->
+
+                <div class="task-date">
+
+                    {% if task.due_date %}
+
+                        {{ task.due_date|date:"d M Y" }}
+
+                    {% else %}
+
+                        No date
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- PRIORITY -->
+
+                <div>
+
+                    <span class="priority">
+
+                        {{ task.priority }}
+
+                    </span>
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div>
+
+                    <span class="status">
+
+                        {{ task.status }}
+
+                    </span>
+
+                </div>
+
+
+                <!-- ACTIONS -->
+
+                <div class="actions">
+
+                    <a
+                        href="{% url 'task_edit' task.id %}"
+                        class="edit-btn"
+                    >
+                        Edit
+                    </a>
+
+
+                    <a
+                        href="{% url 'task_delete' task.id %}"
+                        class="delete-btn"
+                    >
+                        Delete
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        {% endfor %}
+
+
+    {% else %}
+
+
+        <!-- EMPTY STATE -->
+
+        <div class="empty">
+
+            <h3>
+                No Tasks Found
+            </h3>
+
+            <p>
+                Start by adding your first task.
+            </p>
+
+        </div>
+
+
+    {% endif %}
+
+
+</div>
+
+
+{% endblock %}

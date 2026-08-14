@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jordan Vale — Backend &amp; Systems Engineer</title>
+<meta name="description" content="Portfolio of Jordan Vale, backend and systems engineer. Projects, experience, and skills.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --bg-base:#0b0e14;
+  --bg-panel:#12161f;
+  --bg-panel-2:#171c27;
+  --border:#232a38;
+  --border-soft:#1a2029;
+  --text-primary:#e6e8eb;
+  --text-dim:#7b8496;
+  --text-faint:#4b5361;
+  --accent-amber:#e8a33d;
+  --accent-amber-dim:#8a651f;
+  --accent-cyan:#5fb3b3;
+  --accent-green:#5fb389;
+  --accent-red:#e2555a;
+  --font-mono:'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-sans:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius:6px;
+  --max-w:920px;
+  --nav-h:56px;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}
+}
+
+body{
+  margin:0;
+  background:var(--bg-base);
+  color:var(--text-primary);
+  font-family:var(--font-sans);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,h4{
+  font-family:var(--font-mono);
+  margin:0;
+  font-weight:700;
+  letter-spacing:-0.01em;
+}
+
+a{color:var(--accent-cyan); text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+.skip-link{
+  position:absolute; left:-9999px; top:0;
+  background:var(--accent-amber); color:#1a1206;
+  padding:10px 16px; z-index:200; font-family:var(--font-mono); font-weight:700;
+  border-radius:0 0 var(--radius) 0;
+}
+.skip-link:focus{left:0;}
+
+:focus-visible{
+  outline:2px solid var(--accent-amber);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+.wrap{max-width:var(--max-w); margin:0 auto; padding:0 24px;}
+
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:13px;
+  color:var(--accent-cyan);
+  text-transform:none;
+  display:flex; align-items:center; gap:8px;
+  margin-bottom:14px;
+}
+.eyebrow::before{content:'#'; color:var(--text-faint);}
+
+section{padding:88px 0;}
+section h2{font-size:22px; color:var(--text-primary);}
+
+/* ============================================================
+   NAV — styled like a terminal / editor tab bar
+   ============================================================ */
+.nav{
+  position:sticky; top:0; z-index:100;
+  height:var(--nav-h);
+  background:rgba(11,14,20,0.88);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:var(--max-w); margin:0 auto; padding:0 24px;
+  height:100%; display:flex; align-items:center; justify-content:space-between;
+}
+.nav-brand{
+  font-family:var(--font-mono); font-weight:700; font-size:15px;
+  color:var(--text-primary); display:flex; align-items:center; gap:8px;
+}
+.nav-brand .dot{color:var(--accent-green);}
+.nav-brand:hover{text-decoration:none;}
+
+.nav-links{
+  display:flex; gap:4px; list-style:none; margin:0; padding:0;
+  font-family:var(--font-mono); font-size:13.5px;
+}
+.nav-links a{
+  color:var(--text-dim); padding:8px 12px; border-radius:var(--radius);
+  transition:color .15s ease, background .15s ease;
+}
+.nav-links a:hover{color:var(--text-primary); background:var(--bg-panel); text-decoration:none;}
+.nav-links a.active{color:var(--accent-amber); background:var(--bg-panel);}
+
+.nav-toggle{
+  display:none; background:none; border:1px solid var(--border); color:var(--text-primary);
+  font-family:var(--font-mono); font-size:15px; width:36px; height:36px; border-radius:var(--radius);
+  cursor:pointer;
+}
+
+@media (max-width: 720px){
+  .nav-links{
+    position:fixed; top:var(--nav-h); left:0; right:0;
+    flex-direction:column; background:var(--bg-panel);
+    border-bottom:1px solid var(--border);
+    padding:8px; gap:2px;
+    transform:translateY(-8px); opacity:0; pointer-events:none;
+    transition:opacity .18s ease, transform .18s ease;
+  }
+  .nav-links.open{transform:translateY(0); opacity:1; pointer-events:auto;}
+  .nav-links a{padding:12px;}
+  .nav-toggle{display:block;}
+}
+
+/* ============================================================
+   HERO — terminal window
+   ============================================================ */
+.hero{padding:64px 0 80px;}
+.terminal{
+  background:var(--bg-panel);
+  border:1px solid var(--border);
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);
+}
+.terminal-bar{
+  display:flex; align-items:center; gap:8px;
+  padding:12px 16px;
+  background:var(--bg-panel-2);
+  border-bottom:1px solid var(--border);
+}
+.terminal-bar .tdot{width:11px; height:11px; border-radius:50%;}
+.terminal-bar .tdot.r{background:#e2555a;}
+.terminal-bar .tdot.y{background:#e8b23d;}
+.terminal-bar .tdot.g{background:#5fb389;}
+.terminal-bar .tpath{
+  margin-left:10px; font-family:var(--font-mono); font-size:12.5px; color:var(--text-faint);
+}
+.terminal-body{
+  padding:28px 24px 32px;
+  font-family:var(--font-mono);
+  font-size:15px;
+  min-height:230px;
+}
+.term-line{margin:0 0 6px; color:var(--text-dim);}
+.term-line .prompt{color:var(--accent-green);}
+.term-line .path{color:var(--accent-cyan);}
+.term-line .cmd{color:var(--text-primary);}
+.term-out{margin:2px 0 18px; color:var(--text-primary);}
+.term-out .role{color:var(--accent-amber); font-weight:700;}
+.term-out .muted{color:var(--text-dim);}
+.cursor{
+  display:inline-block; width:9px; height:1.1em; background:var(--accent-amber);
+  vertical-align:text-bottom; margin-left:2px;
+  animation:blink 1s step-end infinite;
+}
+@keyframes blink{50%{opacity:0;}}
+
+.hero-cta{display:flex; gap:12px; margin-top:24px; flex-wrap:wrap;}
+.btn{
+  font-family:var(--font-mono); font-size:14px; font-weight:600;
+  padding:11px 18px; border-radius:var(--radius);
+  border:1px solid var(--border); cursor:pointer;
+  display:inline-flex; align-items:center; gap:8px;
+  transition:transform .12s ease, border-color .12s ease, background .12s ease;
+}
+.btn:hover{text-decoration:none; transform:translateY(-1px);}
+.btn-primary{background:var(--accent-amber); color:#1a1206; border-color:var(--accent-amber);}
+.btn-primary:hover{background:#f0ad4e;}
+.btn-ghost{background:transparent; color:var(--text-primary);}
+.btn-ghost:hover{border-color:var(--text-dim);}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:start;}
+.about-body p{color:var(--text-dim); margin:0 0 16px; font-size:15.5px;}
+.about-body strong{color:var(--text-primary); font-weight:600;}
+
+.stat-card{
+  background:var(--bg-panel); border:1px solid var(--border); border-radius:var(--radius);
+  padding:20px; font-family:var(--font-mono);
+}
+.stat-row{display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--border-soft); font-size:13.5px;}
+.stat-row:last-child{border-bottom:none;}
+.stat-row .k{color:var(--text-faint);}
+.stat-row .v{color:var(--text-primary);}
+
+@media (max-width: 720px){ .about-grid{grid-template-columns:1fr;} }
+
+/* ============================================================
+   SKILLS — package manifest style
+   ============================================================ */
+.manifest{
+  background:var(--bg-panel); border:1px solid var(--border); border-radius:8px;
+  overflow:hidden;
+}
+.manifest-head{
+  padding:12px 18px; border-bottom:1px solid var(--border);
+  font-family:var(--font-mono); font-size:12.5px; color:var(--text-faint);
+  display:flex; justify-content:space-between;
+}
+.manifest-body{padding:20px 18px 6px;}
+.dep-group{margin-bottom:20px;}
+.dep-group-title{
+  font-family:var(--font-mono); font-size:12px; color:var(--accent-cyan);
+  text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px;
+}
+.dep-tags{display:flex; flex-wrap:wrap; gap:8px;}
+.dep-tag{
+  font-family:var(--font-mono); font-size:13px;
+  background:var(--bg-panel-2); border:1px solid var(--border);
+  color:var(--text-primary); padding:6px 10px; border-radius:4px;
+}
+.dep-tag .ver{color:var(--accent-green);}
+
+/* ============================================================
+   PROJECTS — repo cards
+   ============================================================ */
+.projects-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+@media (max-width:720px){ .projects-grid{grid-template-columns:1fr;} }
+
+.repo-card{
+  background:var(--bg-panel); border:1px solid var(--border); border-radius:8px;
+  padding:20px; display:flex; flex-direction:column; gap:12px;
+  opacity:0; transform:translateY(14px);
+  transition:opacity .5s ease, transform .5s ease, border-color .15s ease;
+}
+.repo-card.in-view{opacity:1; transform:translateY(0);}
+.repo-card:hover{border-color:var(--text-faint);}
+.repo-top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
+.repo-name{font-family:var(--font-mono); font-size:15.5px; color:var(--text-primary);}
+.repo-name .slash{color:var(--text-faint); font-weight:400;}
+.repo-visibility{
+  font-family:var(--font-mono); font-size:11px; color:var(--accent-amber);
+  border:1px solid var(--accent-amber-dim); padding:2px 8px; border-radius:20px; white-space:nowrap;
+}
+.repo-desc{color:var(--text-dim); font-size:14.5px; margin:0;}
+.repo-stack{display:flex; flex-wrap:wrap; gap:6px;}
+.repo-stack span{
+  font-family:var(--font-mono); font-size:11.5px; color:var(--text-dim);
+  background:var(--bg-panel-2); padding:3px 8px; border-radius:4px;
+}
+.repo-links{display:flex; gap:16px; font-family:var(--font-mono); font-size:13px; margin-top:auto; padding-top:6px;}
+
+/* ============================================================
+   EXPERIENCE — git log timeline
+   ============================================================ */
+.gitlog{position:relative; padding-left:28px;}
+.gitlog::before{
+  content:''; position:absolute; left:5px; top:6px; bottom:6px; width:2px;
+  background:linear-gradient(var(--border), var(--border) 90%, transparent);
+}
+.commit{position:relative; padding-bottom:36px; opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;}
+.commit.in-view{opacity:1; transform:translateY(0);}
+.commit:last-child{padding-bottom:0;}
+.commit::before{
+  content:''; position:absolute; left:-28px; top:4px;
+  width:11px; height:11px; border-radius:50%;
+  background:var(--bg-base); border:2px solid var(--accent-green);
+}
+.commit-meta{display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; font-family:var(--font-mono); font-size:12.5px; color:var(--text-faint); margin-bottom:6px;}
+.commit-hash{color:var(--accent-cyan);}
+.commit-title{font-size:16px; color:var(--text-primary); margin:0 0 4px;}
+.commit-role{color:var(--text-dim); font-size:14px; margin:0 0 10px;}
+.commit ul{margin:0; padding-left:18px; color:var(--text-dim); font-size:14.5px;}
+.commit li{margin-bottom:5px;}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact-box{
+  background:var(--bg-panel); border:1px solid var(--border); border-radius:8px;
+  padding:28px 24px; font-family:var(--font-mono);
+}
+.contact-cmd{color:var(--text-dim); margin:0 0 18px; font-size:14.5px;}
+.contact-cmd .prompt{color:var(--accent-green);}
+.contact-flags{display:flex; flex-direction:column; gap:10px;}
+.flag-row{display:flex; gap:14px; align-items:center; font-size:14.5px;}
+.flag-row .flag{color:var(--accent-amber); min-width:110px;}
+.flag-row a{color:var(--text-primary);}
+.flag-row a:hover{color:var(--accent-cyan);}
+.copy-btn{
+  font-family:var(--font-mono); font-size:11.5px; background:var(--bg-panel-2);
+  border:1px solid var(--border); color:var(--text-dim); padding:3px 8px; border-radius:4px; cursor:pointer;
+}
+.copy-btn:hover{color:var(--text-primary); border-color:var(--text-faint);}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{
+  border-top:1px solid var(--border); padding:28px 0;
+  font-family:var(--font-mono); font-size:12.5px; color:var(--text-faint);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+}
+
+.reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;}
+.reveal.in-view{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand"><span class="dot">●</span>jordan@vale</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">$</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" data-nav>~/about</a></li>
+      <li><a href="#skills" data-nav>~/skills</a></li>
+      <li><a href="#projects" data-nav>~/projects</a></li>
+      <li><a href="#experience" data-nav>~/experience</a></li>
+      <li><a href="#contact" data-nav>~/contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+  <div id="top"></div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
+          <span class="tpath">jordan@vale: ~/portfolio</span>
+        </div>
+        <div class="terminal-body" id="typeTarget">
+          <!-- filled by JS typewriter; noscript fallback below -->
+          <noscript>
+            <p class="term-line"><span class="prompt">➜</span> <span class="path">~</span> <span class="cmd">whoami</span></p>
+            <p class="term-out"><span class="role">Jordan Vale</span> — <span class="muted">Backend &amp; Systems Engineer</span></p>
+            <p class="term-line"><span class="prompt">➜</span> <span class="path">~</span> <span class="cmd">cat mission.txt</span></p>
+            <p class="term-out"><span class="muted">I build APIs and infrastructure that stay up at 3am and make sense at 9am.</span></p>
+          </noscript>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View projects →</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="eyebrow">about</div>
+      <h2>Who's writing this code</h2>
+      <div class="about-grid" style="margin-top:28px;">
+        <div class="about-body reveal">
+          <p>I'm <strong>Jordan Vale</strong>, a backend and systems engineer who cares more about what happens when a service is under real load than how it looks in a demo. Most of my work lives in the layer nobody sees — queues, schemas, retries, the stuff that decides whether a product feels reliable or flaky.</p>
+          <p>I started out fixing slow SQL queries as a side project and ended up specializing in <strong>distributed systems and developer tooling</strong>. I like small, well-tested services more than sprawling monoliths, and I write documentation the way I'd want to receive it: short, honest, and up to date.</p>
+          <p>Outside of production code, I maintain a couple of open-source CLI tools and occasionally write about debugging war stories.</p>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-row"><span class="k">location</span><span class="v">Remote / UTC-5</span></div>
+          <div class="stat-row"><span class="k">focus</span><span class="v">Backend, infra, APIs</span></div>
+          <div class="stat-row"><span class="k">experience</span><span class="v">6 years</span></div>
+          <div class="stat-row"><span class="k">availability</span><span class="v">Open to opportunities</span></div>
+          <div class="stat-row"><span class="k">current</span><span class="v">Senior Eng @ Company</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="eyebrow">skills</div>
+      <h2>package.json</h2>
+      <div class="manifest reveal" style="margin-top:28px;">
+        <div class="manifest-head"><span>dependencies</span><span>jordan-vale/skills</span></div>
+        <div class="manifest-body">
+          <div class="dep-group">
+            <div class="dep-group-title">Languages</div>
+            <div class="dep-tags">
+              <span class="dep-tag">TypeScript <span class="ver">^5.x</span></span>
+              <span class="dep-tag">Python <span class="ver">^3.12</span></span>
+              <span class="dep-tag">Go <span class="ver">^1.22</span></span>
+              <span class="dep-tag">SQL</span>
+              <span class="dep-tag">Rust <span class="ver">learning</span></span>
+            </div>
+          </div>
+          <div class="dep-group">
+            <div class="dep-group-title">Frameworks &amp; Runtimes</div>
+            <div class="dep-tags">
+              <span class="dep-tag">Node.js</span>
+              <span class="dep-tag">FastAPI</span>
+              <span class="dep-tag">gRPC</span>
+              <span class="dep-tag">PostgreSQL</span>
+              <span class="dep-tag">Redis</span>
+              <span class="dep-tag">Kafka</span>
+            </div>
+          </div>
+          <div class="dep-group">
+            <div class="dep-group-title">Infra &amp; Tools</div>
+            <div class="dep-tags">
+              <span class="dep-tag">Docker</span>
+              <span class="dep-tag">Kubernetes</span>
+              <span class="dep-tag">Terraform</span>
+              <span class="dep-tag">AWS</span>
+              <span class="dep-tag">GitHub Actions</span>
+              <span class="dep-tag">Grafana</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="eyebrow">projects</div>
+      <h2>Selected repositories</h2>
+      <div class="projects-grid" style="margin-top:28px;">
+
+        <article class="repo-card reveal">
+          <div class="repo-top">
+            <div class="repo-name"><span class="slash">jvale/</span>queuebox</div>
+            <span class="repo-visibility">public</span>
+          </div>
+          <p class="repo-desc">A lightweight, Redis-backed job queue with retries, dead-letter handling, and a terminal dashboard. Built to replace a heavier queue system that was overkill for small services.</p>
+          <div class="repo-stack"><span>Go</span><span>Redis</span><span>CLI</span></div>
+          <div class="repo-links"><a href="#">Source →</a><a href="#">Docs →</a></div>
+        </article>
+
+        <article class="repo-card reveal">
+          <div class="repo-top">
+            <div class="repo-name"><span class="slash">jvale/</span>schema-diff</div>
+            <span class="repo-visibility">public</span>
+          </div>
+          <p class="repo-desc">A CLI that diffs Postgres schemas across environments and generates safe, reviewable migration files instead of blind auto-migrations.</p>
+          <div class="repo-stack"><span>Python</span><span>PostgreSQL</span><span>CLI</span></div>
+          <div class="repo-links"><a href="#">Source →</a><a href="#">Docs →</a></div>
+        </article>
+
+        <article class="repo-card reveal">
+          <div class="repo-top">
+            <div class="repo-name"><span class="slash">jvale/</span>ratelimit-gateway</div>
+            <span class="repo-visibility">private</span>
+          </div>
+          <p class="repo-desc">An API gateway layer handling auth, per-tenant rate limiting, and request shaping for a multi-tenant SaaS platform, cutting downstream 429s by 80%.</p>
+          <div class="repo-stack"><span>TypeScript</span><span>gRPC</span><span>Kubernetes</span></div>
+          <div class="repo-links"><a href="#">Case study →</a></div>
+        </article>
+
+        <article class="repo-card reveal">
+          <div class="repo-top">
+            <div class="repo-name"><span class="slash">jvale/</span>logtrace</div>
+            <span class="repo-visibility">public</span>
+          </div>
+          <p class="repo-desc">A structured logging library with automatic request-ID propagation across services, plus a small web viewer for tracing a request end-to-end.</p>
+          <div class="repo-stack"><span>Node.js</span><span>Kafka</span><span>React</span></div>
+          <div class="repo-links"><a href="#">Source →</a><a href="#">Demo →</a></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="eyebrow">experience</div>
+      <h2>git log --author=jordan</h2>
+      <div class="gitlog" style="margin-top:28px;">
+
+        <div class="commit reveal">
+          <div class="commit-meta"><span class="commit-hash">a1c4e2f</span><span>2023 — present</span></div>
+          <h3 class="commit-title">Senior Backend Engineer</h3>
+          <p class="commit-role">Company Name</p>
+          <ul>
+            <li>Led the migration of a monolithic billing service into four independently deployable services, cutting deploy time from 40 minutes to 6.</li>
+            <li>Designed the rate-limiting layer used across all public APIs, reducing downstream incident volume by a third.</li>
+            <li>Mentored two junior engineers through their first on-call rotations.</li>
+          </ul>
+        </div>
+
+        <div class="commit reveal">
+          <div class="commit-meta"><span class="commit-hash">7f92b0d</span><span>2021 — 2023</span></div>
+          <h3 class="commit-title">Backend Engineer</h3>
+          <p class="commit-role">Previous Company</p>
+          <ul>
+            <li>Built the event-processing pipeline handling 2M+ events/day using Kafka and Go.</li>
+            <li>Introduced contract testing between services, catching breaking changes before they hit staging.</li>
+          </ul>
+        </div>
+
+        <div class="commit reveal">
+          <div class="commit-meta"><span class="commit-hash">3d0c8a1</span><span>2019 — 2021</span></div>
+          <h3 class="commit-title">Software Engineer</h3>
+          <p class="commit-role">First Company</p>
+          <ul>
+            <li>Owned the internal admin tooling used by support and ops teams.</li>
+            <li>Rewrote the deployment pipeline, reducing failed deploys by 90%.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="eyebrow">contact</div>
+      <h2>Let's talk</h2>
+      <div class="contact-box reveal" style="margin-top:28px;">
+        <p class="contact-cmd"><span class="prompt">➜</span> ~ contact --list</p>
+        <div class="contact-flags">
+          <div class="flag-row">
+            <span class="flag">--email</span>
+            <a href="mailto:jordan.vale@example.com" id="emailLink">jordan.vale@example.com</a>
+            <button class="copy-btn" id="copyEmailBtn" type="button">copy</button>
+          </div>
+          <div class="flag-row">
+            <span class="flag">--github</span>
+            <a href="https://github.com/" target="_blank" rel="noopener">github.com/jordanvale</a>
+          </div>
+          <div class="flag-row">
+            <span class="flag">--linkedin</span>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener">linkedin.com/in/jordanvale</a>
+          </div>
+          <div class="flag-row">
+            <span class="flag">--resume</span>
+            <a href="#">download PDF ↓</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:8px;">
+    <span>© <span id="year"></span> Jordan Vale. Built with vanilla HTML/CSS/JS.</span>
+    <span>status: <span style="color:var(--accent-green)">●</span> available for work</span>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   JS — typewriter hero, nav toggle, scroll spy, reveal, copy
+   ============================================================ */
+(function(){
+  'use strict';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Footer year ---- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---- Mobile nav toggle ---- */
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ---- Scroll-spy active nav link ---- */
+  var sections = ['about','skills','projects','experience','contact']
+    .map(function(id){ return document.getElementById(id); })
+    .filter(Boolean);
+  var navMap = {};
+  document.querySelectorAll('[data-nav]').forEach(function(a){
+    navMap[a.getAttribute('href').slice(1)] = a;
+  });
+  var spyObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var link = navMap[entry.target.id];
+      if(!link) return;
+      if(entry.isIntersecting){
+        Object.values(navMap).forEach(function(l){ l.classList.remove('active'); });
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+  sections.forEach(function(s){ spyObserver.observe(s); });
+
+  /* ---- Reveal-on-scroll ---- */
+  var revealTargets = document.querySelectorAll('.reveal, .repo-card, .commit');
+  if(reduceMotion){
+    revealTargets.forEach(function(el){ el.classList.add('in-view'); });
+  } else {
+    var revealObserver = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealTargets.forEach(function(el){ revealObserver.observe(el); });
+  }
+
+  /* ---- Copy email ---- */
+  var copyBtn = document.getElementById('copyEmailBtn');
+  var emailLink = document.getElementById('emailLink');
+  copyBtn.addEventListener('click', function(){
+    var email = emailLink.textContent.trim();
+    navigator.clipboard.writeText(email).then(function(){
+      var original = copyBtn.textContent;
+      copyBtn.textContent = 'copied!';
+      setTimeout(function(){ copyBtn.textContent = original; }, 1500);
+    }).catch(function(){
+      copyBtn.textContent = 'select & copy';
+    });
+  });
+
+  /* ---- Hero typewriter ---- */
+  var target = document.getElementById('typeTarget');
+  var script = [
+    { type: 'cmd', prompt: '➜', path: '~', text: 'whoami' },
+    { type: 'out', html: '<span class="role">Jordan Vale</span> — <span class="muted">Backend &amp; Systems Engineer</span>' },
+    { type: 'cmd', prompt: '➜', path: '~', text: 'cat mission.txt' },
+    { type: 'out', html: '<span class="muted">I build APIs and infrastructure that stay up at 3am and make sense at 9am.</span>' },
+    { type: 'cmd', prompt: '➜', path: '~', text: 'ls focus/' },
+    { type: 'out', html: '<span class="muted">distributed-systems/&nbsp;&nbsp;developer-tools/&nbsp;&nbsp;api-design/</span>' }
+  ];
+
+  function renderStatic(){
+    var html = '';
+    script.forEach(function(line){
+      if(line.type === 'cmd'){
+        html += '<p class="term-line"><span class="prompt">'+line.prompt+'</span> <span class="path">'+line.path+'</span> <span class="cmd">'+line.text+'</span></p>';
+      } else {
+        html += '<p class="term-out">'+line.html+'</p>';
+      }
+    });
+    target.innerHTML = html;
+  }
+
+  if(reduceMotion){
+    renderStatic();
+  } else {
+    target.innerHTML = '';
+    var lineIndex = 0;
+
+    function typeLine(){
+      if(lineIndex >= script.length){
+        var cursorEl = document.createElement('span');
+        cursorEl.className = 'cursor';
+        target.appendChild(cursorEl);
+        return;
+      }
+      var line = script[lineIndex];
+
+      if(line.type === 'out'){
+        var p = document.createElement('p');
+        p.className = 'term-out';
+        p.innerHTML = line.html;
+        p.style.opacity = '0';
+        target.appendChild(p);
+        requestAnimationFrame(function(){
+          p.style.transition = 'opacity .3s ease';
+          p.style.opacity = '1';
+        });
+        lineIndex++;
+        setTimeout(typeLine, 260);
+        return;
+      }
+
+      var p2 = document.createElement('p');
+      p2.className = 'term-line';
+      p2.innerHTML = '<span class="prompt">'+line.prompt+'</span> <span class="path">'+line.path+'</span> <span class="cmd"></span>';
+      target.appendChild(p2);
+      var cmdSpan = p2.querySelector('.cmd');
+      var chars = line.text.split('');
+      var ci = 0;
+      (function typeChar(){
+        if(ci < chars.length){
+          cmdSpan.textContent += chars[ci];
+          ci++;
+          setTimeout(typeChar, 32);
+        } else {
+          lineIndex++;
+          setTimeout(typeLine, 180);
+        }
+      })();
+    }
+    typeLine();
+  }
+
+  /* Small console easter egg */
+  console.log('%cLooking under the hood? Say hi: jordan.vale@example.com', 'color:#e8a33d;font-family:monospace;');
+})();
+</script>
+
+</body>
+</html>

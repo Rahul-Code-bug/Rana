@@ -1,0 +1,31 @@
+/* .container{
+display: flex;
+gap: 20px;
+justify-content: center;
+align-items: center;
+}
+.box {
+border: 2px solid #333;
+padding: 15px 30px;
+font-size: 20px;
+font-weight: bold;
+} */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.grid-container > div {
+    border: 2px solid #333;
+    text-align: center;
+    padding: 20px;
+}
+@media (max-width: 600px) {
+    .grid-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+}
+}

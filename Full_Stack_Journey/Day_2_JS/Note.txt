@@ -1,0 +1,30 @@
+JavaScript Roadmap
+
+Day 1: Variables + Data Types
+Day 2: Operators + Conditions
+Day 3: Loops
+Day 4: Functions
+Day 5: Arrays
+Day 6: Objects
+Day 7: Array Methods
+Day 8: DOM
+Day 9: Events
+Day 10: Forms & Validation
+Day 11: ES6+
+Day 12: Destructuring / Spread / Rest
+Day 13: Async JavaScript
+Day 14: Promises + async/await
+Day 15: Fetch API + JSON
+Day 16: Local Storage
+Day 17: Modules
+Day 18: Error Handling
+Day 19: JavaScript Revision
+Day 20: Advanced JS concepts
+
+
+_______________________________________________________
+
+
+let   → value change ho sakti hai
+const → value reassign nahi karni
+

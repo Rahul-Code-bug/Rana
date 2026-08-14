@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidVault - Your Video Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="st.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>VIDVAULT</h1>
+        <p class="tagline">Your Retro Video Archive</p>
+    </header>
+
+    <div class="main-content">
+        <div class="video-section">
+            <div class="video-player" id="videoPlayer">
+                <div class="no-video-placeholder">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <p>Add videos to start watching</p>
+                </div>
+            </div>
+
+            <div class="video-info">
+                <h2 class="video-title" id="currentVideoTitle">No video selected</h2>
+            </div>
+
+            <div class="video-controls">
+                <button class="control-btn" id="prevBtn" disabled>⏮ Previous</button>
+                <button class="control-btn" id="nextBtn" disabled>Next ⏭</button>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="add-video-section">
+                <h3 class="section-title">Add Video</h3>
+                <form id="addVideoForm">
+                    <div class="input-group">
+                        <label for="videoTitleInput">Video Title</label>
+                        <input type="text" id="videoTitleInput" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="videoUrlInput">YouTube URL</label>
+                        <input type="url" id="videoUrlInput" required>
+                    </div>
+
+                    <button type="submit" class="add-btn">+ Add to Vault</button>
+                </form>
+            </div>
+
+            <div class="playlist">
+                <h3 class="section-title">Playlist</h3>
+                <div class="playlist-items" id="playlistItems">
+                    <div class="empty-playlist">Your vault is empty. Add some videos!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let videos = [];
+let currentVideoIndex = -1;
+
+function getYouTubeId(url) {
+    const regExp = /(?:youtube\.com\/.*v=|youtu\.be\/)([^&]+)/;
+    const match = url.match(regExp);
+    return match ? match[1] : null;
+}
+
+function renderPlaylist() {
+    const playlist = document.getElementById('playlistItems');
+
+    if (videos.length === 0) {
+        playlist.innerHTML = '<div class="empty-playlist">Your vault is empty. Add some videos!</div>';
+        return;
+    }
+
+    playlist.innerHTML = videos.map((video, index) => `
+        <div class="playlist-item ${index === currentVideoIndex ? 'active' : ''}" onclick="playVideo(${index})">
+            <div class="playlist-item-header">
+                <div class="playlist-item-title">${video.title}</div>
+                <button class="delete-btn" onclick="deleteVideo(event, ${index})">✕</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function playVideo(index) {
+    if (index < 0 || index >= videos.length) return;
+
+    currentVideoIndex = index;
+    const video = videos[index];
+
+    document.getElementById('videoPlayer').innerHTML = `
+        <iframe 
+            src="https://www.youtube.com/embed/${video.id}?autoplay=1"
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+        </iframe>
+    `;
+
+    document.getElementById('currentVideoTitle').textContent = video.title;
+    updateControls();
+    renderPlaylist();
+}
+
+function updateControls() {
+    document.getElementById('prevBtn').disabled = currentVideoIndex <= 0;
+    document.getElementById('nextBtn').disabled = currentVideoIndex >= videos.length - 1;
+}
+
+function deleteVideo(e, index) {
+    e.stopPropagation();
+    videos.splice(index, 1);
+
+    if (videos.length === 0) {
+        currentVideoIndex = -1;
+        document.getElementById('videoPlayer').innerHTML = `
+            <div class="no-video-placeholder">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+                <p>Add videos to start watching</p>
+            </div>
+        `;
+        document.getElementById('currentVideoTitle').textContent = 'No video selected';
+    } else {
+        if (currentVideoIndex >= videos.length) currentVideoIndex--;
+        playVideo(currentVideoIndex);
+    }
+
+    updateControls();
+    renderPlaylist();
+}
+
+document.getElementById('prevBtn').onclick = () => {
+    if (currentVideoIndex > 0) playVideo(currentVideoIndex - 1);
+};
+
+document.getElementById('nextBtn').onclick = () => {
+    if (currentVideoIndex < videos.length - 1) playVideo(currentVideoIndex + 1);
+};
+
+document.getElementById('addVideoForm').onsubmit = e => {
+    e.preventDefault();
+
+    const title = videoTitleInput.value.trim();
+    const url = videoUrlInput.value.trim();
+    const id = getYouTubeId(url);
+
+    if (!id) {
+        alert('Invalid YouTube URL');
+        return;
+    }
+
+    videos.push({ title, id });
+    videoTitleInput.value = '';
+    videoUrlInput.value = '';
+
+    if (videos.length === 1) playVideo(0);
+    else renderPlaylist();
+
+    updateControls();
+};
+</script>
+</body>
+</html>

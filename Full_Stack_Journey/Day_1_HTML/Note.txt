@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+Browser ko batata hai ki ye HTML5 document hai.
+
+<html lang="en">
+Ye poore HTML document ka root element hai. lang="en" batata hai ki page ki primary language English hai.
+
+<head>
+Yahan webpage ki information/settings hoti hain jo normally page par directly दिखाई नहीं देतीं.
+
+<meta charset="UTF-8">
+Text/characters ko properly display karne mein help karta hai.
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+Mobile devices par webpage ko properly scale karne mein help karta hai.
+
+<title>My First Website</title>
+Browser tab mein title dikhata hai.
+
+<body>
+Jo content user ko webpage par dikhega, woh mostly yahan hota hai.
+
+<a href="https://www.google.com">Google</a>
+a = anchor
+href = link ka destination
+Google = user ko dikhne wala text
+
+<table> → poori table
+<tr> → table row
+<th> → heading cell
+<td> → normal data cell
+
+
+"display: flex ka main purpose container ke child elements ko flexible aur responsive way mein arrange aur align karna hai."
+"position: absolute nearest positioned ancestor ke according position hota hai. Agar positioned ancestor nahi hai, to initial containing block ke according position hota hai."
+"justify-content: center ka use Flexbox mein items ko horizontal center karne ke liye kiya jata hai."
+"grid-template-columns: repeat(3, 1fr) use karke CSS Grid mein 3 equal-width columns bana sakte hain."
+"flex-wrap: wrap use karne se Flexbox items ki jagah na hone par automatically next line mein chale jaate hain."
