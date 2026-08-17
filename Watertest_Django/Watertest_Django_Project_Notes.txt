@@ -336,3 +336,24 @@ Final testing 13. Deployment
 Always test after each major step.
 
 END OF NOTE
+
+Tumhare project mein 3 main jagah hain:
+
+1. config/
+   → Django ki settings
+
+2. website/
+   → Website ka Python/backend logic
+
+3. templates/website/
+   → HTML pages
+
+4. static/website/
+   → CSS + JS + Images
+
+
+Ye Django project ka main command file hai.
+python manage.py runserver
+python manage.py check
+python manage.py makemigrations
+python manage.py migrate
