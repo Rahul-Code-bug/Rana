@@ -105,3 +105,35 @@ def edit_page(request, page_id):
             "page": page
         }
     )
+
+@login_required
+def delete_page(request, page_id):
+
+    page = Page.objects.get(id=page_id)
+
+    if request.method == "POST":
+        page.delete()
+        return redirect("pages")
+
+    return render(
+        request,
+        "website/page_delete.html",
+        {
+            "page": page
+        }
+    )
+
+def dynamic_page(request, slug):
+
+    page = Page.objects.get(
+        slug=slug,
+        status="published"
+    )
+
+    return render(
+        request,
+        "website/dynamic_page.html",
+        {
+            "page": page
+        }
+    )

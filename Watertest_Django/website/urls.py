@@ -34,4 +34,14 @@ urlpatterns = [
         views.edit_page,
         name="edit_page"
     ),
+    path(
+        "dashboard/pages/delete/<int:page_id>/",
+        views.delete_page,
+        name="delete_page"
+    ),
+    path(
+        "<slug:slug>/",
+        views.dynamic_page,
+        name="dynamic_page"
+    ),
 ]

@@ -502,30 +502,11 @@
                             {{ page.updated_at|date:"d M Y" }}
                         </td>
 
-
                         <!-- ACTIONS -->
-
                         <td>
-
-                            <a
-                                href="#"
-                                class="action-link">
-
-                                Edit
-
-                            </a>
-
-                            <a
-                                href="#"
-                                class="action-link">
-
-                                Delete
-
-                            </a>
-
+                            <a href="{% url 'edit_page' page.id %}" class="action-link"> Edit  </a>
+                            <a href="{% url 'delete_page' page.id %}" class="action-link"> Delete </a>
                         </td>
-
-
                     </tr>
 
                     {% endfor %}

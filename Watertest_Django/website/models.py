@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 
 class Page(models.Model):
@@ -8,11 +9,12 @@ class Page(models.Model):
         ("published", "Published"),
     ]
 
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=300)
 
     slug = models.SlugField(
-        max_length=200,
-        unique=True
+        max_length=300,
+        unique=True,
+        blank=True
     )
 
     content = models.TextField(
@@ -46,6 +48,12 @@ class Page(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True
     )
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title
