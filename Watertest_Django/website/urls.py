@@ -29,4 +29,9 @@ urlpatterns = [
         views.pages,
         name="pages"
     ),
+    path(
+        "dashboard/pages/edit/<int:page_id>/",
+        views.edit_page,
+        name="edit_page"
+    ),
 ]
