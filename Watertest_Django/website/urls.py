@@ -24,4 +24,9 @@ urlpatterns = [
         views.create_page,
         name="create_page"
     ),
+    path(
+        "dashboard/pages/",
+        views.pages,
+        name="pages"
+    ),
 ]

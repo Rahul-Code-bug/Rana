@@ -79,3 +79,29 @@ def pages(request):
             "pages": all_pages
         }
     )
+
+@login_required
+def edit_page(request, page_id):
+
+    page = Page.objects.get(id=page_id)
+
+    if request.method == "POST":
+
+        page.title = request.POST.get("title")
+        page.slug = request.POST.get("slug")
+        page.content = request.POST.get("content")
+        page.status = request.POST.get("status", "draft")
+        page.show_in_menu = request.POST.get("show_in_menu") == "on"
+        page.menu_order = request.POST.get("menu_order") or 0
+
+        page.save()
+
+        return redirect("pages")
+
+    return render(
+        request,
+        "website/page_edit.html",
+        {
+            "page": page
+        }
+    )
