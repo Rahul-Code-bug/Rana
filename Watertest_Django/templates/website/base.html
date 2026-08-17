@@ -1,15 +1,19 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
     <meta charset="utf-8">
 
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>watertest</title>
+    <title>
+        {% block title %}
+            Watertest
+        {% endblock %}
+    </title>
 
 
     <!-- ================= CSS ================= -->
@@ -28,7 +32,6 @@
     <link
         href="https://fonts.gstatic.com"
         rel="preconnect"
-        crossorigin
     >
 
     <link
@@ -68,8 +71,7 @@
     <!-- ================= JQUERY ================= -->
 
     <script
-        src="{% static 'website/js/jquery-1.11.3.min.js' %}"
-        type="text/javascript">
+        src="{% static 'website/js/jquery-1.11.3.min.js' %}">
     </script>
 
     <script
@@ -79,7 +81,7 @@
 
     <!-- ================= STICKY NAVIGATION ================= -->
 
-    <script type="text/javascript">
+    <script>
 
         $(document).ready(function () {
 
@@ -116,7 +118,7 @@
 
     <!-- ================= TABS ================= -->
 
-    <script type="text/javascript">
+    <script>
 
         function openHtabs(evt, deliveryOption) {
 
@@ -129,7 +131,6 @@
             for (i = 0; i < x.length; i++) {
 
                 x[i].style.display = "none";
-
             }
 
             tablinks = document.getElementsByClassName("tablink");
@@ -138,7 +139,6 @@
 
                 tablinks[i].className =
                     tablinks[i].className.replace(" active", "");
-
             }
 
             document.getElementById(deliveryOption).style.display = "block";
@@ -153,36 +153,28 @@
     <!-- ================= BOOTSTRAP ================= -->
 
     <script
-        src="{% static 'website/js/bootstrap.js' %}"
-        type="text/javascript">
+        src="{% static 'website/js/bootstrap.js' %}">
     </script>
 
     <script
-        src="{% static 'website/js/slick.min.js' %}"
-        type="text/javascript">
+        src="{% static 'website/js/slick.min.js' %}">
     </script>
 
 
-    <!-- ================= SLIDERS ================= -->
+    <!-- ================= SLIDER ================= -->
 
-    <script type="text/javascript">
+    <script>
 
         $(document).ready(function () {
 
             $('.items-4').slick({
 
                 dots: true,
-
                 infinite: true,
-
                 speed: 800,
-
                 autoplay: false,
-
                 autoplaySpeed: 2000,
-
                 slidesToShow: 3,
-
                 slidesToScroll: 1,
 
                 responsive: [
@@ -191,68 +183,44 @@
                         breakpoint: 1024,
 
                         settings: {
-
                             slidesToShow: 3,
-
                             slidesToScroll: 1,
-
                             infinite: true,
-
                             dots: true
-
                         }
-
                     },
 
                     {
                         breakpoint: 720,
 
                         settings: {
-
                             slidesToShow: 2,
-
                             slidesToScroll: 1
-
                         }
-
                     },
 
                     {
                         breakpoint: 480,
 
                         settings: {
-
                             slidesToShow: 1,
-
                             slidesToScroll: 1
-
                         }
-
                     }
 
                 ]
 
             });
 
-        });
-
-
-        $(document).ready(function () {
 
             $('.projects').slick({
 
                 dots: true,
-
                 infinite: true,
-
                 speed: 800,
-
                 autoplay: true,
-
                 autoplaySpeed: 2000,
-
                 slidesToShow: 4,
-
                 slidesToScroll: 1,
 
                 responsive: [
@@ -261,43 +229,29 @@
                         breakpoint: 1024,
 
                         settings: {
-
                             slidesToShow: 3,
-
                             slidesToScroll: 1,
-
                             infinite: true,
-
                             dots: true
-
                         }
-
                     },
 
                     {
                         breakpoint: 720,
 
                         settings: {
-
                             slidesToShow: 2,
-
                             slidesToScroll: 1
-
                         }
-
                     },
 
                     {
                         breakpoint: 480,
 
                         settings: {
-
                             slidesToShow: 1,
-
                             slidesToScroll: 1
-
                         }
-
                     }
 
                 ]
@@ -309,124 +263,155 @@
     </script>
 
 
-    <!-- ================= MOBILE FIX ================= -->
+    <!-- ================= MOBILE CSS ================= -->
 
     <style>
 
         @media (max-width: 767px) {
 
             .logo img {
-
                 max-width: 140px;
-
                 height: auto;
-
             }
-
 
             .header-wrap {
-
                 min-height: 55px;
-
             }
 
-
-            .nav-toggle,
-            .menu-toggle,
-            .navbar-toggle {
-
-                max-width: 45px;
-
-            }
-
-
-            #headerImage,
             #mainslider,
             #mainslider .carousel-inner,
             #mainslider .item {
 
                 width: 100%;
-
                 overflow: hidden;
-
             }
-
 
             #mainslider .item img {
 
                 width: 100% !important;
-
                 height: 180px !important;
-
                 object-fit: cover;
-
             }
-
-
-            .bancaption-overlay {
-
-                width: 100%;
-
-            }
-
 
             .ban_caption {
 
                 width: 90%;
-
                 left: 5%;
-
                 text-align: center;
-
             }
-
 
             .ban_caption .subtitle {
 
                 font-size: 16px !important;
-
                 line-height: 1.2;
-
                 margin-bottom: 5px;
-
             }
-
 
             .ban_caption h2 {
 
                 font-size: 28px !important;
-
                 line-height: 1.05 !important;
-
                 margin: 0;
-
-                word-break: normal;
-
             }
-
-
-            .carousel-control-prev,
-            .carousel-control-next {
-
-                width: 35px;
-
-            }
-
 
             html,
             body {
 
                 width: 100%;
-
                 max-width: 100%;
-
                 overflow-x: hidden;
+            }
 
+        }
+
+
+        /* ================= MOBILE CMS MENU ================= */
+
+        @media (max-width: 767px) {
+
+            .mobile-page-item {
+
+                position: relative;
+                display: block;
+                width: 100%;
+            }
+
+            .mobile-dropdown-toggle {
+
+                display: flex !important;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                cursor: pointer;
+            }
+
+            .mobile-dropdown-arrow {
+
+                display: inline-block !important;
+                margin-left: auto;
+                font-size: 10px;
+                transition: transform 0.3s ease;
+            }
+
+            .mobile-dropdown-menu {
+
+                display: none !important;
+
+                width: 100% !important;
+
+                margin: 0 !important;
+                padding: 0 !important;
+
+                list-style: none !important;
+
+                background: #ffffff !important;
+            }
+
+            .mobile-dropdown-menu li {
+
+                display: block !important;
+                width: 100% !important;
+
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .mobile-dropdown-menu li a {
+
+                display: block !important;
+
+                width: 100% !important;
+
+                padding: 12px 20px 12px 40px !important;
+
+                background: #ffffff !important;
+
+                color: #333333 !important;
+
+                font-size: 14px !important;
+
+                border-bottom: 1px solid #dddddd;
+            }
+
+            .mobile-page-item.mobile-open
+            .mobile-dropdown-menu {
+
+                display: block !important;
+            }
+
+            .mobile-page-item.mobile-open
+            .mobile-dropdown-arrow {
+
+                transform: rotate(180deg);
             }
 
         }
 
     </style>
+
+
+    {% block extra_css %}
+    {% endblock %}
 
 </head>
 
@@ -435,7 +420,7 @@
 
 
 <!-- ===================================================== -->
-<!-- MOBILE HAMBURGER MENU -->
+<!-- MOBILE MENU -->
 <!-- ===================================================== -->
 
 <div id="hamburgMenu">
@@ -444,7 +429,6 @@
         id="check"
         type="checkbox"
     >
-
 
     <label for="check">
 
@@ -458,7 +442,6 @@
             >
 
         </i>
-
 
         <i id="cancel">
 
@@ -499,19 +482,14 @@
         </div>
 
 
-        <!-- MOBILE MENU -->
+        <!-- MOBILE NAVIGATION -->
 
         <div class="menuList">
 
             <div class="menu-header">
 
-                <ul
-                    class="menu"
-                    id="menu-main-menu"
-                >
+                <ul class="menu" id="menu-main-menu">
 
-
-                    <!-- HOME -->
 
                     <li>
 
@@ -522,8 +500,6 @@
                     </li>
 
 
-                    <!-- LABORATORY METHODS -->
-
                     <li>
 
                         <a href="{% url 'laboratory_methods' %}">
@@ -533,22 +509,61 @@
                     </li>
 
 
-                    <!-- DYNAMIC CMS PAGES -->
-
                     {% for page in menu_pages %}
 
-                    <li>
+                    <li class="mobile-page-item">
+
+
+                        {% if page.children.all %}
+
+                        <a
+                            href="javascript:void(0);"
+                            class="mobile-dropdown-toggle"
+                        >
+
+                            {{ page.title }}
+
+                            <span class="mobile-dropdown-arrow">
+                                ▼
+                            </span>
+
+                        </a>
+
+
+                        <ul class="mobile-dropdown-menu">
+
+                            {% for child in page.children.all %}
+
+                            <li>
+
+                                <a href="/{{ child.get_url_path }}">
+
+                                    {{ child.title }}
+
+                                </a>
+
+                            </li>
+
+                            {% endfor %}
+
+                        </ul>
+
+
+                        {% else %}
 
                         <a href="/{{ page.get_url_path }}">
+
                             {{ page.title }}
+
                         </a>
+
+                        {% endif %}
+
 
                     </li>
 
                     {% endfor %}
 
-
-                    <!-- CONTACT -->
 
                     <li class="apply-online">
 
@@ -582,10 +597,7 @@
 
             <li>
 
-                <a
-                    href="#"
-                    target="_blank"
-                >
+                <a href="#">
 
                     <i class="fa fa-map-pin"></i>
 
@@ -598,10 +610,7 @@
 
             <li>
 
-                <a
-                    href="#"
-                    target="_blank"
-                >
+                <a href="#">
 
                     <i class="fa fa-map-marker"></i>
 
@@ -651,7 +660,7 @@
 
 
 <!-- ===================================================== -->
-<!-- DESKTOP HEADER -->
+<!-- HEADER / NAVBAR -->
 <!-- ===================================================== -->
 
 <header
@@ -681,7 +690,7 @@
             </div>
 
 
-            <!-- NAVIGATION -->
+            <!-- DESKTOP NAV -->
 
             <div class="head-col">
 
@@ -689,13 +698,10 @@
 
                     <nav id="topnav">
 
-
                         <ul class="menu">
 
 
-                            <!-- HOME -->
-
-                            <li class="current-menu-item">
+                            <li>
 
                                 <a href="{% url 'home' %}">
                                     Home
@@ -703,8 +709,6 @@
 
                             </li>
 
-
-                            <!-- LABORATORY METHODS -->
 
                             <li>
 
@@ -715,48 +719,26 @@
                             </li>
 
 
-                            <!-- =============================== -->
-                            <!-- CMS PAGES -->
-                            <!-- =============================== -->
-
                             {% for page in menu_pages %}
 
                             <li
                                 class="{% if page.children.all %}menu-item-has-children{% endif %}"
                             >
 
-
-                                <!-- PARENT LINK -->
-
                                 <a href="/{{ page.get_url_path }}">
 
                                     {{ page.title }}
 
-
-                                    {% if page.children.all %}
-
-                                    <span class="menu-arrow">
-                                        ▾
-                                    </span>
-
-                                    {% endif %}
-
                                 </a>
 
-
-                                <!-- CHILD DROPDOWN -->
 
                                 {% if page.children.all %}
 
                                 <ul class="sub-menu">
 
-
                                     {% for child in page.children.all %}
 
                                     <li>
-
-                                        <!-- IMPORTANT -->
-                                        <!-- child.get_url_path() -->
 
                                         <a href="/{{ child.get_url_path }}">
 
@@ -768,18 +750,14 @@
 
                                     {% endfor %}
 
-
                                 </ul>
 
                                 {% endif %}
-
 
                             </li>
 
                             {% endfor %}
 
-
-                            <!-- CONTACT -->
 
                             <li class="apply-online">
 
@@ -793,7 +771,6 @@
                         </ul>
 
                     </nav>
-
 
                     <div class="clear"></div>
 
@@ -812,12 +789,48 @@
 
 
 <!-- ===================================================== -->
-<!-- PAGE CONTENT -->
+<!-- BANNER -->
 <!-- ===================================================== -->
 
-{% block content %}
+{% block banner %}
+
+<!-- Default banner -->
+
+<section
+    id="page-banner"
+    style="
+        background-image:
+        url('{% static "website/images/banner.jpg" %}');
+    "
+>
+
+    <div class="wrapper">
+
+        <div class="page-banner-content">
+
+            {% block banner_title %}
+                <h1>Watertest</h1>
+            {% endblock %}
+
+        </div>
+
+    </div>
+
+</section>
 
 {% endblock %}
+
+
+<!-- ===================================================== -->
+<!-- MAIN CONTENT -->
+<!-- ===================================================== -->
+
+<main id="main-content">
+
+    {% block content %}
+    {% endblock %}
+
+</main>
 
 
 <!-- ===================================================== -->
@@ -853,9 +866,8 @@
 
                         <p>
 
-                            Professional water/soil quality testing services across New South Wales.
-                            NABL accredited laboratories for comprehensive drinking water/soil analysis.
-                            Home sample pickup available in select cities.
+                            Professional water/soil quality testing services
+                            across New South Wales.
 
                         </p>
 
@@ -882,7 +894,6 @@
 
                             <ul class="menu">
 
-
                                 <li>
 
                                     <a href="{% url 'home' %}">
@@ -900,8 +911,6 @@
 
                                 </li>
 
-
-                                <!-- CMS PAGES -->
 
                                 {% for page in menu_pages %}
 
@@ -949,7 +958,6 @@
 
                                 </li>
 
-
                             </ul>
 
 
@@ -962,7 +970,7 @@
                 </div>
 
 
-                <!-- CONTACT INFO -->
+                <!-- CONTACT -->
 
                 <div class="box-25">
 
@@ -998,9 +1006,7 @@
 
 
                             <h5>
-
                                 Phone: (02) 9838 8294
-
                             </h5>
 
 
@@ -1010,12 +1016,10 @@
 
                                 <br>
 
-                                Email: watertest@bigpond.com
+                                Email:
+                                watertest@bigpond.com
 
                             </p>
-
-
-                            <div class="clear"></div>
 
                         </div>
 
@@ -1030,7 +1034,6 @@
 
                     <div class="box-padding">
 
-
                         <h4>
                             Stay Updated
                         </h4>
@@ -1038,23 +1041,20 @@
 
                         <p>
 
-                            Subscribe for various updates and news from watertest.net.au
+                            Subscribe for various updates and news
+                            from watertest.net.au
 
                         </p>
 
 
-                        <form
-                            action=""
-                            id="newsletter-box"
-                        >
+                        <form id="newsletter-box">
 
                             <input
                                 class="input-text"
                                 name="email"
                                 type="text"
-                                value="Enter your email address"
+                                placeholder="Enter your email address"
                             >
-
 
                             <input
                                 class="input-submit"
@@ -1067,12 +1067,8 @@
                         </form>
 
 
-                        <div class="clear"></div>
-
                         <div class="clearH"></div>
 
-
-                        <!-- SOCIAL MEDIA -->
 
                         <div class="socialmedia">
 
@@ -1099,7 +1095,7 @@
 
                                     <a
                                         class="fa fa-instagram"
-                                        href="/"
+                                        href="#"
                                         target="_blank"
                                         title="Instagram"
                                     >
@@ -1115,7 +1111,7 @@
 
                                     <a
                                         class="fa fa-linkedin"
-                                        href="/"
+                                        href="#"
                                         target="_blank"
                                         title="Linkedin"
                                     >
@@ -1130,7 +1126,6 @@
                             </ul>
 
                         </div>
-
 
                     </div>
 
@@ -1152,29 +1147,23 @@
 
                 <div class="flex-item">
 
-
                     <div class="box-60">
 
-                        Copyright © 2026 Rahul Rana All Rights Reserved.
+                        Copyright © 2026 Rahul Rana
+                        All Rights Reserved.
 
                     </div>
 
 
                     <div class="box-40 alignright">
 
-                        <a
-                            class="white"
-                            href=""
-                        >
+                        <a class="white" href="#">
                             Terms and Conditions
                         </a>
 
                         &nbsp; | &nbsp;
 
-                        <a
-                            class="white"
-                            href=""
-                        >
+                        <a class="white" href="#">
                             Privacy Policy
                         </a>
 
@@ -1189,10 +1178,59 @@
 
         </div>
 
-
     </div>
 
 </footer>
+
+
+<!-- ===================================================== -->
+<!-- MOBILE DROPDOWN JS -->
+<!-- ===================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const dropdownButtons =
+            document.querySelectorAll(
+                ".mobile-dropdown-toggle"
+            );
+
+
+        dropdownButtons.forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function (event) {
+
+                        event.preventDefault();
+
+                        const parent =
+                            button.closest(
+                                ".mobile-page-item"
+                            );
+
+                        parent.classList.toggle(
+                            "mobile-open"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    }
+);
+
+</script>
+
+
+{% block extra_js %}
+{% endblock %}
 
 
 </body>

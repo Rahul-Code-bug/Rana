@@ -58,15 +58,17 @@ class Page(models.Model):
     )
 
     def save(self, *args, **kwargs):
+
         if not self.slug:
             self.slug = slugify(self.title)
 
         super().save(*args, **kwargs)
 
     def get_url_path(self):
+
         if self.parent:
             return f"{self.parent.get_url_path()}{self.slug}/"
-        
+
         return f"{self.slug}/"
 
     def __str__(self):

@@ -61,11 +61,19 @@ def dashboard(request):
 @login_required
 def create_page(request):
 
+    parent_pages = Page.objects.filter(
+        parent=None
+    ).order_by(
+        "menu_order",
+        "title"
+    )
+
     if request.method == "POST":
 
         title = request.POST.get("title")
         slug = request.POST.get("slug")
         content = request.POST.get("content")
+
         status = request.POST.get(
             "status",
             "draft"
@@ -79,6 +87,16 @@ def create_page(request):
             request.POST.get("menu_order") or 0
         )
 
+        parent_id = request.POST.get("parent")
+
+        parent = None
+
+        if parent_id:
+            parent = get_object_or_404(
+                Page,
+                id=parent_id
+            )
+
         Page.objects.create(
             title=title,
             slug=slug,
@@ -86,13 +104,17 @@ def create_page(request):
             status=status,
             show_in_menu=show_in_menu,
             menu_order=menu_order,
+            parent=parent,
         )
 
         return redirect("dashboard")
 
     return render(
         request,
-        "website/page_create.html"
+        "website/page_create.html",
+        {
+            "parent_pages": parent_pages,
+        }
     )
 
 
@@ -129,6 +151,13 @@ def edit_page(request, page_id):
         id=page_id
     )
 
+    parent_pages = Page.objects.exclude(
+        id=page.id
+    ).order_by(
+        "menu_order",
+        "title"
+    )
+
     if request.method == "POST":
 
         page.title = request.POST.get("title")
@@ -150,6 +179,23 @@ def edit_page(request, page_id):
             request.POST.get("menu_order") or 0
         )
 
+        parent_id = request.POST.get("parent")
+
+        if parent_id:
+            parent = get_object_or_404(
+                Page,
+                id=parent_id
+            )
+
+            # Prevent page from becoming its own parent
+            if parent.id == page.id:
+                parent = None
+
+            page.parent = parent
+
+        else:
+            page.parent = None
+
         page.save()
 
         return redirect("pages")
@@ -158,7 +204,8 @@ def edit_page(request, page_id):
         request,
         "website/page_edit.html",
         {
-            "page": page
+            "page": page,
+            "parent_pages": parent_pages,
         }
     )
 

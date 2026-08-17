@@ -1,0 +1,24 @@
+{% for page in pages %}
+
+<li class="{% if page.children.all %}menu-item-has-children{% endif %}">
+
+    <a href="/{{ page.get_url_path }}">
+
+        {{ page.title }}
+
+    </a>
+
+
+    {% if page.children.all %}
+
+        <ul class="sub-menu">
+
+            {% include "website/menu_items.html" with pages=page.children.all %}
+
+        </ul>
+
+    {% endif %}
+
+</li>
+
+{% endfor %}

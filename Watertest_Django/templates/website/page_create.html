@@ -85,6 +85,17 @@
             width: auto;
         }
 
+        .checkbox-group label {
+            margin: 0;
+        }
+
+        .parent-help {
+            display: block;
+            margin-top: 8px;
+            color: #777;
+            font-size: 13px;
+        }
+
         .button-row {
             display: flex;
             gap: 12px;
@@ -137,6 +148,8 @@
             {% csrf_token %}
 
 
+            <!-- PAGE TITLE -->
+
             <div class="form-group">
 
                 <label for="title">
@@ -152,6 +165,8 @@
 
             </div>
 
+
+            <!-- URL SLUG -->
 
             <div class="form-group">
 
@@ -169,6 +184,41 @@
             </div>
 
 
+            <!-- PARENT PAGE -->
+
+            <div class="form-group">
+
+                <label for="parent">
+                    Parent Page
+                </label>
+
+                <select
+                    id="parent"
+                    name="parent">
+
+                    <option value="">
+                        — No Parent (Top Level Page) —
+                    </option>
+
+                    {% for parent_page in parent_pages %}
+
+                        <option value="{{ parent_page.id }}">
+                            {{ parent_page.title }}
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+                <small class="parent-help">
+                    Select a parent page to create a child page.
+                </small>
+
+            </div>
+
+
+            <!-- CONTENT -->
+
             <div class="form-group">
 
                 <label for="content">
@@ -183,13 +233,17 @@
             </div>
 
 
+            <!-- STATUS -->
+
             <div class="form-group">
 
                 <label for="status">
                     Status
                 </label>
 
-                <select id="status" name="status">
+                <select
+                    id="status"
+                    name="status">
 
                     <option value="draft">
                         Draft
@@ -204,6 +258,8 @@
             </div>
 
 
+            <!-- MENU -->
+
             <div class="form-group checkbox-group">
 
                 <input
@@ -217,6 +273,8 @@
 
             </div>
 
+
+            <!-- MENU ORDER -->
 
             <div class="form-group">
 
@@ -234,18 +292,24 @@
             </div>
 
 
+            <!-- BUTTONS -->
+
             <div class="button-row">
 
                 <button
                     type="submit"
                     class="btn btn-primary">
+
                     Save Page
+
                 </button>
 
                 <a
                     href="{% url 'dashboard' %}"
                     class="btn btn-secondary">
+
                     Cancel
+
                 </a>
 
             </div>

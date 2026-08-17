@@ -86,6 +86,17 @@
             width: auto;
         }
 
+        .checkbox-group label {
+            margin: 0;
+        }
+
+        .help-text {
+            display: block;
+            margin-top: 8px;
+            color: #777;
+            font-size: 13px;
+        }
+
         .button-row {
             display: flex;
             gap: 12px;
@@ -138,6 +149,8 @@
             {% csrf_token %}
 
 
+            <!-- PAGE TITLE -->
+
             <div class="form-group">
 
                 <label for="title">
@@ -153,6 +166,8 @@
 
             </div>
 
+
+            <!-- URL SLUG -->
 
             <div class="form-group">
 
@@ -170,6 +185,47 @@
             </div>
 
 
+            <!-- PARENT PAGE -->
+
+            <div class="form-group">
+
+                <label for="parent">
+                    Parent Page
+                </label>
+
+                <select
+                    id="parent"
+                    name="parent">
+
+                    <option value="">
+                        — No Parent (Top Level Page) —
+                    </option>
+
+                    {% for parent_page in parent_pages %}
+
+                        <option
+                            value="{{ parent_page.id }}"
+                            {% if page.parent and page.parent.id == parent_page.id %}
+                                selected
+                            {% endif %}>
+
+                            {{ parent_page.title }}
+
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+                <small class="help-text">
+                    Select a parent page to create a child page.
+                </small>
+
+            </div>
+
+
+            <!-- PAGE CONTENT -->
+
             <div class="form-group">
 
                 <label for="content">
@@ -182,6 +238,8 @@
 
             </div>
 
+
+            <!-- STATUS -->
 
             <div class="form-group">
 
@@ -196,19 +254,25 @@
                     <option
                         value="draft"
                         {% if page.status == "draft" %}selected{% endif %}>
+
                         Draft
+
                     </option>
 
                     <option
                         value="published"
                         {% if page.status == "published" %}selected{% endif %}>
+
                         Published
+
                     </option>
 
                 </select>
 
             </div>
 
+
+            <!-- SHOW IN MENU -->
 
             <div class="form-group checkbox-group">
 
@@ -224,6 +288,8 @@
 
             </div>
 
+
+            <!-- MENU ORDER -->
 
             <div class="form-group">
 
@@ -241,18 +307,24 @@
             </div>
 
 
+            <!-- BUTTONS -->
+
             <div class="button-row">
 
                 <button
                     type="submit"
                     class="btn btn-primary">
+
                     Update Page
+
                 </button>
 
                 <a
                     href="{% url 'pages' %}"
                     class="btn btn-secondary">
+
                     Cancel
+
                 </a>
 
             </div>
