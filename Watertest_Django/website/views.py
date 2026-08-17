@@ -1,17 +1,34 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+
 from .models import Page
 
 
-def home(request):
-    return render(request, "website/home.html")
+# ==========================================
+# HOME
+# ==========================================
 
+def home(request):
+    return render(
+        request,
+        "website/home.html"
+    )
+
+
+# ==========================================
+# LABORATORY METHODS
+# ==========================================
 
 def laboratory_methods(request):
-    return render(request, "website/laboratory_methods.html")
+    return render(
+        request,
+        "website/laboratory_methods.html"
+    )
 
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
 
+# ==========================================
+# DASHBOARD
+# ==========================================
 
 @login_required
 def dashboard(request):
@@ -36,6 +53,11 @@ def dashboard(request):
         }
     )
 
+
+# ==========================================
+# CREATE PAGE
+# ==========================================
+
 @login_required
 def create_page(request):
 
@@ -44,9 +66,18 @@ def create_page(request):
         title = request.POST.get("title")
         slug = request.POST.get("slug")
         content = request.POST.get("content")
-        status = request.POST.get("status", "draft")
-        show_in_menu = request.POST.get("show_in_menu") == "on"
-        menu_order = request.POST.get("menu_order") or 0
+        status = request.POST.get(
+            "status",
+            "draft"
+        )
+
+        show_in_menu = (
+            request.POST.get("show_in_menu") == "on"
+        )
+
+        menu_order = (
+            request.POST.get("menu_order") or 0
+        )
 
         Page.objects.create(
             title=title,
@@ -64,6 +95,11 @@ def create_page(request):
         "website/page_create.html"
     )
 
+
+# ==========================================
+# ALL PAGES
+# ==========================================
+
 @login_required
 def pages(request):
 
@@ -80,19 +116,39 @@ def pages(request):
         }
     )
 
+
+# ==========================================
+# EDIT PAGE
+# ==========================================
+
 @login_required
 def edit_page(request, page_id):
 
-    page = Page.objects.get(id=page_id)
+    page = get_object_or_404(
+        Page,
+        id=page_id
+    )
 
     if request.method == "POST":
 
         page.title = request.POST.get("title")
+
         page.slug = request.POST.get("slug")
+
         page.content = request.POST.get("content")
-        page.status = request.POST.get("status", "draft")
-        page.show_in_menu = request.POST.get("show_in_menu") == "on"
-        page.menu_order = request.POST.get("menu_order") or 0
+
+        page.status = request.POST.get(
+            "status",
+            "draft"
+        )
+
+        page.show_in_menu = (
+            request.POST.get("show_in_menu") == "on"
+        )
+
+        page.menu_order = (
+            request.POST.get("menu_order") or 0
+        )
 
         page.save()
 
@@ -106,13 +162,23 @@ def edit_page(request, page_id):
         }
     )
 
+
+# ==========================================
+# DELETE PAGE
+# ==========================================
+
 @login_required
 def delete_page(request, page_id):
 
-    page = Page.objects.get(id=page_id)
+    page = get_object_or_404(
+        Page,
+        id=page_id
+    )
 
     if request.method == "POST":
+
         page.delete()
+
         return redirect("pages")
 
     return render(
@@ -123,12 +189,28 @@ def delete_page(request, page_id):
         }
     )
 
-def dynamic_page(request, slug):
 
-    page = Page.objects.get(
-        slug=slug,
-        status="published"
-    )
+# ==========================================
+# DYNAMIC CMS PAGE
+# ==========================================
+
+def dynamic_page(request, page_path):
+
+    parts = page_path.strip("/").split("/")
+
+    parent = None
+    page = None
+
+    for slug in parts:
+
+        page = get_object_or_404(
+            Page,
+            slug=slug,
+            status="published",
+            parent=parent
+        )
+
+        parent = page
 
     return render(
         request,

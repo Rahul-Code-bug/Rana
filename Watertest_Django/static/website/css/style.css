@@ -1190,3 +1190,83 @@ h2.head{ display:none; }
 .star-rating svg:not(:last-child) {
   margin-right: 3px;
 }
+
+/* =========================================
+   CMS PARENT / CHILD MENU
+   ========================================= */
+
+#topnav ul.menu li.has-submenu {
+    position: relative;
+}
+
+
+/* Arrow */
+
+#topnav ul.menu li.has-submenu > a .menu-arrow {
+    margin-left: 6px;
+    font-size: 11px;
+}
+
+
+/* Submenu */
+
+#topnav ul.menu li.has-submenu > ul.sub-menu {
+    display: none;
+
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+    min-width: 220px;
+
+    margin: 0;
+    padding: 8px 0;
+
+    background: #ffffff;
+
+    z-index: 9999;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Show submenu */
+
+#topnav ul.menu li.has-submenu:hover > ul.sub-menu {
+    display: block;
+}
+
+
+/* Child item */
+
+#topnav ul.menu li.has-submenu > ul.sub-menu > li {
+    display: block;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Child link */
+
+#topnav ul.menu li.has-submenu > ul.sub-menu > li > a {
+    display: block;
+
+    width: 100%;
+
+    padding: 10px 18px;
+
+    white-space: nowrap;
+
+    box-sizing: border-box;
+}
+
+
+/* Child hover */
+
+#topnav ul.menu li.has-submenu > ul.sub-menu > li > a:hover {
+    text-decoration: none;
+}

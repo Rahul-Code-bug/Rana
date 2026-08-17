@@ -41,6 +41,14 @@ class Page(models.Model):
         default=0
     )
 
+    parent = models.ForeignKey(
+        "self",
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+        related_name="children"
+    )
+
     created_at = models.DateTimeField(
         auto_now_add=True
     )
@@ -54,6 +62,12 @@ class Page(models.Model):
             self.slug = slugify(self.title)
 
         super().save(*args, **kwargs)
+
+    def get_url_path(self):
+        if self.parent:
+            return f"{self.parent.get_url_path()}{self.slug}/"
+        
+        return f"{self.slug}/"
 
     def __str__(self):
         return self.title
