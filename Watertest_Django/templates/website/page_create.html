@@ -1,0 +1,261 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Create Page | Watertest CMS</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+        }
+
+        .page-wrapper {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-header {
+            margin-bottom: 25px;
+        }
+
+        .page-header h1 {
+            margin: 0 0 8px;
+        }
+
+        .page-header p {
+            margin: 0;
+            color: #777;
+        }
+
+        .form-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #e5e5e5;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 250px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border: 0;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .btn-primary {
+            background: #0b4f8a;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background: #ddd;
+            color: #222;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+    <div class="page-header">
+
+        <h1>Create New Page</h1>
+
+        <p>
+            Create and publish a new page for your Watertest website.
+        </p>
+
+    </div>
+
+
+    <div class="form-box">
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            <div class="form-group">
+
+                <label for="title">
+                    Page Title
+                </label>
+
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="Example: Major Equipment"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="slug">
+                    URL Slug
+                </label>
+
+                <input
+                    type="text"
+                    id="slug"
+                    name="slug"
+                    placeholder="major-equipment"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="content">
+                    Page Content
+                </label>
+
+                <textarea
+                    id="content"
+                    name="content"
+                    placeholder="Write your page content here..."></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="status">
+                    Status
+                </label>
+
+                <select id="status" name="status">
+
+                    <option value="draft">
+                        Draft
+                    </option>
+
+                    <option value="published">
+                        Published
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group checkbox-group">
+
+                <input
+                    type="checkbox"
+                    id="show_in_menu"
+                    name="show_in_menu">
+
+                <label for="show_in_menu">
+                    Show this page in navigation
+                </label>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="menu_order">
+                    Menu Order
+                </label>
+
+                <input
+                    type="number"
+                    id="menu_order"
+                    name="menu_order"
+                    value="0"
+                    min="0">
+
+            </div>
+
+
+            <div class="button-row">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary">
+                    Save Page
+                </button>
+
+                <a
+                    href="{% url 'dashboard' %}"
+                    class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

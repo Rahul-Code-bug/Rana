@@ -18,4 +18,10 @@ urlpatterns = [
         views.dashboard,
         name="dashboard"
     ),
+
+    path(
+        "dashboard/pages/create/",
+        views.create_page,
+        name="create_page"
+    ),
 ]
