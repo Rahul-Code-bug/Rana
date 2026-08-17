@@ -1,0 +1,338 @@
+WATERTEST WEBSITE -> DJANGO CONVERSION
+
+Project: Watertest Goal: Existing HTML + CSS + JS website ko Django mein
+convert karna, design ko maximum same rakhte hue.
+
+IMPORTANT
+
+Is project ko step-by-step kiya gaya hai. Future mein continue karte
+waqt pehle is note ko read karo.
+
+CURRENT PROGRESS
+
+-   Django project successfully created.
+-   Django app website created.
+-   website app settings.py mein add kiya gaya.
+-   Templates aur static folders configure kiye gaye.
+-   Existing CSS, JS aur images Django static folder mein copy kiye
+    gaye.
+-   Home page Django template mein convert hua.
+-   Laboratory Methods page Django template mein convert hua.
+-   Home aur Laboratory Methods ke Django URLs connect ho chuke hain.
+-   Home -> Laboratory Methods navigation working hai.
+-   Laboratory Methods -> Home navigation working hai.
+-   base.html abhi START NAHI kiya gaya hai. Ye next major step hai.
+
+1. PROJECT FOLDER
+
+Project folder: E:/Desktop/Rana/Watertest_Django
+
+Git Bash mein virtual environment activate karne ke liye: source
+venv/Scripts/activate
+
+Terminal mein (venv) dikhna chahiye.
+
+2. VIRTUAL ENVIRONMENT
+
+Command: python -m venv venv
+
+Git Bash activation: source venv/Scripts/activate
+
+3. DJANGO INSTALL
+
+Command: pip install django
+
+Installed Django version: 6.1
+
+Version check: python -m django –version
+
+4. DJANGO PROJECT CREATE
+
+Command: django-admin startproject config .
+
+Isse config/ aur manage.py create hue.
+
+5. WEBSITE APP CREATE
+
+Command: python manage.py startapp website
+
+Main structure: Watertest_Django/ config/ website/ venv/ manage.py
+
+6. WEBSITE APP SETTINGS MEIN ADD
+
+File: config/settings.py
+
+INSTALLED_APPS mein add: ‘website’,
+
+Example: INSTALLED_APPS = [ ‘django.contrib.admin’,
+‘django.contrib.auth’, ‘django.contrib.contenttypes’,
+‘django.contrib.sessions’, ‘django.contrib.messages’,
+‘django.contrib.staticfiles’, ‘website’,]
+
+Check: python manage.py check
+
+Expected: System check identified no issues (0 silenced).
+
+7. TEMPLATES FOLDER
+
+Root mein folder banaya: templates/
+
+Uske andar: templates/website/
+
+Final: templates/ website/
+
+8. STATIC FOLDER
+
+Root mein: static/
+
+Uske andar: static/website/
+
+Final: static/ website/ css/ js/ images/
+
+9. TEMPLATE SETTINGS
+
+config/settings.py mein TEMPLATES ke andar:
+
+‘DIRS’: [BASE_DIR / ‘templates’],
+
+10. STATIC SETTINGS
+
+config/settings.py mein:
+
+STATIC_URL = ‘static/’
+
+STATICFILES_DIRS = [ BASE_DIR / ‘static’,]
+
+Phir: python manage.py check
+
+11. ORIGINAL WEBSITE ASSETS COPY
+
+Original website mein folders the: css/ js/ images/
+
+Inko Django mein copy kiya:
+
+css files: static/website/css/
+
+JS files: static/website/js/
+
+Images: static/website/images/
+
+IMPORTANT: Original CSS/JS ko unnecessarily rewrite nahi karna. Existing
+design preserve karna hai.
+
+12. HOME PAGE
+
+Original file: home .html
+
+Isko rename karke: home.html
+
+Location: templates/website/home.html
+
+Home page mein top par: {% load static %}
+
+add kiya.
+
+Local CSS paths ko Django static format mein convert kiya.
+
+Example: href=“css/style.css”
+
+becomes: href=“{% static ‘website/css/style.css’ %}”
+
+JS: src=“js/bootstrap.js”
+
+becomes: src=“{% static ‘website/js/bootstrap.js’ %}”
+
+Image: src=“images/logo.png”
+
+becomes: src=“{% static ‘website/images/logo.png’ %}”
+
+13. HOME VIEW
+
+File: website/views.py
+
+Current structure:
+
+from django.shortcuts import render
+
+def home(request): return render(request, “website/home.html”)
+
+def laboratory_methods(request): return render(request,
+“website/laboratory_methods.html”)
+
+14. WEBSITE URLS
+
+File: website/urls.py
+
+Current:
+
+from django.urls import path from . import views
+
+urlpatterns = [ path(““, views.home, name=”home”), path(
+“laboratory-methods/”, views.laboratory_methods,
+name=“laboratory_methods”, ),]
+
+15. MAIN CONFIG URLS
+
+File: config/urls.py
+
+Current important setup:
+
+from django.contrib import admin from django.urls import include, path
+
+urlpatterns = [ path(“admin/”, admin.site.urls), path(““,
+include(”website.urls”)),]
+
+16. LABORATORY METHODS PAGE
+
+Original: Laboratory-Methods.html
+
+Django filename: laboratory_methods.html
+
+Location: templates/website/laboratory_methods.html
+
+Its CSS/JS/images paths were also converted to Django static paths.
+
+Top: {% load static %}
+
+17. DJANGO URL LINKS
+
+Old HTML links like: Home
+
+were changed to: Home
+
+Old: Laboratory Methods
+
+changed to: Laboratory Methods
+
+This is important because Django uses URL names instead of direct HTML
+file navigation.
+
+18. CURRENT WORKING URLS
+
+Home: http://127.0.0.1:8000/
+
+Laboratory Methods: http://127.0.0.1:8000/laboratory-methods/
+
+Both pages were tested and navigation was working.
+
+19. HOW TO RUN PROJECT
+
+Activate venv: source venv/Scripts/activate
+
+Check: python manage.py check
+
+Run: python manage.py runserver
+
+Open: http://127.0.0.1:8000/
+
+20. CURRENT PROJECT STRUCTURE
+
+Watertest_Django/
+│
+├── config/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── asgi.py
+│   └── wsgi.py
+│
+├── website/
+│   ├── migrations/
+│   │   └── __init__.py
+│   │
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── views.py
+│   └── urls.py
+│
+├── templates/
+│   └── website/
+│       ├── home.html
+│       └── laboratory_methods.html
+│
+├── static/
+│   └── website/
+│       ├── css/
+│       │   ├── style.css
+│       │   ├── responsive.css
+│       │   ├── slick-theme.css
+│       │   └── ...
+│       │
+│       ├── js/
+│       │   ├── bootstrap.js
+│       │   ├── jquery-1.11.3.min.js
+│       │   ├── jquery-scrolltofixed-min.js
+│       │   ├── slick.min.js
+│       │   └── ...
+│       │
+│       └── images/
+│           ├── logo.png
+│           ├── footer-logo.png
+│           ├── slide-1.jpg
+│           ├── slide-2.jpg
+│           ├── slide-3.jpg
+│           └── ...
+│
+├── venv/
+│
+└── manage.py
+
+21. NEXT STEP
+
+NEXT MAJOR TASK: Create base.html.
+
+Purpose: - Common header - Top contact bar - Navbar - Footer - Common
+scripts/layout
+
+Then: home.html , laboratory_methods.html
+
+ko {% extends "website/base.html" %} ke saath clean karna hai.
+
+IMPORTANT: Base.html ka kaam tab start karna hai jab current working
+pages ka backup/safety clear ho. Existing working design ko break nahi
+karna.
+
+22. COMMON DJANGO RULES
+
+Static files: {% load static %}
+
+CSS: {% static ‘website/css/file.css’ %}
+
+JS: {% static ‘website/js/file.js’ %}
+
+Images: {% static ‘website/images/file.jpg’ %}
+
+Internal Django page: {% url ‘home’ %}
+
+Another named Django page: {% url ‘laboratory_methods’ %}
+
+Template inheritance later: {% extends “website/base.html” %}
+
+23. TROUBLESHOOTING
+
+If Home works but another page gives an error: - Check website/urls.py -
+Check website/views.py - Check template filename - Check {% url %}
+name - Run: python manage.py check
+
+If CSS/images do not load: - Check {% load static %} - Check static file
+location: static/website/css/ static/website/js/
+static/website/images/ - Check exact filename and extension.
+
+If a link tries to open .html directly: - Replace direct HTML link with
+Django {% url %}.
+
+24. IMPORTANT PROJECT APPROACH
+
+Do not convert everything at once.
+
+Recommended order: 1. Django setup 2. Static files 3. Home page 4. Other
+pages 5. URL connections 6. base.html 7. Shared header/footer 8.
+Remaining pages 9. Forms 10. Models/database if required 11. Admin 12.
+Final testing 13. Deployment
+
+Always test after each major step.
+
+END OF NOTE
