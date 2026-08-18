@@ -144,7 +144,7 @@
 
     <div class="form-box">
 
-        <form method="POST">
+       <form method="POST" enctype="multipart/form-data">
 
             {% csrf_token %}
 
@@ -184,6 +184,58 @@
 
             </div>
 
+
+            <div class="form-group">
+
+    <label for="featured_image">
+        Featured Image / Banner Image
+    </label>
+
+    <input
+        type="file"
+        id="featured_image"
+        name="featured_image"
+        accept="image/*"
+    >
+
+    {% if page.featured_image %}
+
+        <div style="margin-top:15px;">
+
+            <p style="
+                margin-bottom:8px;
+                color:#555;
+                font-weight:bold;
+            ">
+                Current Banner:
+            </p>
+
+            <img
+                src="{{ page.featured_image.url }}"
+                alt="{{ page.title }}"
+                style="
+                    max-width:300px;
+                    height:150px;
+                    object-fit:cover;
+                    border-radius:6px;
+                    border:1px solid #ddd;
+                "
+            >
+
+        </div>
+
+    {% endif %}
+
+    <small style="
+        display:block;
+        margin-top:8px;
+        color:#777;
+    ">
+        Upload a new image only if you want to change
+        the current banner.
+    </small>
+
+</div>
 
             <!-- PARENT PAGE -->
 

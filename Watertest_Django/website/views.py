@@ -71,7 +71,9 @@ def create_page(request):
     if request.method == "POST":
 
         title = request.POST.get("title")
+
         slug = request.POST.get("slug")
+
         content = request.POST.get("content")
 
         status = request.POST.get(
@@ -92,18 +94,32 @@ def create_page(request):
         parent = None
 
         if parent_id:
+
             parent = get_object_or_404(
                 Page,
                 id=parent_id
             )
 
+        featured_image = request.FILES.get(
+            "featured_image"
+        )
+
         Page.objects.create(
+
             title=title,
+
             slug=slug,
+
             content=content,
+
+            featured_image=featured_image,
+
             status=status,
+
             show_in_menu=show_in_menu,
+
             menu_order=menu_order,
+
             parent=parent,
         )
 
@@ -165,6 +181,13 @@ def edit_page(request, page_id):
         page.slug = request.POST.get("slug")
 
         page.content = request.POST.get("content")
+
+        featured_image = request.FILES.get(
+            "featured_image"
+        )
+
+        if featured_image:
+            page.featured_image = featured_image
 
         page.status = request.POST.get(
             "status",

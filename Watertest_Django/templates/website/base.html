@@ -9,70 +9,40 @@
 
     <meta name="viewport" content="width=device-width">
 
-    <title>watertest</title>
+    <title>
+        {% block title %}
+        Watertest
+        {% endblock %}
+    </title>
 
 
     <!-- ================= CSS ================= -->
 
-    <link
-        href="{% static 'website/css/font-awesome.css' %}"
-        rel="stylesheet"
-        type="text/css"
-    >
+    <link href="{% static 'website/css/font-awesome.css' %}" rel="stylesheet" type="text/css">
 
-    <link
-        href="https://fonts.googleapis.com"
-        rel="preconnect"
-    >
+    <link href="https://fonts.googleapis.com" rel="preconnect">
 
-    <link
-        href="https://fonts.gstatic.com"
-        rel="preconnect"
-    >
+    <link href="https://fonts.gstatic.com" rel="preconnect">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
-        rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap"
-        rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
 
-    <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        rel="stylesheet"
-    >
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <link
-        href="{% static 'website/css/slick-theme.css' %}"
-        rel="stylesheet"
-        type="text/css"
-    >
+    <link href="{% static 'website/css/slick-theme.css' %}" rel="stylesheet" type="text/css">
 
-    <link
-        href="{% static 'website/css/style.css' %}"
-        rel="stylesheet"
-        type="text/css"
-    >
+    <link href="{% static 'website/css/style.css' %}" rel="stylesheet" type="text/css">
 
-    <link
-        href="{% static 'website/css/responsive.css' %}"
-        rel="stylesheet"
-        type="text/css"
-    >
+    <link href="{% static 'website/css/responsive.css' %}" rel="stylesheet" type="text/css">
 
 
     <!-- ================= JQUERY ================= -->
 
-    <script
-        src="{% static 'website/js/jquery-1.11.3.min.js' %}"
-        type="text/javascript">
+    <script src="{% static 'website/js/jquery-1.11.3.min.js' %}" type="text/javascript">
     </script>
 
-    <script
-        src="{% static 'website/js/jquery-scrolltofixed-min.js' %}">
+    <script src="{% static 'website/js/jquery-scrolltofixed-min.js' %}">
     </script>
 
 
@@ -151,14 +121,10 @@
 
     <!-- ================= BOOTSTRAP ================= -->
 
-    <script
-        src="{% static 'website/js/bootstrap.js' %}"
-        type="text/javascript">
+    <script src="{% static 'website/js/bootstrap.js' %}" type="text/javascript">
     </script>
 
-    <script
-        src="{% static 'website/js/slick.min.js' %}"
-        type="text/javascript">
+    <script src="{% static 'website/js/slick.min.js' %}" type="text/javascript">
     </script>
 
 
@@ -311,7 +277,6 @@
     <!-- ================= MOBILE / CMS MENU CSS ================= -->
 
     <style>
-
         @media (max-width: 767px) {
 
             .logo img {
@@ -522,17 +487,14 @@
             }
 
 
-            .mobile-page-item.mobile-open
-            > .mobile-dropdown-menu {
+            .mobile-page-item.mobile-open>.mobile-dropdown-menu {
 
                 display: block !important;
 
             }
 
 
-            .mobile-page-item.mobile-open
-            > .mobile-dropdown-toggle
-            .mobile-dropdown-arrow {
+            .mobile-page-item.mobile-open>.mobile-dropdown-toggle .mobile-dropdown-arrow {
 
                 transform: rotate(180deg);
 
@@ -541,19 +503,14 @@
 
             /* Nested mobile levels */
 
-            .mobile-dropdown-menu
-            .mobile-dropdown-menu
-            li a {
+            .mobile-dropdown-menu .mobile-dropdown-menu li a {
 
                 padding-left: 60px !important;
 
             }
 
 
-            .mobile-dropdown-menu
-            .mobile-dropdown-menu
-            .mobile-dropdown-menu
-            li a {
+            .mobile-dropdown-menu .mobile-dropdown-menu .mobile-dropdown-menu li a {
 
                 padding-left: 80px !important;
 
@@ -575,8 +532,7 @@
             }
 
 
-            #topnav .menu-item-has-children
-            > a {
+            #topnav .menu-item-has-children>a {
 
                 position: relative;
 
@@ -592,8 +548,7 @@
             }
 
 
-            #topnav .sub-menu
-            .sub-menu {
+            #topnav .sub-menu .sub-menu {
 
                 left: 100%;
 
@@ -602,9 +557,7 @@
             }
 
 
-            #topnav .sub-menu
-            .menu-item-has-children
-            > a {
+            #topnav .sub-menu .menu-item-has-children>a {
 
                 display: flex;
 
@@ -637,7 +590,6 @@
             padding-left: 15px;
 
         }
-
     </style>
 
 </head>
@@ -646,386 +598,227 @@
 <body>
 
 
-<!-- ===================================================== -->
-<!-- MOBILE HAMBURGER MENU -->
-<!-- ===================================================== -->
+    <!-- ===================================================== -->
+    <!-- MOBILE HAMBURGER MENU -->
+    <!-- ===================================================== -->
 
-<div id="hamburgMenu">
+    <div id="hamburgMenu">
 
-    <input
-        id="check"
-        type="checkbox"
-    >
+        <input id="check" type="checkbox">
 
 
-    <label for="check">
+        <label for="check">
 
-        <i id="btn">
+            <i id="btn">
 
-            <img
-                alt="Menu"
-                height="20"
-                width="20"
-                src="{% static 'website/images/burger-menu.svg' %}"
-            >
+                <img alt="Menu" height="20" width="20" src="{% static 'website/images/burger-menu.svg' %}">
 
-        </i>
+            </i>
 
 
-        <i id="cancel">
+            <i id="cancel">
 
-            <img
-                alt="Close"
-                height="20"
-                width="20"
-                src="{% static 'website/images/burger-close.svg' %}"
-            >
+                <img alt="Close" height="20" width="20" src="{% static 'website/images/burger-close.svg' %}">
 
-        </i>
+            </i>
 
-    </label>
+        </label>
 
 
-    <div class="menuBar">
+        <div class="menuBar">
 
 
-        <!-- MOBILE LOGO -->
+            <!-- MOBILE LOGO -->
 
-        <div class="menuHeader">
+            <div class="menuHeader">
 
-            <div class="mobile-logo">
+                <div class="mobile-logo">
 
-                <a href="{% url 'home' %}">
+                    <a href="{% url 'home' %}">
 
-                    <img
-                        alt="Water Test"
-                        class="img-responsive"
-                        src="{% static 'website/images/logo.png' %}"
-                        width="240"
-                    >
+                        <img alt="Water Test" class="img-responsive" src="{% static 'website/images/logo.png' %}"
+                            width="240">
 
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <!-- MOBILE MENU -->
-
-        <div class="menuList">
-
-            <div class="menu-header">
-
-                <ul class="menu" id="menu-main-menu">
-
-
-                    <!-- HOME -->
-
-                    <li>
-
-                        <a href="{% url 'home' %}">
-                            Home
-                        </a>
-
-                    </li>
-
-
-                    <!-- LABORATORY METHODS -->
-
-                    <li>
-
-                        <a href="{% url 'laboratory_methods' %}">
-                            Laboratory Methods
-                        </a>
-
-                    </li>
-
-
-                    <!-- CMS PAGES -->
-
-                    {% include "website/mobile_menu_items.html" with pages=menu_pages %}
-
-
-                    <!-- CONTACT -->
-
-                    <li class="apply-online">
-
-                        <a href="#">
-                            Contact
-                        </a>
-
-                    </li>
-
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ===================================================== -->
-<!-- TOP CONTACT BAR -->
-<!-- ===================================================== -->
-
-<div class="user-tools alignright">
-
-    <div class="wrapper">
-
-        <ul class="toplinks">
-
-
-            <li>
-
-                <a
-                    href="#"
-                    target="_blank"
-                >
-
-                    <i class="fa fa-map-pin"></i>
-
-                    1/4 Abbott Road, Seven Hills NSW 2147
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a
-                    href="#"
-                    target="_blank"
-                >
-
-                    <i class="fa fa-map-marker"></i>
-
-                    PO Box 591, Seven Hills NSW 2147
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="tel:(02)-9838-8294">
-
-                    Call
-
-                    <i class="fa fa-phone"></i>
-
-                    <strong>
-                        (02) 9838 8294
-                    </strong>
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="mailto:watertest@bigpond.com">
-
-                    Email
-
-                    <i class="fa fa-envelope-o"></i>
-
-                    watertest@bigpond.com
-
-                </a>
-
-            </li>
-
-
-        </ul>
-
-    </div>
-
-</div>
-
-
-<!-- ===================================================== -->
-<!-- DESKTOP HEADER -->
-<!-- ===================================================== -->
-
-<header
-    class="nav"
-    id="header"
->
-
-    <div class="wrapper">
-
-        <div class="header-wrap">
-
-
-            <!-- LOGO -->
-
-            <div class="logo">
-
-                <a href="{% url 'home' %}">
-
-                    <img
-                        alt="Water Test"
-                        class="img-responsive"
-                        src="{% static 'website/images/logo.png' %}"
-                    >
-
-                </a>
-
-            </div>
-
-
-            <!-- NAVIGATION -->
-
-            <div class="head-col">
-
-                <div id="topmenu">
-
-                    <nav id="topnav">
-
-
-                        <ul class="menu">
-
-
-                            <!-- HOME -->
-
-                            <li class="current-menu-item">
-
-                                <a href="{% url 'home' %}">
-                                    Home
-                                </a>
-
-                            </li>
-
-
-                            <!-- LABORATORY METHODS -->
-
-                            <li>
-
-                                <a href="{% url 'laboratory_methods' %}">
-                                    Laboratory Methods
-                                </a>
-
-                            </li>
-
-
-                            <!-- CMS PAGES -->
-
-                            {% include "website/menu_items.html" with pages=menu_pages %}
-
-
-                            <!-- CONTACT -->
-
-                            <li class="apply-online">
-
-                                <a href="#">
-                                    Contact
-                                </a>
-
-                            </li>
-
-
-                        </ul>
-
-                    </nav>
-
-
-                    <div class="clear"></div>
+                    </a>
 
                 </div>
 
             </div>
 
 
-            <div class="clear"></div>
+            <!-- MOBILE MENU -->
+
+            <div class="menuList">
+
+                <div class="menu-header">
+
+                    <ul class="menu" id="menu-main-menu">
+
+
+                        <!-- HOME -->
+
+                        <li>
+
+                            <a href="{% url 'home' %}">
+                                Home
+                            </a>
+
+                        </li>
+
+
+                        <!-- LABORATORY METHODS -->
+
+                        <li>
+
+                            <a href="{% url 'laboratory_methods' %}">
+                                Laboratory Methods
+                            </a>
+
+                        </li>
+
+
+                        <!-- CMS PAGES -->
+
+                        {% include "website/mobile_menu_items.html" with pages=menu_pages %}
+
+
+                        <!-- CONTACT -->
+
+                        <li class="apply-online">
+
+                            <a href="#">
+                                Contact
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
 
-</header>
 
+    <!-- ===================================================== -->
+    <!-- TOP CONTACT BAR -->
+    <!-- ===================================================== -->
 
-<!-- ===================================================== -->
-<!-- PAGE CONTENT -->
-<!-- ===================================================== -->
-
-{% block content %}
-
-{% endblock %}
-
-
-<!-- ===================================================== -->
-<!-- FOOTER -->
-<!-- ===================================================== -->
-
-<footer id="footer">
-
-    <div class="footer-overlay">
+    <div class="user-tools alignright">
 
         <div class="wrapper">
 
-            <div class="row">
+            <ul class="toplinks">
 
 
-                <!-- FOOTER LOGO -->
+                <li>
 
-                <div class="box-25">
+                    <a href="#" target="_blank">
 
-                    <div class="box-paddingS">
+                        <i class="fa fa-map-pin"></i>
 
-                        <div class="footer-logo">
+                        1/4 Abbott Road, Seven Hills NSW 2147
 
-                            <img
-                                alt="logo"
-                                class="img-responsive"
-                                src="{% static 'website/images/footer-logo.png' %}"
-                                width="200"
-                            >
+                    </a>
 
-                        </div>
+                </li>
 
 
-                        <p>
+                <li>
 
-                            Professional water/soil quality testing services across New South Wales.
-                            NABL accredited laboratories for comprehensive drinking water/soil analysis.
-                            Home sample pickup available in select cities.
+                    <a href="#" target="_blank">
 
-                        </p>
+                        <i class="fa fa-map-marker"></i>
+
+                        PO Box 591, Seven Hills NSW 2147
+
+                    </a>
+
+                </li>
 
 
-                        <div class="clear"></div>
+                <li>
 
-                    </div>
+                    <a href="tel:(02)-9838-8294">
+
+                        Call
+
+                        <i class="fa fa-phone"></i>
+
+                        <strong>
+                            (02) 9838 8294
+                        </strong>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="mailto:watertest@bigpond.com">
+
+                        Email
+
+                        <i class="fa fa-envelope-o"></i>
+
+                        watertest@bigpond.com
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- DESKTOP HEADER -->
+    <!-- ===================================================== -->
+
+    <header class="nav" id="header">
+
+        <div class="wrapper">
+
+            <div class="header-wrap">
+
+
+                <!-- LOGO -->
+
+                <div class="logo">
+
+                    <a href="{% url 'home' %}">
+
+                        <img alt="Water Test" class="img-responsive" src="{% static 'website/images/logo.png' %}">
+
+                    </a>
 
                 </div>
 
 
-                <!-- QUICK LINKS -->
+                <!-- NAVIGATION -->
 
-                <div class="box-20">
+                <div class="head-col">
 
-                    <div class="box-padding">
+                    <div id="topmenu">
 
-                        <div class="box-paddingS">
-
-                            <h4>
-                                Quick Links
-                            </h4>
+                        <nav id="topnav">
 
 
                             <ul class="menu">
 
 
-                                <li>
+                                <!-- HOME -->
+
+                                <li class="current-menu-item">
 
                                     <a href="{% url 'home' %}">
                                         Home
@@ -1033,6 +826,8 @@
 
                                 </li>
 
+
+                                <!-- LABORATORY METHODS -->
 
                                 <li>
 
@@ -1043,15 +838,17 @@
                                 </li>
 
 
-                                <!-- CMS FOOTER MENU -->
+                                <!-- CMS PAGES -->
 
-                                {% include "website/footer_menu_items.html" with pages=menu_pages %}
+                                {% include "website/menu_items.html" with pages=menu_pages %}
 
 
-                                <li>
+                                <!-- CONTACT -->
+
+                                <li class="apply-online">
 
                                     <a href="#">
-                                        Contact Us
+                                        Contact
                                     </a>
 
                                 </li>
@@ -1059,185 +856,10 @@
 
                             </ul>
 
-
-                            <div class="clear"></div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- CONTACT INFO -->
-
-                <div class="box-25">
-
-                    <div class="box-padding">
-
-                        <div class="box-paddingS">
-
-                            <h4>
-                                Contact Info
-                            </h4>
-
-
-                            <p>
-
-                                <strong>
-                                    Laboratory:
-                                </strong>
-
-                                1/4 Abbott Road, Seven Hills NSW 2147
-
-                            </p>
-
-
-                            <p>
-
-                                <strong>
-                                    Postal Address:
-                                </strong>
-
-                                PO Box 591, Seven Hills NSW 2147
-
-                            </p>
-
-
-                            <h5>
-
-                                Phone: (02) 9838 8294
-
-                            </h5>
-
-
-                            <p>
-
-                                Fax: (02) 9838 8919
-
-                                <br>
-
-                                Email: watertest@bigpond.com
-
-                            </p>
-
-
-                            <div class="clear"></div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- NEWSLETTER -->
-
-                <div class="box-30">
-
-                    <div class="box-padding">
-
-
-                        <h4>
-                            Stay Updated
-                        </h4>
-
-
-                        <p>
-
-                            Subscribe for various updates and news from watertest.net.au
-
-                        </p>
-
-
-                        <form
-                            action=""
-                            id="newsletter-box"
-                        >
-
-                            <input
-                                class="input-text"
-                                name="email"
-                                type="text"
-                                value="Enter your email address"
-                            >
-
-
-                            <input
-                                class="input-submit"
-                                type="button"
-                                value="Sign Up"
-                            >
-
-                            <div class="clear"></div>
-
-                        </form>
+                        </nav>
 
 
                         <div class="clear"></div>
-
-                        <div class="clearH"></div>
-
-
-                        <!-- SOCIAL MEDIA -->
-
-                        <div class="socialmedia">
-
-                            <ul class="icons">
-
-
-                                <li>
-
-                                    <a
-                                        class="fa fa-facebook"
-                                        href="#"
-                                        target="_blank"
-                                        title="Facebook"
-                                    >
-
-                                        <span></span>
-
-                                    </a>
-
-                                </li>
-
-
-                                <li>
-
-                                    <a
-                                        class="fa fa-instagram"
-                                        href="/"
-                                        target="_blank"
-                                        title="Instagram"
-                                    >
-
-                                        <span></span>
-
-                                    </a>
-
-                                </li>
-
-
-                                <li>
-
-                                    <a
-                                        class="fa fa-linkedin"
-                                        href="/"
-                                        target="_blank"
-                                        title="Linkedin"
-                                    >
-
-                                        <span></span>
-
-                                    </a>
-
-                                </li>
-
-
-                            </ul>
-
-                        </div>
-
 
                     </div>
 
@@ -1250,40 +872,314 @@
 
         </div>
 
+    </header>
 
-        <!-- COPYRIGHT -->
 
-        <div id="bar">
+    <!-- ===================================================== -->
+    <!-- PAGE BANNER -->
+    <!-- ===================================================== -->
+
+    {% if page and page.featured_image %}
+
+    {% with banner_image=page.featured_image.url %}
+
+    <section id="page-banner" style="background-image: url('{{ banner_image }}');">
+
+        <div class="wrapper">
+
+            <div class="page-banner-content">
+
+                {% block banner_title %}
+
+                <h1>{{ page.title }}</h1>
+
+                {% endblock %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+    {% endwith %}
+
+    {% else %}
+
+    {% static "website/images/banner.jpg" as banner_image %}
+
+    <section id="page-banner" style="background-image: url('{{ banner_image }}');">
+
+        <div class="wrapper">
+
+            <div class="page-banner-content">
+
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+    <!-- ===================================================== -->
+    <!-- PAGE CONTENT -->
+    <!-- ===================================================== -->
+
+    {% block content %}
+
+    {% endblock %}
+
+
+    <!-- ===================================================== -->
+    <!-- FOOTER -->
+    <!-- ===================================================== -->
+
+    <footer id="footer">
+
+        <div class="footer-overlay">
 
             <div class="wrapper">
 
-                <div class="flex-item">
+                <div class="row">
 
 
-                    <div class="box-60">
+                    <!-- FOOTER LOGO -->
 
-                        Copyright © 2026 Rahul Rana All Rights Reserved.
+                    <div class="box-25">
+
+                        <div class="box-paddingS">
+
+                            <div class="footer-logo">
+
+                                <img alt="logo" class="img-responsive"
+                                    src="{% static 'website/images/footer-logo.png' %}" width="200">
+
+                            </div>
+
+
+                            <p>
+
+                                Professional water/soil quality testing services across New South Wales.
+                                NABL accredited laboratories for comprehensive drinking water/soil analysis.
+                                Home sample pickup available in select cities.
+
+                            </p>
+
+
+                            <div class="clear"></div>
+
+                        </div>
 
                     </div>
 
 
-                    <div class="box-40 alignright">
+                    <!-- QUICK LINKS -->
 
-                        <a
-                            class="white"
-                            href=""
-                        >
-                            Terms and Conditions
-                        </a>
+                    <div class="box-20">
 
-                        &nbsp; | &nbsp;
+                        <div class="box-padding">
 
-                        <a
-                            class="white"
-                            href=""
-                        >
-                            Privacy Policy
-                        </a>
+                            <div class="box-paddingS">
+
+                                <h4>
+                                    Quick Links
+                                </h4>
+
+
+                                <ul class="menu">
+
+
+                                    <li>
+
+                                        <a href="{% url 'home' %}">
+                                            Home
+                                        </a>
+
+                                    </li>
+
+
+                                    <li>
+
+                                        <a href="{% url 'laboratory_methods' %}">
+                                            Laboratory Methods
+                                        </a>
+
+                                    </li>
+
+
+                                    <!-- CMS FOOTER MENU -->
+
+                                    {% include "website/footer_menu_items.html" with pages=menu_pages %}
+
+
+                                    <li>
+
+                                        <a href="#">
+                                            Contact Us
+                                        </a>
+
+                                    </li>
+
+
+                                </ul>
+
+
+                                <div class="clear"></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONTACT INFO -->
+
+                    <div class="box-25">
+
+                        <div class="box-padding">
+
+                            <div class="box-paddingS">
+
+                                <h4>
+                                    Contact Info
+                                </h4>
+
+
+                                <p>
+
+                                    <strong>
+                                        Laboratory:
+                                    </strong>
+
+                                    1/4 Abbott Road, Seven Hills NSW 2147
+
+                                </p>
+
+
+                                <p>
+
+                                    <strong>
+                                        Postal Address:
+                                    </strong>
+
+                                    PO Box 591, Seven Hills NSW 2147
+
+                                </p>
+
+
+                                <h5>
+
+                                    Phone: (02) 9838 8294
+
+                                </h5>
+
+
+                                <p>
+
+                                    Fax: (02) 9838 8919
+
+                                    <br>
+
+                                    Email: watertest@bigpond.com
+
+                                </p>
+
+
+                                <div class="clear"></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- NEWSLETTER -->
+
+                    <div class="box-30">
+
+                        <div class="box-padding">
+
+
+                            <h4>
+                                Stay Updated
+                            </h4>
+
+
+                            <p>
+
+                                Subscribe for various updates and news from watertest.net.au
+
+                            </p>
+
+
+                            <form action="" id="newsletter-box">
+
+                                <input class="input-text" name="email" type="text" value="Enter your email address">
+
+
+                                <input class="input-submit" type="button" value="Sign Up">
+
+                                <div class="clear"></div>
+
+                            </form>
+
+
+                            <div class="clear"></div>
+
+                            <div class="clearH"></div>
+
+
+                            <!-- SOCIAL MEDIA -->
+
+                            <div class="socialmedia">
+
+                                <ul class="icons">
+
+
+                                    <li>
+
+                                        <a class="fa fa-facebook" href="#" target="_blank" title="Facebook">
+
+                                            <span></span>
+
+                                        </a>
+
+                                    </li>
+
+
+                                    <li>
+
+                                        <a class="fa fa-instagram" href="/" target="_blank" title="Instagram">
+
+                                            <span></span>
+
+                                        </a>
+
+                                    </li>
+
+
+                                    <li>
+
+                                        <a class="fa fa-linkedin" href="/" target="_blank" title="Linkedin">
+
+                                            <span></span>
+
+                                        </a>
+
+                                    </li>
+
+
+                                </ul>
+
+                            </div>
+
+
+                        </div>
 
                     </div>
 
@@ -1294,53 +1190,94 @@
 
             </div>
 
+
+            <!-- COPYRIGHT -->
+
+            <div id="bar">
+
+                <div class="wrapper">
+
+                    <div class="flex-item">
+
+
+                        <div class="box-60">
+
+                            Copyright © 2026 Rahul Rana All Rights Reserved.
+
+                        </div>
+
+
+                        <div class="box-40 alignright">
+
+                            <a class="white" href="">
+                                Terms and Conditions
+                            </a>
+
+                            &nbsp; | &nbsp;
+
+                            <a class="white" href="">
+                                Privacy Policy
+                            </a>
+
+                        </div>
+
+
+                        <div class="clear"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
         </div>
 
-
-    </div>
-
-</footer>
+    </footer>
 
 
-<!-- ===================================================== -->
-<!-- MOBILE MENU SCRIPT -->
-<!-- ===================================================== -->
+    <!-- ===================================================== -->
+    <!-- MOBILE MENU SCRIPT -->
+    <!-- ===================================================== -->
 
-<script>
+    <script>
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
 
-        const dropdownButtons =
-            document.querySelectorAll(
-                ".mobile-dropdown-toggle"
-            );
-
-
-        dropdownButtons.forEach(
-            function (button) {
-
-                button.addEventListener(
-                    "click",
-                    function (event) {
-
-                        event.preventDefault();
+                const dropdownButtons =
+                    document.querySelectorAll(
+                        ".mobile-dropdown-toggle"
+                    );
 
 
-                        const parent =
-                            button.closest(
-                                ".mobile-page-item"
-                            );
+                dropdownButtons.forEach(
+                    function (button) {
+
+                        button.addEventListener(
+                            "click",
+                            function (event) {
+
+                                event.preventDefault();
 
 
-                        if (parent) {
+                                const parent =
+                                    button.closest(
+                                        ".mobile-page-item"
+                                    );
 
-                            parent.classList.toggle(
-                                "mobile-open"
-                            );
 
-                        }
+                                if (parent) {
+
+                                    parent.classList.toggle(
+                                        "mobile-open"
+                                    );
+
+                                }
+
+                            }
+                        );
 
                     }
                 );
@@ -1348,10 +1285,7 @@ document.addEventListener(
             }
         );
 
-    }
-);
-
-</script>
+    </script>
 
 
 </body>

@@ -143,7 +143,7 @@
 
     <div class="form-box">
 
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
 
             {% csrf_token %}
 
@@ -183,6 +183,31 @@
 
             </div>
 
+            <div class="form-group">
+
+
+                <!-- featured_image -->
+    <label for="featured_image">
+        Featured Image / Banner Image
+    </label>
+
+    <input
+        type="file"
+        id="featured_image"
+        name="featured_image"
+        accept="image/*"
+    >
+
+    <small style="
+        display:block;
+        margin-top:8px;
+        color:#777;
+    ">
+        This image will be used as the banner image
+        for this page.
+    </small>
+
+</div>
 
             <!-- PARENT PAGE -->
 
