@@ -1,3 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def home(request):
+    return render(request, "website/home.html")
+
+
+def laboratory_methods(request):
+    return render(request, "website/laboratory_methods.html")
