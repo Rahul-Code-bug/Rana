@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from .models import Category, Tag, Video, VideoRendition
+from .processing import queue_processing
 
 
 @admin.register(Category)
@@ -28,6 +29,14 @@ class VideoAdmin(admin.ModelAdmin):
     search_fields = ('title', 'description', 'channel__name')
     inlines = [RenditionInline]
     actions = ['make_private', 'remove_video']
+
+    def save_model(self, request, obj, form, change):
+        is_new = not change
+
+        super().save_model(request, obj, form, change)
+
+        if is_new and obj.original_file:
+            queue_processing(obj.pk)
 
     @admin.action(description='Set visibility to private (remove from public listing)')
     def make_private(self, request, queryset):
