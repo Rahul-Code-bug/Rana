@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Website Builder Pro</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar"><a class="logo" href="#">Build<span>AI</span></a><span class="top-label">MULTI-PAGE WEBSITE STUDIO</span><a class="docs" href="/README.md" target="_blank">Setup guide ↗</a></header>
+<main class="layout">
+<aside class="sidebar">
+<div class="section-kicker">YOUR PROJECT</div><h1>Build a complete website.</h1><p class="sub">Describe your idea. Generate multiple pages, preview them, and export the full project.</p>
+<label for="prompt">Website description</label>
+<textarea id="prompt" maxlength="5000" placeholder="Example: Create a modern website for a Patna plumbing company. Include Home, About, Services, Areas We Serve, FAQs, and Contact. Navy and teal colors, mobile-friendly navigation, service cards, and validated contact form."></textarea>
+<div class="prompt-meta"><span id="char-count">0 / 5000</span><span>Be specific for better results</span></div>
+<div class="examples"><div class="section-kicker">QUICK START</div>
+<button class="example-link" data-prompt="Create a modern multi-page website for a local plumbing company in Patna. Include Home, About, Plumbing Services, Service Areas, FAQs, and Contact. Use navy and teal, clear calls to action, responsive navigation, FAQ accordions, and contact form validation. Mark testimonials as sample content.">Plumbing business ↗</button>
+<button class="example-link" data-prompt="Create a premium multi-page restaurant website. Include Home, Menu, Our Story, Reservations, and Contact. Use warm editorial photography placeholders, menu categories, opening hours, responsive navigation, and a reservation form demo that clearly says it does not submit to a real restaurant.">Restaurant website ↗</button>
+<button class="example-link" data-prompt="Create a professional personal portfolio website for a web designer. Include Home, About, Projects, Services, and Contact. Use a bold minimal design, project cards, skills, responsive navigation, and client-side form validation.">Portfolio website ↗</button>
+</div>
+<button id="generate-btn" class="primary"><span>✦</span> Generate full website <span>→</span></button>
+<p class="hint">AI generation needs your Gemini API key in the local <code>.env</code> file. Without it, demo pages are shown.</p>
+<div id="notice" class="notice" role="status"></div>
+</aside>
+<section class="workspace">
+<div class="workspace-head"><div><div class="section-kicker">LIVE PREVIEW</div><h2 id="preview-status">Your website will appear here</h2></div><div class="tools"><select id="page-select" aria-label="Select page" disabled><option>index.html</option></select><button id="desktop-btn" class="device selected">Desktop</button><button id="mobile-btn" class="device">Mobile</button></div></div>
+<div class="browser"><div class="browser-bar"><div class="dots"><i></i><i></i><i></i></div><span id="preview-url">your-website.local</span><button id="download-page-btn" class="small-action" disabled>Download page</button></div>
+<div id="preview-canvas" class="preview-canvas"><div id="empty-state" class="empty-state"><div class="empty-icon">✦</div><h3>Your idea, turned into a website.</h3><p>Generate a project to preview Home, About, Services, Contact, and any extra pages.</p></div><iframe id="site-preview" title="Generated website preview" hidden></iframe></div></div>
+<div class="export-row"><div><strong>Ready to export?</strong><p>Download every page, stylesheet, and script in one ZIP.</p></div><button id="download-btn" class="primary export" disabled>↓ Download website ZIP</button></div>
+</section>
+</main><script src="app.js"></script>
+</body></html>
