@@ -1,0 +1,108 @@
+{% load static %}<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logic or Illogic – The Random Question Brain Challenge</title>
+<meta name="description" content="Can your brain handle every question? Face unlimited random logical, illogical, funny, tricky and philosophical questions. Type your own answer and get instant feedback.">
+<meta name="theme-color" content="#07060f">
+<meta property="og:title" content="Logic or Illogic – Can Your Brain Handle Every Question?">
+<meta property="og:description" content="Some questions need logic. Some make no sense. Are you ready?">
+<meta property="og:type" content="website">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'game/style.css' %}">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Logic or Illogic","applicationCategory":"GameApplication","description":"A random question brain challenge game.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+</head>
+<body>
+<div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
+<header class="top">
+  <a class="brand" href="#home"><span>Logic</span><em>or</em><span class="ill">Illogic</span></a>
+  <button class="burger" id="burger" aria-label="Menu">☰</button>
+  <nav id="nav">
+    <a href="#home" data-view="home">Home</a><a href="#play" data-view="play">Start Challenge</a>
+    <a href="#categories" data-view="categories">Categories</a><a href="#how" data-view="how">How to Play</a>
+    <a href="#leaderboard" data-view="leaderboard">Leaderboard</a><a href="#about" data-view="about">About Us</a>
+  </nav>
+</header>
+<main>
+<section id="view-home" class="view active hero">
+  <h1>Can Your Brain Handle <span class="glitch">Every Question?</span></h1>
+  <p class="sub">Some questions need logic. Some questions make no sense. Are you ready?</p>
+  <button class="start-btn" id="startBtn">Start Challenge</button>
+  <div class="row"><button class="ghost" id="dailyBtn">📅 Today's daily challenge</button></div>
+  <ul class="chips">{% for c in categories %}<li>{{ c.emoji }} {{ c.label }}</li>{% endfor %}</ul>
+</section>
+
+<section id="view-play" class="view">
+  <div id="setup" class="panel">
+    <h2>Set up your challenge</h2>
+    <p class="mut">Pick a mode. The questions stay unpredictable either way.</p>
+    <div class="seg" id="modes">
+      <button class="on" data-mode="free">♾️ Free play</button><button data-mode="timer">⏱️ Timer (30s)</button><button data-mode="daily">📅 Daily (5)</button>
+    </div>
+    <div class="grid2">
+      <label>Difficulty<select id="difficulty"><option value="">Random</option><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option><option value="impossible">Impossible</option></select></label>
+      <label>Category<select id="category"><option value="">Surprise me</option>{% for c in categories %}<option value="{{ c.key }}">{{ c.emoji }} {{ c.label }}</option>{% endfor %}</select></label>
+    </div>
+    <button class="start-btn small" id="go">Begin</button>
+  </div>
+
+  <div id="arena" hidden>
+    <div class="stats">
+      <div><b id="s-points">0</b><small>Score</small></div><div><b id="s-answered">0</b><small>Answered</small></div>
+      <div><b id="s-correct">0</b><small>Correct</small></div><div><b id="s-wrong">0</b><small>Wrong</small></div>
+      <div><b id="s-creative">0</b><small>Creative</small></div><div><b id="s-streak">0</b><small>Streak</small></div>
+    </div>
+    <div class="timer" id="timer" hidden><i id="timerBar"></i></div>
+    <article class="qcard" id="qcard">
+      <div class="badges"><span id="b-cat" class="badge"></span><span id="b-diff" class="badge"></span></div>
+      <h2 id="qtext" aria-live="polite"></h2>
+      <textarea id="answer" rows="4" maxlength="600" placeholder="Type your answer in your own words… (Ctrl+Enter to submit)"></textarea>
+      <div class="row"><button class="primary" id="submit">Submit Answer</button><button class="ghost" id="skip">Skip</button></div>
+    </article>
+    <div class="feedback" id="feedback" hidden>
+      <h3 id="f-title"></h3><p id="f-text"></p><p class="mut" id="f-exp"></p><p class="pts" id="f-pts"></p>
+      <div class="row"><button class="primary" id="next">Next Question</button></div>
+    </div>
+    <div class="row end"><button class="ghost" id="finish">Finish &amp; save score</button><button class="ghost" id="restart">↻ Restart challenge</button></div>
+  </div>
+
+  <div id="results" class="panel" hidden>
+    <h2 id="r-title">Challenge complete</h2>
+    <p class="big" id="r-score"></p><p class="mut" id="r-detail"></p>
+    <div class="row"><input id="name" maxlength="20" placeholder="Your name"><button class="primary" id="save">Save to leaderboard</button></div>
+    <div class="row"><button class="ghost" id="share">Share results</button><button class="ghost" id="again">Play again</button></div>
+  </div>
+</section>
+
+<section id="view-categories" class="view"><h2>Categories</h2><p class="mut">Pick one to focus, or skip this and let chaos decide.</p>
+  <div class="cards">{% for c in categories %}<button class="cat" data-cat="{{ c.key }}"><span>{{ c.emoji }}</span><b>{{ c.label }}</b><small>{{ c.desc }}</small></button>{% endfor %}</div>
+</section>
+
+<section id="view-how" class="view"><h2>How to play</h2>
+  <ol class="steps">
+    <li><b>Read the question.</b> It could be a riddle, a sum, a paradox or pure nonsense. You won't know which.</li>
+    <li><b>Write your own answer.</b> No options to pick from. Use your own words.</li>
+    <li><b>Get judged fairly.</b> Logical questions are checked for real correctness. Silly or deep ones reward creativity instead of marking you wrong.</li>
+    <li><b>Score points.</b> Harder questions pay more. In timer mode, faster correct answers earn a bonus.</li>
+    <li><b>Save and share.</b> Finish your run, post your score and challenge a friend.</li>
+  </ol>
+</section>
+
+<section id="view-leaderboard" class="view"><h2>Leaderboard</h2>
+  <div class="tablewrap"><table><thead><tr><th>#</th><th>Player</th><th>Score</th><th>Answered</th><th>Correct</th><th>Mode</th></tr></thead><tbody id="board"></tbody></table></div>
+</section>
+
+<section id="view-about" class="view"><h2>About us</h2>
+  <p class="lead">Logic or Illogic is a brain game for people who are tired of ordinary quizzes. Our questions come from a hand-built bank of 200+ prompts and from an AI that invents new ones on demand, so no two sessions feel the same.</p>
+  <p class="lead">We believe a good question can be a puzzle, a joke or a doorway. Sometimes the best answer is a correct one. Sometimes it's the weirdest one.</p>
+</section>
+</main>
+<footer>© Logic or Illogic · Think. Laugh. Repeat.</footer>
+<div class="toast" id="toast" role="status"></div>
+{{ categories|json_script:"cats" }}
+<script src="{% static 'game/app.js' %}"></script>
+</body>
+</html>
